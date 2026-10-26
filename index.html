@@ -71,6 +71,9 @@
   .policy th, .policy td { border: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; line-height: 1.6; }
   .policy th { background: var(--paper); }
   footer a { text-decoration: underline; }
+  /* 서비스 화면 캡처: 있으면 회색 칸을 덮고, 없으면 글자가 그대로 보인다 */
+  .shot { position: relative; overflow: hidden; }
+  .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
   .step { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid var(--line); }
@@ -255,6 +258,10 @@ function esc(v) {
     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
   });
 }
+// 서비스 화면 캡처는 img/서비스ID.jpg(데스크톱), img/서비스ID-m.jpg(휴대폰)에 둔다. 파일이 없으면 이미지를 지우고 글자만 남긴다
+function shot(s, suffix, label) {
+  return '<div class="shot">' + label + '<img src="img/' + encodeURIComponent(s.id) + suffix + '.jpg" alt="' + esc(s.name) + ' 화면" loading="lazy" onerror="this.remove()"></div>';
+}
 function splitItems(text) {
   return String(text || '').split(/\n|\s\/\s/).map(function (x) { return x.trim(); }).filter(String);
 }
@@ -273,7 +280,7 @@ function renderBoard(data) {
     : '<div class="rank-empty">공개된 서비스가 생기면<br>순위가 나옵니다</div>';
   var cards = data.services.map(function (s, i) {
     return '<a class="card" href="?id=' + encodeURIComponent(s.id) + '"><div class="num">' + ('0' + (i + 1)).slice(-2) + '</div>' +
-      '<div class="shot">화면 준비 중</div><div class="name">' + esc(s.name) + '</div><div class="meta">' + esc(s.oneLiner) + '<br>' + esc(s.academy) + '</div></a>';
+      shot(s, '', '화면 준비 중') + '<div class="name">' + esc(s.name) + '</div><div class="meta">' + esc(s.oneLiner) + '<br>' + esc(s.academy) + '</div></a>';
   }).join('');
   document.getElementById('board').innerHTML =
     '<aside class="rank"><div class="rank-head"><b>실시간 인기 서비스</b><span>오늘 ' + esc(data.updated) + ' 기준</span></div>' + rank +
@@ -294,8 +301,8 @@ function renderDetail(s) {
       '<div class="tags">' + tags + '</div>' +
       '<div>' + (s.demo ? '<a class="btn" href="' + esc(s.demo) + '" target="_blank" rel="noopener">체험해 보기</a>' : '') +
       '<a class="btn ghost" href="' + esc(ask) + '" target="_blank" rel="noopener">문의하기</a></div>' +
-    '</div><div class="devices"><div class="laptop"><div class="screen"><div class="shot">화면 준비 중</div></div><div class="base"></div></div>' +
-    '<div class="phone"><div class="shot">모바일</div></div></div></section></div>' +
+    '</div><div class="devices"><div class="laptop"><div class="screen">' + shot(s, '', '화면 준비 중') + '</div><div class="base"></div></div>' +
+    '<div class="phone">' + shot(s, '-m', '모바일') + '</div></div></section></div>' +
     '<section class="wrap"><div class="eyebrow">PROBLEM</div><div class="h2">해결하는 문제와 쓰는 사람</div>' +
       '<div class="p">' + esc(s.problem) + '</div><div class="feat">' + feats + '</div></section>' +
     '<div style="background:var(--paper)"><section class="wrap"><div class="eyebrow">RESULT</div><div class="h2">실제로 써 본 결과</div><div class="info">' +
