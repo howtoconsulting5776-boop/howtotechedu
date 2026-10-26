@@ -95,7 +95,34 @@
   .feat div { background: var(--paper); border-radius: 12px; padding: 20px; font-size: 15px; line-height: 1.6; }
   .feat b { color: var(--blue); font-size: 12px; display: block; margin-bottom: 6px; }
   .soon { border: 1.5px dashed #b9c4d8; border-radius: 12px; padding: 28px; text-align: center; color: var(--ink-soft); font-size: 15px; margin-top: 18px; }
-  .sticky { display: none; }
+  /* 서비스 상세·교육 화면: 예스펀딩 구조(왼쪽 대표 화면 + 오른쪽 상황 상자 → 탭 → 고정 하단 막대) */
+  .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .status { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 26px; min-width: 0; }
+  .status .h1 { font-size: 30px; }
+  .status .btn { margin-top: 16px; }
+  .facts { display: grid; grid-template-columns: 92px 1fr; gap: 10px 14px; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; }
+  .facts dt { color: var(--ink-soft); }
+  .facts dd { margin: 0; font-weight: 600; min-width: 0; }
+  .facts .tags span { margin: 0 6px 0 0; padding: 3px 10px; }
+  .big-stat { font-size: 26px; font-weight: 800; color: var(--blue); }
+  .tabbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: #fff; border-bottom: 1px solid var(--line); }
+  .tabbar .wrap { display: flex; gap: 4px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); overflow-x: auto; }
+  .tabbar button { font: inherit; font-size: 15px; background: none; border: 0; border-bottom: 3px solid transparent; padding: 14px 12px 11px; color: var(--ink-soft); cursor: pointer; white-space: nowrap; }
+  .tabbar button[aria-selected="true"] { color: var(--ink); border-color: var(--blue); font-weight: 700; }
+  .tabbar button:focus-visible, .bar a:focus-visible, .bar button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .panel .block + .block { margin-top: 44px; }
+  .points { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+  .points li { background: var(--navy); color: #fff; border-radius: 12px; padding: 16px 18px; font-size: 15px; line-height: 1.6; }
+  .points b { color: #a9bcff; margin-right: 10px; }
+  .screens { display: grid; grid-template-columns: 3fr 1fr; gap: 16px; margin-top: 20px; align-items: start; }
+  .screens img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 12px; }
+  .notes { margin: 14px 0 0; padding-left: 20px; }
+  .notes li { font-size: 15px; line-height: 1.75; color: var(--ink); margin-top: 6px; }
+  .notes a { color: var(--blue); text-decoration: underline; }
+  .bar { position: sticky; bottom: 0; z-index: 6; background: #fff; border-top: 1px solid var(--line); display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .bar .btn { margin: 0; }
+  .bar button.btn { font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
 
   @media (max-width: 720px) {
     header.nav .menu a { margin-left: 12px; }
@@ -110,7 +137,9 @@
     .steps, .feat, .info { grid-template-columns: 1fr; }
     .info > div { border-right: 0; border-bottom: 1px solid var(--line); }
     .banner { flex-direction: column; align-items: flex-start; }
-    .sticky { display: block; position: sticky; bottom: 0; background: var(--blue); color: #fff; text-align: center; padding: 15px; font-size: 15px; font-weight: 700; }
+    .top, .screens { grid-template-columns: 1fr; }
+    .top .devices { order: -1; }
+    .status .h1 { font-size: 26px; }
   }
 </style>
 </head>
@@ -211,39 +240,51 @@
 
 </template>
 <template id="tpl-edu">
-  <div class="hero-bg"><section class="wrap hero">
-    <div>
-      <div class="eyebrow">AI BUILDER COURSE</div>
-      <div class="h1">내 학원에서 쓸 서비스,<br>AI로 직접 만듭니다</div>
-      <div class="p">8회 과정을 마치면 자기 학원용 웹·앱 서비스 하나가 완성되고, 이 플랫폼에 전시됩니다.</div>
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a>
-    </div>
+  <div class="hero-bg"><section class="wrap top">
     <div class="devices">
       <div class="laptop"><div class="screen"><div class="shot">수업 사진</div></div><div class="base"></div></div>
       <div class="phone"><div class="shot">수강생 서비스</div></div>
     </div>
+    <div class="status">
+      <div class="eyebrow">AI BUILDER COURSE</div>
+      <div class="h1">내 학원에서 쓸 서비스,<br>AI로 직접 만듭니다</div>
+      <div class="p">8회 과정을 마치면 자기 학원용 웹·앱 서비스 하나가 완성되고, 이 플랫폼에 전시됩니다.</div>
+      <dl class="facts">
+        <dt>관심 등록</dt><dd><span class="big-stat" id="interest-count">…</span>명</dd>
+        <dt>개강일</dt><dd>확정 전 · 관심 등록하신 분께 먼저 안내</dd>
+        <dt>정원</dt><dd>확정 전</dd>
+        <dt>형식</dt><dd>8회 · 회당 3시간 · 오프라인 수업과 온라인 지원</dd>
+        <dt>대상</dt><dd>AX 바이블 과정을 마친 학원장·교육자</dd>
+      </dl>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a>
+    </div>
   </section></div>
-
-  <section class="wrap">
-    <div class="center"><div class="eyebrow">OVERVIEW</div><div class="h2">과정 한눈에</div></div>
+  <div id="edu-tabs"></div>
+  <div class="bar"><button class="btn ghost" type="button" data-copy>주소 복사</button><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a></div>
+</template>
+<template id="tpl-edu-intro">
+  <div class="block"><div class="eyebrow">OVERVIEW</div><div class="h2">과정 한눈에</div>
     <div class="info">
       <div><div class="ico">8</div><h4>8회 · 회당 3시간</h4><p>매주 한 번, 직접 만들며 배웁니다</p></div>
       <div><div class="ico">⌂</div><h4>오프라인 수업</h4><p>회차 사이에는 온라인으로 막힌 곳을 돕습니다</p></div>
       <div><div class="ico">★</div><h4>수료하면 서비스 1개</h4><p>완성한 서비스는 이 플랫폼에 전시됩니다</p></div>
-    </div>
-    <div class="p center">AX 바이블 과정을 마친 학원장·교육자를 위한 후속 과정입니다.</div>
-  </section>
-
-  <div style="background:var(--paper)"><section class="wrap">
-    <div class="eyebrow">CURRICULUM</div><div class="h2">회차별 내용</div>
-    <div class="soon">준비 중입니다. 관심 등록을 해 두시면 확정되는 대로 안내해 드립니다.</div>
-  </section></div>
-
-  <div style="background:var(--blue-soft)"><section class="wrap center">
-    <div class="h2">관심 등록</div>
-    <div class="p">과정이 열리면 가장 먼저 안내해 드립니다.</div>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a>
-  </section></div>
+    </div></div>
+  <div class="block"><div class="eyebrow">FOR WHOM</div><div class="h2">이런 분께 권합니다</div>
+    <ol class="points">
+      <li><b>첫 번째</b>AX 바이블 과정을 마치고 다음 단계를 찾는 학원장·교육자</li>
+      <li><b>두 번째</b>자기 학원에서 쓸 웹·앱 서비스를 직접 만들어 보고 싶은 분</li>
+      <li><b>세 번째</b>만든 서비스를 다른 학원에 선보이고 판매까지 해 보고 싶은 분</li>
+    </ol></div>
+  <div class="block"><div class="eyebrow">CURRICULUM</div><div class="h2">회차별 내용</div>
+    <div class="soon">준비 중입니다. 관심 등록을 해 두시면 확정되는 대로 안내해 드립니다.</div></div>
+</template>
+<template id="tpl-edu-notice">
+  <div class="block"><div class="eyebrow">NOTICE</div><div class="h2">알아 두실 점</div>
+    <ul class="notes">
+      <li>관심 등록은 수강 신청이 아니며 비용이 들지 않습니다.</li>
+      <li>개강일·정원·수강료가 정해지면 관심 등록하신 분께 먼저 안내해 드립니다.</li>
+      <li>관심 등록 정보는 등록한 날부터 1년 동안 보관하며, 원하시면 바로 지웁니다. 자세한 내용은 <a href="?page=privacy">개인정보 처리방침</a>에 있습니다.</li>
+    </ul></div>
 </template>
 
 <footer><div class="wrap">하우투경영컨설팅 · 사업자 정보 · <a href="?page=privacy">개인정보 처리방침</a></div></footer>
@@ -288,46 +329,102 @@ function renderBoard(data) {
     '<div class="cards">' + cards + '<div class="card empty">곧 더 많은 서비스가<br>올라옵니다</div></div>';
 }
 
-function renderDetail(s) {
+var ORDINAL = ['첫 번째', '두 번째', '세 번째', '네 번째', '다섯 번째', '여섯 번째', '일곱 번째', '여덟 번째', '아홉 번째', '열 번째'];
+var TRANSFER = { '사용권': '매달 이용료를 내고 그대로 씁니다.', '설치 대행': '구매한 학원에 맞게 만든 사람이 설치해 드립니다.', '소스 판매': '화면 파일과 코드를 넘겨받아 직접 고쳐 씁니다.' };
+function fmtDate(t) { var d = new Date(t); return d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.'; }
+// 탭 이름과 각 탭 내용(HTML)을 받아 탭 막대와 내용 칸을 만든다. 첫 탭이 열린 채로 시작한다
+function tabsHTML(list) {
+  return '<nav class="tabbar" aria-label="상세 내용"><div class="wrap" role="tablist">' +
+    list.map(function (t, i) { return '<button role="tab" data-tab="' + i + '" aria-selected="' + (i === 0) + '">' + t[0] + '</button>'; }).join('') + '</div></nav>' +
+    list.map(function (t, i) { return '<section class="wrap panel" data-panel="' + i + '"' + (i ? ' hidden' : '') + '>' + t[1] + '</section>'; }).join('');
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-tab]');
+  if (b) {
+    document.querySelectorAll('[data-tab]').forEach(function (x) { x.setAttribute('aria-selected', x === b); });
+    document.querySelectorAll('[data-panel]').forEach(function (p) { p.hidden = p.dataset.panel !== b.dataset.tab; });
+    document.querySelector('.tabbar').scrollIntoView();
+  }
+  var c = e.target.closest('[data-copy]');
+  if (c) navigator.clipboard.writeText(location.href).then(function () { c.textContent = '주소를 복사했습니다'; }, function () { c.textContent = '주소창의 주소를 복사해 주세요'; });
+});
+
+function renderDetail(s, data) {
   var ask = INQUIRY + encodeURIComponent(s.id);
-  var tags = s.transfer.split(',').map(function (t) { return '<span>' + esc(t.trim()) + '</span>'; }).join('');
-  var feats = splitItems(s.features).map(function (f, i) { return '<div><b>기능 ' + (i + 1) + '</b>' + esc(f) + '</div>'; }).join('');
-  document.getElementById('app').innerHTML =
-    '<div class="hero-bg"><section class="wrap hero"><div>' +
-      '<a class="p" style="margin:0" href="./">← 서비스 목록</a>' +
-      '<div class="eyebrow" style="margin-top:14px">SERVICE ' + esc(s.id) + '</div>' +
-      '<div class="h1">' + esc(s.name) + '</div>' +
-      '<div class="p">' + esc(s.oneLiner) + ' · ' + esc(s.academy) + '</div>' +
-      '<div class="tags">' + tags + '</div>' +
-      '<div>' + (s.demo ? '<a class="btn" href="' + esc(s.demo) + '" target="_blank" rel="noopener">체험해 보기</a>' : '') +
-      '<a class="btn ghost" href="' + esc(ask) + '" target="_blank" rel="noopener">문의하기</a></div>' +
-    '</div><div class="devices"><div class="laptop"><div class="screen">' + shot(s, '', '화면 준비 중') + '</div><div class="base"></div></div>' +
-    '<div class="phone">' + shot(s, '-m', '모바일') + '</div></div></section></div>' +
-    '<section class="wrap"><div class="eyebrow">PROBLEM</div><div class="h2">해결하는 문제와 쓰는 사람</div>' +
-      '<div class="p">' + esc(s.problem) + '</div><div class="feat">' + feats + '</div></section>' +
-    '<div style="background:var(--paper)"><section class="wrap"><div class="eyebrow">RESULT</div><div class="h2">실제로 써 본 결과</div><div class="info">' +
+  var rank = data.popular.map(function (r) { return r.id; }).indexOf(s.id);
+  var views = rank < 0 ? 0 : data.popular[rank].views;
+  var transfers = s.transfer.split(',').map(function (t) { return t.trim(); }).filter(String);
+  var tags = transfers.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+  var feats = splitItems(s.features).map(function (f, i) { return '<li><b>' + (ORDINAL[i] || (i + 1) + '번째') + '</b>' + esc(f) + '</li>'; }).join('');
+  var demoBtn = s.demo ? '<a class="btn" href="' + esc(s.demo) + '" target="_blank" rel="noopener">체험해 보기</a>' : '';
+  var askBtn = '<a class="btn ghost" href="' + esc(ask) + '" target="_blank" rel="noopener">문의하기</a>';
+
+  var intro =
+    '<div class="block"><div class="eyebrow">PROBLEM</div><div class="h2">해결하는 문제와 쓰는 사람</div><div class="p">' + esc(s.problem) + '</div></div>' +
+    '<div class="block"><div class="eyebrow">FEATURES</div><div class="h2">이 서비스로 할 수 있는 일</div><ol class="points">' + feats + '</ol></div>' +
+    '<div class="block"><div class="eyebrow">SCREEN</div><div class="h2">실제 화면</div><div class="screens">' +
+      '<img src="img/' + encodeURIComponent(s.id) + '.jpg" alt="' + esc(s.name) + ' 데스크톱 화면" loading="lazy" onerror="this.remove()">' +
+      '<img src="img/' + encodeURIComponent(s.id) + '-m.jpg" alt="' + esc(s.name) + ' 휴대폰 화면" loading="lazy" onerror="this.remove()"></div></div>' +
+    '<div class="block"><div class="eyebrow">RESULT</div><div class="h2">실제로 써 본 결과</div><div class="info">' +
       '<div><div class="ico">◷</div><h4>사용 기간</h4><div class="big">' + esc(s.period) + '</div></div>' +
       '<div><div class="ico">◉</div><h4>쓴 사람</h4><div class="big">' + esc(s.users) + '</div></div>' +
-      '<div><div class="ico">✎</div><h4>써 보고 고친 것</h4><p>' + esc(s.fixes) + '</p></div></div></section></div>' +
-    '<section class="wrap"><div class="eyebrow">CHECK</div><div class="h2">판매 전 점검</div><div class="info">' +
+      '<div><div class="ico">✎</div><h4>써 보고 고친 것</h4><p>' + esc(s.fixes) + '</p></div></div></div>' +
+    '<div class="block"><div class="eyebrow">MAKER</div><div class="h2">만든 사람</div><div class="p">' + esc(s.academy) + '</div></div>';
+
+  var terms =
+    '<div class="block"><div class="eyebrow">TRANSFER</div><div class="h2">넘기는 방식</div><ul class="notes">' +
+      transfers.map(function (t) { return '<li><b>' + esc(t) + '</b>: ' + esc(TRANSFER[t] || '문의하시면 자세히 안내해 드립니다.') + '</li>'; }).join('') + '</ul></div>' +
+    '<div class="block"><div class="eyebrow">PRICE</div><div class="h2">가격</div><div class="p">가격은 공개하지 않습니다. 문의를 남기시면 운영자가 만든 사람과 학원 사정에 맞춰 정한 뒤 안내해 드립니다.</div></div>' +
+    '<div class="block"><div class="eyebrow">HOW IT WORKS</div><div class="h2">진행 순서</div><div class="steps">' +
+      '<div class="step"><b>1</b><p>체험 주소로<br>직접 써 봅니다</p></div>' +
+      '<div class="step"><b>2</b><p>문의를 남깁니다</p></div>' +
+      '<div class="step"><b>3</b><p>운영자가 만든 사람과<br>조건을 정해 안내합니다</p></div></div></div>';
+
+  var notice =
+    '<div class="block"><div class="eyebrow">CHECK</div><div class="h2">판매 전 점검</div><div class="info">' +
       '<div><div class="ico">🔒</div><h4>개인정보 처리</h4><p>' + esc(s.privacy) + '</p></div>' +
       '<div><div class="ico">©</div><h4>교재·문항 저작권</h4><p>' + esc(s.copyright) + '</p></div>' +
-      '<div><div class="ico">☎</div><h4>고장 시 담당자</h4><p>' + esc(s.maintainer) + '</p></div></div></section>' +
-    '<div style="background:var(--blue-soft)"><section class="wrap center"><div class="h2">이 서비스가 궁금하다면</div>' +
-      '<div class="p">문의를 남기면 운영자가 조건을 정해 연락드립니다.</div>' +
-      '<a class="btn" href="' + esc(ask) + '" target="_blank" rel="noopener">문의하기</a></section></div>' +
-    '<a class="sticky" href="' + esc(ask) + '" target="_blank" rel="noopener">문의하기</a>';
+      '<div><div class="ico">☎</div><h4>고장 시 담당자</h4><p>' + esc(s.maintainer) + '</p></div></div></div>' +
+    '<div class="block"><div class="eyebrow">NOTICE</div><div class="h2">알아 두실 점</div><ul class="notes">' +
+      '<li>체험 주소는 가명·예시 데이터로만 동작합니다. 실제 학생 정보를 넣지 마세요.</li>' +
+      '<li>체험 주소가 멈추면 고칠 때까지 이 전시가 잠시 비공개로 바뀝니다.</li>' +
+      '<li>문의에 적어 주신 연락처는 <a href="?page=privacy">개인정보 처리방침</a>에 따라 보관하고 지웁니다.</li></ul></div>';
+
+  document.getElementById('app').innerHTML =
+    '<div class="hero-bg"><section class="wrap top">' +
+      '<div class="devices"><div class="laptop"><div class="screen">' + shot(s, '', '화면 준비 중') + '</div><div class="base"></div></div>' +
+      '<div class="phone">' + shot(s, '-m', '모바일') + '</div></div>' +
+      '<div class="status"><a class="p" style="margin:0" href="./">← 서비스 목록</a>' +
+        '<div class="eyebrow" style="margin-top:12px">SERVICE ' + esc(s.id) + '</div>' +
+        '<div class="h1">' + esc(s.name) + '</div><div class="p">' + esc(s.oneLiner) + '</div>' +
+        '<dl class="facts">' +
+          '<dt>최근 7일 조회</dt><dd><span class="big-stat">' + views + '</span>회' + (rank >= 0 ? ' · 인기 ' + (rank + 1) + '위' : '') + '</dd>' +
+          '<dt>등록일</dt><dd>' + (s.registered ? fmtDate(s.registered) : '-') + '</dd>' +
+          '<dt>넘기는 방식</dt><dd class="tags">' + tags + '</dd>' +
+          '<dt>가격</dt><dd>문의 뒤 안내</dd>' +
+          '<dt>만든 사람</dt><dd>' + esc(s.academy) + '</dd>' +
+        '</dl><div>' + demoBtn + askBtn + '</div></div>' +
+    '</section></div>' +
+    tabsHTML([['소개', intro], ['이용 조건', terms], ['안내사항', notice]]) +
+    '<div class="bar"><button class="btn ghost" type="button" data-copy>주소 복사</button>' + demoBtn + askBtn.replace('btn ghost', 'btn') + '</div>';
 }
 
 var q = new URLSearchParams(location.search);
 var page = q.get('page'), id = q.get('id');
 document.getElementById(page === 'edu' ? 'menu-edu' : 'menu-services').className = 'on';
-if (page === 'edu' || page === 'privacy') {
-  show('tpl-' + page);
+if (page === 'edu') {
+  show('tpl-edu');
+  // 탭 내용은 템플릿 안의 tpl-edu-intro·tpl-edu-notice에 있다
+  var box = document.getElementById('edu-tabs');
+  box.outerHTML = tabsHTML([['소개', document.getElementById('tpl-edu-intro').innerHTML], ['안내사항', document.getElementById('tpl-edu-notice').innerHTML]]);
+  load().then(function (data) { document.getElementById('interest-count').textContent = data.interest; },
+    function () { document.getElementById('interest-count').textContent = '-'; });
+} else if (page === 'privacy') {
+  show('tpl-privacy');
 } else if (id) {
   load(id).then(function (data) {
     var s = data.services.filter(function (x) { return x.id === id; })[0];
-    if (s) renderDetail(s); else location.replace('./');
+    if (s) renderDetail(s, data); else location.replace('./');
   });
 } else {
   show('tpl-home');
