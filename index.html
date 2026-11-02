@@ -22,10 +22,6 @@
   .btn.ghost { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); }
   .shot { background: var(--shot); color: var(--shot-ink); display: flex; align-items: center; justify-content: center; font-size: 13px; }
 
-  header.nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1px solid var(--line); font-size: 14px; max-width: 1080px; margin: 0 auto; }
-  header.nav .logo { font-weight: 800; color: var(--blue); font-size: 17px; }
-  header.nav .menu a { margin-left: 20px; color: var(--ink-soft); }
-  header.nav .menu a.on { color: var(--ink); font-weight: 700; }
   footer { background: var(--navy); color: #c9d2e3; padding: 28px 24px; font-size: 13px; }
 
   .hero-bg { background: linear-gradient(180deg, #fff 0%, var(--blue-soft) 100%); }
@@ -125,8 +121,7 @@
   .bar button.btn { font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
 
   @media (max-width: 720px) {
-    header.nav .menu a { margin-left: 12px; }
-    section { padding: 36px 16px; }
+      section { padding: 36px 16px; }
     .hero { grid-template-columns: 1fr; }
     .devices { height: 220px; order: -1; }
     .laptop .screen { height: 160px; } .phone { height: 210px; }
@@ -141,51 +136,344 @@
     .top .devices { order: -1; }
     .status .h1 { font-size: 26px; }
   }
+/* 메인 비주얼 슬라이더 (vis-) */
+.vis { background: var(--white); overflow: hidden; }
+.vis-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; overscroll-behavior-x: contain; }
+.vis-track::-webkit-scrollbar { display: none; }
+.vis-track:focus-visible { outline: 2px solid var(--blue); outline-offset: -4px; }
+.vis-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; position: relative; min-height: clamp(560px, 78vh, 640px); display: flex; }
+.vis-intro { background: linear-gradient(180deg, #fff 0%, var(--blue-soft) 100%); align-items: center; }
+.vis-intro .hero { width: 100%; }
+.vis-svc { background: var(--navy); color: #fff; align-items: flex-end; }
+.vis-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.vis-svc::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,24,50,.94) 0%, rgba(14,24,50,.78) 50%, rgba(14,24,50,.35) 100%), linear-gradient(0deg, rgba(14,24,50,.75) 0%, rgba(14,24,50,0) 55%); }
+.vis-in { position: relative; z-index: 1; width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px 64px; }
+.vis-acad { font-size: 14px; font-weight: 700; letter-spacing: .02em; color: #c9d6ff; }
+.vis-title { font-size: 44px; font-weight: 800; line-height: 1.25; letter-spacing: -.02em; margin-top: 10px; max-width: 640px; }
+.vis-line { font-size: 17px; line-height: 1.7; color: #e3e9fb; margin-top: 14px; max-width: 560px; }
+.vis-more { display: inline-block; margin-top: 22px; font-size: 16px; font-weight: 700; color: #fff; text-decoration: underline; text-underline-offset: 6px; }
+.vis-more:hover { color: #c9d6ff; }
+.vis-more:focus-visible, .vis-ctl button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.vis-svc .vis-more:focus-visible { outline-color: #fff; }
+.vis-ctl { display: flex; align-items: center; gap: 14px; max-width: 1080px; margin: 0 auto; padding: 14px 24px; }
+.vis-ctl[hidden] { display: none; }
+.vis-bar { flex: 1; height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.vis-bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .3s; }
+.vis-num { font-size: 13px; font-weight: 700; color: var(--ink-soft); min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+.vis-ctl button { font: inherit; font-size: 15px; cursor: pointer; background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; min-width: 40px; height: 40px; padding: 0 12px; }
+.vis-ctl button:hover { border-color: var(--blue); color: var(--blue); }
+.vis-ctl .vis-pause { font-size: 13px; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .vis-track { scroll-behavior: auto; } .vis-bar i { transition: none; } }
+@media (max-width: 720px) {
+  .vis-slide { min-height: 460px; }
+  .vis-in { padding: 0 16px 40px; }
+  .vis-title { font-size: 30px; }
+  .vis-line { font-size: 15px; }
+  .vis-ctl { padding: 12px 16px; gap: 10px; }
+}
+  /* ===== shelf-: 구획 머리(공통) + 가로로 넘기는 카드 줄 ===== */
+  .shelf-head { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "title more" "tabs tabs"; gap: 6px 16px; align-items: end; }
+  .shelf-title { grid-area: title; min-width: 0; }
+  .shelf-h { font-size: 40px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; color: var(--navy); }
+  .shelf-sub { font-size: 15px; color: var(--ink-soft); line-height: 1.6; margin-top: 8px; }
+  .shelf-more { grid-area: more; font-size: 14px; font-weight: 700; color: var(--ink); border-bottom: 1.5px solid var(--ink); padding-bottom: 2px; white-space: nowrap; }
+  .shelf-more:hover { color: var(--blue); border-color: var(--blue); }
+  .shelf-tabs { grid-area: tabs; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+  .shelf-tabs button { font: inherit; font-size: 14px; font-weight: 600; background: #fff; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 8px 18px; cursor: pointer; }
+  .shelf-tabs button:hover { border-color: var(--navy); color: var(--ink); }
+  .shelf-tabs button[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .shelf-head a:focus-visible, .shelf-tabs button:focus-visible, .shelf-bar button:focus-visible, .shelf-track:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  .shelf-main { min-width: 0; }
+  .shelf-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 2px 2px 6px; }
+  .shelf-track::-webkit-scrollbar { display: none; }
+  .shelf-track > .card, .shelf-track > .card.empty { flex: 0 0 calc((100% - 32px) / 3); scroll-snap-align: start; min-width: 0; }
+  .shelf-empty { flex: 1 0 100%; border: 1.5px dashed #b9c4d8; border-radius: 12px; padding: 48px 20px; text-align: center; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
+  .shelf-bar { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+  .shelf-bar[hidden] { display: none; }
+  .shelf-prog { flex: 1; height: 3px; background: var(--line); border-radius: 2px; position: relative; overflow: hidden; }
+  .shelf-prog i { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; background: var(--navy); border-radius: 2px; }
+  .shelf-bar button { font: inherit; font-size: 18px; line-height: 1; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; }
+  .shelf-bar button:hover { border-color: var(--navy); }
+  @media (max-width: 720px) {
+    .shelf-h { font-size: 30px; }
+    .shelf-head { grid-template-areas: "title title" "more more" "tabs tabs"; }
+    .shelf-more { justify-self: start; margin-top: 4px; }
+    .shelf-track > .card, .shelf-track > .card.empty { flex-basis: 72%; }
+    .shelf-track > .card.empty { display: flex; }
+  }
+  /* ===== band-: HOW IT WORKS 격자 + 멤버십 띠 ===== */
+  /* 구획 머리(.shelf-head)는 shelf- 담당 에이전트가 만든다. 그 CSS가 없을 때만 보이도록 :where()로 낮춘 최소 스타일 */
+  :where(.shelf-head) { margin-bottom: 4px; }
+  :where(.shelf-head) h2 { font-size: 34px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  :where(.shelf-head) p { font-size: 16px; color: var(--ink-soft); line-height: 1.6; margin-top: 8px; }
+
+  .band-how { background: var(--paper); }
+  .band-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(176px, auto); gap: 16px; margin-top: 32px; }
+  .band-cell { position: relative; overflow: hidden; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; min-width: 0; }
+  .band-cell h3 { font-size: 22px; font-weight: 800; letter-spacing: -.01em; line-height: 1.3; position: relative; }
+  .band-cell p { font-size: 15px; line-height: 1.65; margin-top: 8px; position: relative; }
+  .band-num { position: absolute; top: 4px; right: 20px; font-size: 112px; font-weight: 800; line-height: 1; letter-spacing: -.04em; opacity: .14; pointer-events: none; }
+  .band-tag { position: relative; align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .08em; margin-bottom: auto; }
+
+  .band-c1 { grid-column: 1 / 6; grid-row: 1 / 3; background: var(--navy); color: #fff; }
+  .band-c1 .band-num { font-size: 220px; top: 0; right: 16px; opacity: .1; }
+  .band-c1 h3 { font-size: 30px; }
+  .band-c1 p { color: #c9d2e3; font-size: 16px; }
+  .band-c1 .band-tag { color: #a9bcff; }
+  .band-c2 { grid-column: 6 / 10; background: #fff; border: 1px solid var(--line); }
+  .band-c2 .band-num { color: var(--blue); }
+  .band-c2 p { color: var(--ink-soft); }
+  .band-c2 .band-tag { color: var(--blue); }
+  .band-c3 { grid-column: 10 / 13; background: var(--blue); color: #fff; }
+  .band-c3 p { color: #dbe3ff; }
+  .band-c3 .band-tag { color: #dbe3ff; }
+  .band-c4 { grid-column: 6 / 13; background: var(--blue-soft); flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .band-c4 > div { position: relative; min-width: 0; }
+  .band-c4 .band-tag { color: var(--blue); margin-bottom: 10px; }
+  .band-c4 p { color: var(--ink); max-width: 36em; }
+  .band-fee { flex: none; text-align: right; position: relative; }
+  .band-fee b { display: block; font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -.03em; color: var(--blue); }
+  .band-fee span { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-soft); }
+
+  .band-member { background: var(--navy); color: #fff; }
+  .band-member-in { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  .band-member .eyebrow { color: #a9bcff; }
+  .band-member h2 { font-size: 30px; font-weight: 800; letter-spacing: -.02em; line-height: 1.35; margin-top: 10px; }
+  .band-member .band-lead { font-size: 16px; color: #c9d2e3; line-height: 1.7; margin-top: 12px; }
+  .band-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .band-actions .btn { margin: 0; }
+  .band-actions .btn.band-fill { background: #fff; color: var(--navy); }
+  .band-actions .btn.band-line { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.6); padding: 10.5px 20.5px; }
+  .band-actions .btn:hover { opacity: .88; }
+  .band-member a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .band-perks { list-style: none; padding: 0; border-top: 1px solid rgba(255,255,255,.22); }
+  .band-perks li { display: flex; gap: 18px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .band-perks i { font-style: normal; font-size: 13px; font-weight: 800; color: #a9bcff; width: 22px; flex: none; }
+  .band-perks b { display: block; font-size: 18px; font-weight: 700; }
+  .band-perks span { display: block; font-size: 14px; color: #c9d2e3; margin-top: 4px; line-height: 1.55; }
+
+  @media (max-width: 720px) {
+    :where(.shelf-head) h2 { font-size: 28px; }
+    .band-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; margin-top: 24px; }
+    .band-c1, .band-c2, .band-c3, .band-c4 { grid-column: 1; grid-row: auto; }
+    .band-cell { padding: 22px; min-height: 150px; }
+    .band-c1 { min-height: 220px; }
+    .band-c1 .band-num { font-size: 160px; }
+    .band-num { font-size: 88px; }
+    .band-c4 { flex-direction: column; align-items: flex-start; }
+    .band-fee { text-align: left; }
+    .band-member-in { grid-template-columns: 1fr; gap: 28px; }
+    .band-member h2 { font-size: 24px; }
+    .band-actions .btn { flex: 1 1 auto; text-align: center; }
+  }
+  /* ===== 푸터 (ft-) ===== */
+  .ft { padding: 48px 0 28px; }
+  .ft .wrap { padding: 0 24px; }
+  .ft a { text-decoration: none; }
+  .ft a:hover { text-decoration: underline; }
+  .ft a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .ft-top { padding-bottom: 28px; border-bottom: 1px solid rgba(201,210,227,.2); }
+  .ft-logo { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -.01em; }
+  .ft-tag { margin-top: 8px; font-size: 14px; line-height: 1.6; }
+  .ft-body { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding: 28px 0; }
+  .ft-info { font-style: normal; font-size: 13px; line-height: 1.8; color: #aab7d1; min-width: 0; }
+  .ft-info b { display: block; margin-bottom: 4px; font-size: 14px; color: #fff; }
+  .ft-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px 28px; max-width: 520px; }
+  .ft-links a { font-size: 14px; color: #fff; }
+  .ft-links a:last-child { font-weight: 700; }
+  .ft-bottom { padding-top: 20px; border-top: 1px solid rgba(201,210,227,.2); font-size: 12px; color: #aab7d1; }
+
+  /* ===== 사이트맵 (map-) ===== */
+  .map-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 36px; }
+  .map-col { border-top: 2px solid var(--navy); padding-top: 18px; min-width: 0; }
+  .map-title { font-size: 22px; font-weight: 800; letter-spacing: -.01em; margin-top: 6px; }
+  .map-list, .map-sub { list-style: none; padding: 0; margin: 0; }
+  .map-list { margin-top: 14px; }
+  .map-list a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; }
+  .map-list a::after { content: "→"; flex: none; color: var(--ink-soft); }
+  .map-list a[target="_blank"]::after { content: "↗"; }
+  .map-list a:hover { color: var(--blue); }
+  .map-list a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .map-sub { padding-left: 14px; }
+  .map-sub a { font-size: 14px; font-weight: 500; color: var(--ink-soft); }
+  .map-sub a:hover { color: var(--blue); }
+  .map-wait { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+
+  @media (max-width: 720px) {
+    .ft { padding: 36px 0 24px; }
+    .ft .wrap { padding: 0 16px; }
+    .ft-body { flex-direction: column; gap: 22px; }
+    .ft-links { justify-content: flex-start; max-width: none; }
+    .map-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+  }
+
+  /* 힉스필드 실사 사진·영상 (2026-11-02) */
+  .vis-intro-bg::after { background: linear-gradient(90deg, rgba(14,24,50,.82) 0%, rgba(14,24,50,.55) 45%, rgba(14,24,50,.1) 100%); }
+  .vis-intro-bg { align-items: center; }
+  .vis-intro-bg .vis-in { padding-bottom: 0; }
+  .vis-intro-bg .btn { margin: 26px 8px 0 0; }
+  .vis-intro-bg .btn.ghost { color: #fff; border-color: rgba(255,255,255,.75); }
+  .band-photo { color: #fff; }
+  .band-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .band-photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(14,24,50,.9) 0%, rgba(14,24,50,.35) 70%, rgba(14,24,50,.15) 100%); }
+  .band-c3.band-photo::before { background: linear-gradient(0deg, rgba(37,71,208,.92) 0%, rgba(37,71,208,.45) 75%); }
+  .band-photo > img { z-index: 0; }
+  .band-photo::before { z-index: 1; }
+  .band-photo h3, .band-photo p, .band-photo .band-tag, .band-photo .band-num { z-index: 2; }
+  .band-photo p { color: #e3e9fb !important; }
+  .band-member { position: relative; overflow: hidden; }
+  .band-member > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .22; }
+  .band-member > section { position: relative; }
+  .photo-fill img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* ===== 01 헤더(hd-) · 서비스 찾기 막대(find-) ===== */
+  :root { --hd-h: 64px; --find-h: 72px; }
+  html { scroll-padding-top: var(--hd-h); }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  #app [id] { scroll-margin-top: var(--find-h); }
+  .card[hidden] { display: none; }
+  .tabbar { top: var(--hd-h); }
+
+  .hd { position: sticky; top: 0; z-index: 30; height: var(--hd-h); background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .hd-in { max-width: 1080px; height: 100%; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr auto 1fr; grid-template-areas: "menu logo cta"; align-items: center; }
+  .hd-menu { grid-area: menu; display: flex; align-items: center; gap: 28px; min-width: 0; }
+  .hd-menu a { position: relative; display: inline-block; padding: 8px 0; font-size: 17px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .hd-menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; background: var(--blue); transform: scaleX(0); transition: transform .18s; }
+  .hd-menu a:hover::after, .hd-menu a.on::after { transform: scaleX(1); }
+  .hd-logo { grid-area: logo; justify-self: center; font-size: 21px; font-weight: 800; letter-spacing: -.02em; color: var(--blue); white-space: nowrap; }
+  .hd-cta { grid-area: cta; justify-self: end; padding: 10px 20px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; transition: background .15s; }
+  .hd-cta:hover { background: var(--navy); }
+  .hd a:focus-visible, .find-go:focus-visible, .find-reset:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  /* 서비스 찾기 막대: 히어로 아래에 한 줄로 놓이고, 스크롤하면 헤더 아래에 붙는다 */
+  .find { position: sticky; top: var(--hd-h); z-index: 25; background: #fff; border-bottom: 1px solid var(--line); box-shadow: 0 6px 18px rgba(27,42,74,.05); }
+  .find-in { max-width: 1080px; margin: 0 auto; padding: 0 24px; height: var(--find-h); display: grid; grid-template-columns: 1fr 220px auto; align-items: stretch; }
+  .find-field { display: flex; flex-direction: column; justify-content: center; gap: 2px; min-width: 0; padding: 0 22px; border-left: 1px solid var(--line); cursor: text; }
+  .find-field:first-child { border-left: 0; padding-left: 0; }
+  .find-field:focus-within { background: var(--blue-soft); }
+  .find-lab { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--ink-soft); }
+  .find-field input, .find-field select { width: 100%; padding: 2px 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); }
+  .find-field input::placeholder { color: #98a2b3; font-weight: 500; }
+  .find-field input::-webkit-search-cancel-button { cursor: pointer; }
+  .find-field select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 20px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23667085' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right center; }
+  .find-go { border: 0; padding: 0 38px; background: var(--navy); color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .15s; }
+  .find-go:hover { background: var(--blue); }
+  .find-msg { padding: 14px 24px 0; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+  .find-msg:empty { display: none; }
+  .find-msg b { color: var(--ink); }
+  .find-msg a { color: var(--blue); text-decoration: underline; }
+  .find-reset { margin-left: 8px; padding: 3px 11px; border: 1.5px solid var(--blue); border-radius: 999px; background: transparent; color: var(--blue); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+
+  @media (max-width: 720px) {
+    :root { --hd-h: 92px; --find-h: 0px; }
+    .hd-in { padding: 0 16px; grid-template-columns: 1fr auto; grid-template-rows: 44px 1fr; grid-template-areas: "logo logo" "menu cta"; }
+    .hd-logo { font-size: 19px; }
+    .hd-menu { gap: 18px; }
+    .hd-menu a { font-size: 15px; }
+    .hd-cta { padding: 8px 14px; font-size: 13px; }
+    .find { position: static; box-shadow: none; }
+    .find-in { height: auto; padding: 12px 16px; grid-template-columns: 1fr auto; gap: 8px; }
+    .find-field, .find-field:first-child { height: 56px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; }
+    .find-field input, .find-field select { font-size: 16px; }
+    .find-q { grid-column: 1 / -1; }
+    .find-go { height: 56px; padding: 0 26px; border-radius: 10px; }
+    .find-msg { padding: 12px 16px 0; }
+  }
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <a class="logo" href="./">하우투테크에듀</a>
-  <span class="menu">
-    <a href="./" id="menu-services">서비스</a>
-    <a href="?page=edu" id="menu-edu">교육</a>
-  </span>
+<header class="hd">
+  <div class="hd-in">
+    <nav class="hd-menu" aria-label="주 메뉴">
+      <a href="./#services" id="menu-services">서비스</a>
+      <a href="?page=edu" id="menu-edu">교육</a>
+      <a href="./#how" id="menu-guide">이용 안내</a>
+    </nav>
+    <a class="hd-logo" href="./">하우투테크에듀</a>
+    <a class="hd-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
+  </div>
 </header>
 
 <main id="app"></main>
 
 <template id="tpl-home">
-  <div class="hero-bg"><section class="wrap hero">
-    <div>
-      <div class="eyebrow">AI SERVICE SHOWCASE</div>
-      <div class="h1">AI로 만든 학원 서비스,<br>직접 써 보고 고르세요</div>
-      <div class="p">학원장이 자기 학원에서 실제로 쓰며 다듬은 서비스만 모았습니다.</div>
-      <a class="btn" href="#services">서비스 둘러보기</a><a class="btn ghost" href="?page=edu">직접 만들어 보기</a>
+  <div class="vis" aria-roledescription="carousel" aria-label="주요 소개">
+    <div class="vis-track" id="vis-track" tabindex="0">
+      <div class="vis-slide vis-svc vis-intro-bg" role="group" aria-roledescription="slide" aria-label="플랫폼 소개">
+        <video class="vis-bg" id="vis-video" autoplay muted loop playsinline poster="img/photo/hero-poster.jpg" aria-hidden="true"><source src="img/photo/hero.mp4" type="video/mp4"></video>
+        <div class="vis-in">
+          <div class="vis-acad">AI SERVICE SHOWCASE</div>
+          <h1 class="vis-title">AI로 만든 학원 서비스,<br>직접 써 보고 고르세요</h1>
+          <div class="vis-line">학원장이 자기 학원에서 실제로 쓰며 다듬은 서비스만 모았습니다.</div>
+          <a class="btn" href="#services">서비스 둘러보기</a><a class="btn ghost" href="?page=edu">직접 만들어 보기</a>
+        </div>
+      </div>
     </div>
-    <div class="devices">
-      <div class="laptop"><div class="screen"><div class="shot">서비스 화면</div></div><div class="base"></div></div>
-      <div class="phone"><div class="shot">모바일</div></div>
+    <div class="vis-ctl" id="vis-ctl" hidden>
+      <div class="vis-bar" aria-hidden="true"><i id="vis-fill"></i></div>
+      <span class="vis-num" id="vis-num" aria-live="off">1 / 1</span>
+      <button type="button" class="vis-pause" id="vis-pause" aria-pressed="false">멈춤</button>
+      <button type="button" id="vis-prev" aria-label="이전 슬라이드">&#8592;</button>
+      <button type="button" id="vis-next" aria-label="다음 슬라이드">&#8594;</button>
     </div>
-  </section></div>
+  </div>
+
+  <form class="find" id="find" role="search" aria-label="서비스 찾기" onsubmit="return false">
+    <div class="find-in">
+      <label class="find-field find-q"><span class="find-lab">서비스 찾기</span><input type="search" id="find-q" placeholder="서비스 이름, 한 줄 정의, 학원 이름" autocomplete="off"></label>
+      <label class="find-field"><span class="find-lab">넘기는 방식</span><select id="find-t"><option value="">전체</option><option>사용권</option><option>설치 대행</option><option>소스 판매</option></select></label>
+      <button class="find-go" type="submit">찾기</button>
+    </div>
+  </form>
+  <div class="wrap find-msg" id="find-msg" role="status" aria-live="polite"></div>
 
   <section class="wrap" id="services">
-    <div class="center"><div class="eyebrow">SERVICES</div><div class="h2">전시 중인 서비스</div></div>
+    <div class="shelf-head">
+      <div class="shelf-title"><h2 class="shelf-h">SERVICES</h2><p class="shelf-sub">학원장이 자기 학원에서 쓰며 다듬은 서비스입니다. 넘겨받는 방식으로 골라 보세요.</p></div>
+      <a class="shelf-more" href="#services" data-shelf="">전체 보기 →</a>
+      <div class="shelf-tabs" role="tablist" aria-label="넘기는 방식으로 거르기">
+        <button type="button" role="tab" data-shelf="" aria-selected="true">전체</button>
+        <button type="button" role="tab" data-shelf="사용권" aria-selected="false">사용권</button>
+        <button type="button" role="tab" data-shelf="설치 대행" aria-selected="false">설치 대행</button>
+        <button type="button" role="tab" data-shelf="소스 판매" aria-selected="false">소스 판매</button>
+      </div>
+    </div>
     <div class="board" id="board"><div class="rank"><div class="rank-empty">불러오는 중입니다</div></div></div>
   </section>
 
-  <div style="background:var(--paper)"><section class="wrap">
-    <div class="center"><div class="eyebrow">HOW IT WORKS</div><div class="h2">이렇게 이용합니다</div></div>
-    <div class="steps">
-      <div class="step"><b>1</b><p>서비스를 둘러보고<br>체험 주소로 직접 써 봅니다</p></div>
-      <div class="step"><b>2</b><p>마음에 들면<br>문의를 남깁니다</p></div>
-      <div class="step"><b>3</b><p>운영자가 만든 사람과<br>조건을 정해 안내합니다</p></div>
+  <div class="band-how" id="how"><section class="wrap" aria-labelledby="band-how-title">
+    <div class="shelf-head"><div class="shelf-title">
+      <h2 class="shelf-h" id="band-how-title">HOW IT WORKS</h2>
+      <p class="shelf-sub">둘러보고, 써 보고, 문의 한 번이면 됩니다.</p>
+    </div></div>
+    <div class="band-grid">
+      <div class="band-cell band-c1 band-photo"><img src="img/photo/step-try.jpg" alt="학원 상담석에서 학부모와 교사가 태블릿 앱을 함께 보는 모습" loading="lazy"><span class="band-num" aria-hidden="true">01</span><span class="band-tag">STEP 1</span><h3>둘러보고 체험</h3><p>서비스를 둘러보고<br>체험 주소로 직접 써 봅니다</p></div>
+      <div class="band-cell band-c2"><span class="band-num" aria-hidden="true">02</span><span class="band-tag">STEP 2</span><h3>문의</h3><p>마음에 들면<br>문의를 남깁니다</p></div>
+      <div class="band-cell band-c3 band-photo"><img src="img/photo/step-deal.jpg" alt="두 학원장이 상담 탁자에서 악수하는 모습" loading="lazy"><span class="band-num" aria-hidden="true">03</span><span class="band-tag">STEP 3</span><h3>조건 안내</h3><p>운영자가 만든 사람과<br>조건을 정해 안내합니다</p></div>
+      <div class="band-cell band-c4">
+        <div><span class="band-tag">FOR MAKERS</span><h3>서비스를 등록하고 싶은 학원장이라면</h3><p>등록하면 운영자가 점검한 뒤 공개합니다. 수수료는 거래가 성사됐을 때만 냅니다.</p></div>
+        <div class="band-fee"><b>10%</b><span>거래 성사 시 수수료</span></div>
+      </div>
     </div>
   </section></div>
 
-  <section class="wrap">
-    <div class="banner"><div><div class="h2" style="margin:0">내 학원에 필요한 서비스, 직접 만들어 보세요</div><div class="p">AI로 웹·앱 서비스를 만드는 학원장 과정</div></div><a class="btn" href="?page=edu">교육 알아보기</a></div>
-  </section>
+  <div class="band-member"><img src="img/photo/edu.jpg" alt="" loading="lazy"><section class="wrap band-member-in" aria-labelledby="band-member-title">
+    <div>
+      <div class="eyebrow">AI BUILDER COURSE</div>
+      <h2 id="band-member-title">내 학원에 필요한 서비스,<br>직접 만들어 보세요</h2>
+      <p class="band-lead">AI로 웹·앱 서비스를 만드는 학원장 과정입니다.</p>
+      <div class="band-actions">
+        <a class="btn band-fill" href="?page=edu">교육 알아보기</a>
+        <a class="btn band-line" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a>
+      </div>
+    </div>
+    <ul class="band-perks">
+      <li><i>01</i><div><b>8회 · 회당 3시간</b><span>매주 한 번, 직접 만들며 배웁니다</span></div></li>
+      <li><i>02</i><div><b>오프라인 수업과 온라인 지원</b><span>회차 사이에는 막힌 곳을 온라인으로 돕습니다</span></div></li>
+      <li><i>03</i><div><b>수료하면 내 서비스 1개 전시</b><span>완성한 서비스가 이 플랫폼에 올라갑니다</span></div></li>
+    </ul>
+  </section></div>
 
 </template>
 <template id="tpl-privacy">
@@ -239,11 +527,41 @@
   </section>
 
 </template>
+<template id="tpl-sitemap">
+  <section class="wrap">
+    <div class="eyebrow">SITEMAP</div>
+    <div class="h1">사이트맵</div>
+    <div class="p">이 사이트의 화면을 한곳에 모았습니다.</div>
+    <div class="map-grid">
+      <div class="map-col">
+        <div class="eyebrow">SERVICES</div><h2 class="map-title">서비스</h2>
+        <ul class="map-list">
+          <li><a href="./#services">서비스 목록</a>
+            <ul class="map-sub" id="map-services"><li class="map-wait">불러오는 중입니다</li></ul></li>
+        </ul>
+      </div>
+      <div class="map-col">
+        <div class="eyebrow">EDUCATION</div><h2 class="map-title">교육</h2>
+        <ul class="map-list">
+          <li><a href="?page=edu">교육 소개</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a></li>
+        </ul>
+      </div>
+      <div class="map-col">
+        <div class="eyebrow">GUIDE</div><h2 class="map-title">안내</h2>
+        <ul class="map-list">
+          <li><a href="./#how">이용 방법</a></li>
+          <li><a href="?page=privacy">개인정보 처리방침</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
 <template id="tpl-edu">
   <div class="hero-bg"><section class="wrap top">
     <div class="devices">
-      <div class="laptop"><div class="screen"><div class="shot">수업 사진</div></div><div class="base"></div></div>
-      <div class="phone"><div class="shot">수강생 서비스</div></div>
+      <div class="laptop"><div class="screen"><div class="shot photo-fill">수업 사진<img src="img/photo/edu.jpg" alt="학원장들이 노트북으로 앱을 만드는 수업 장면"></div></div><div class="base"></div></div>
+      <div class="phone"><div class="shot photo-fill">수강생 서비스<img src="img/photo/step-make.jpg" alt="노트북·휴대폰·앱 스케치 노트가 놓인 책상" style="object-position:70% center"></div></div>
     </div>
     <div class="status">
       <div class="eyebrow">AI BUILDER COURSE</div>
@@ -287,7 +605,25 @@
     </ul></div>
 </template>
 
-<footer><div class="wrap">하우투경영컨설팅 · 사업자 정보 · <a href="?page=privacy">개인정보 처리방침</a></div></footer>
+<footer class="ft"><div class="wrap">
+  <div class="ft-top">
+    <a class="ft-logo" href="./">하우투테크에듀</a>
+    <p class="ft-tag">학원장이 직접 쓰며 다듬은 AI 서비스를 모아 소개합니다.</p>
+  </div>
+  <div class="ft-body">
+    <address class="ft-info">
+      <b>하우투경영컨설팅</b>
+      사업자 정보: 기재 예정
+    </address>
+    <nav class="ft-links" aria-label="사이트 안내">
+      <a href="./#services">서비스 둘러보기</a>
+      <a href="?page=edu">교육</a>
+      <a href="?page=sitemap">사이트맵</a>
+      <a href="?page=privacy">개인정보 처리방침</a>
+    </nav>
+  </div>
+  <div class="ft-bottom">© 2026 하우투경영컨설팅</div>
+</div></footer>
 <script>
 // 데이터는 운영 시트에 있고, 앱스 스크립트(02_전시_웹앱.gs의 api_)가 공개용 칸만 JSON으로 돌려준다.
 var API = 'https://script.google.com/macros/s/AKfycbzS_tcVvEJ7-KHMaHBR8Z9vJcA_HYlZsCtwOpP8Erp6e73-lCD47os8NdPv-PGbLn0yMA/exec';
@@ -313,22 +649,142 @@ function show(id) {
   document.getElementById('app').innerHTML = document.getElementById(id).innerHTML;
 }
 
+// ---- 메인 비주얼 슬라이더 ----
+var visTimer = null, visPaused = false;
+function visInfo() {
+  var t = document.getElementById('vis-track');
+  var n = t.children.length, w = t.clientWidth || 1;
+  var i = Math.min(n - 1, Math.round(t.scrollLeft / w));
+  document.getElementById('vis-num').textContent = (i + 1) + ' / ' + n;
+  document.getElementById('vis-fill').style.width = ((i + 1) / n * 100) + '%';
+  return { t: t, n: n, i: i, w: w };
+}
+function visGo(dir) {
+  var v = visInfo(), to = (v.i + dir + v.n) % v.n;
+  v.t.scrollTo({ left: to * v.w });
+}
+function visPlay() {
+  clearInterval(visTimer);
+  if (visPaused || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  visTimer = setInterval(function () { if (document.getElementById('vis-track')) visGo(1); else clearInterval(visTimer); }, 6000);
+}
+// 홈을 그린 직후 한 번 부른다. 첫 슬라이드는 이미 HTML에 있고, 번호·단추는 서비스 슬라이드가 붙은 뒤에 나온다
+function initVisual() {
+  var t = document.getElementById('vis-track'), box = t.parentNode;
+  t.addEventListener('scroll', visInfo);
+  document.getElementById('vis-prev').onclick = function () { visPaused = true; visGo(-1); visSync(); };
+  document.getElementById('vis-next').onclick = function () { visPaused = true; visGo(1); visSync(); };
+  document.getElementById('vis-pause').onclick = function () { visPaused = !visPaused; visSync(); };
+  box.addEventListener('mouseenter', function () { clearInterval(visTimer); });
+  box.addEventListener('mouseleave', visPlay);
+  box.addEventListener('focusin', function () { clearInterval(visTimer); });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { visPaused = true; document.getElementById('vis-pause').hidden = true; }
+}
+function visSync() {
+  var b = document.getElementById('vis-pause');
+  b.setAttribute('aria-pressed', visPaused);
+  b.textContent = visPaused ? '재생' : '멈춤';
+  visPlay();
+}
+// 서비스 데이터가 오면 슬라이드를 덧붙인다. 캡처가 없으면 남색 바탕만 남는다
+function renderVisual(data) {
+  var t = document.getElementById('vis-track');
+  if (!t || !data.services.length) return;
+  var total = data.services.length + 1;
+  t.insertAdjacentHTML('beforeend', data.services.map(function (s, i) {
+    return '<div class="vis-slide vis-svc" role="group" aria-roledescription="slide" aria-label="' + (i + 2) + ' / ' + total + '">' +
+      '<img class="vis-bg" src="img/' + encodeURIComponent(s.id) + '.jpg" alt="" onerror="this.remove()">' +
+      '<div class="vis-in"><div class="vis-acad">' + esc(s.academy) + '</div>' +
+      '<div class="vis-title">' + esc(s.name) + '</div><div class="vis-line">' + esc(s.oneLiner) + '</div>' +
+      '<a class="vis-more" href="?id=' + encodeURIComponent(s.id) + '">서비스 자세히 보기</a></div></div>';
+  }).join(''));
+  document.getElementById('vis-ctl').hidden = false;
+  visInfo(); visSync();
+}
+// 서비스 카드 줄: 상태(목록·넘기는 방식·검색어)를 한 곳에 두고, 바뀔 때마다 shelfDraw로 다시 그린다
+var shelfState = { list: [], transfer: '', keyword: '' };
+// 순수 거르기 함수. transfer가 빈 글자면 전체, keyword가 빈 글자면 검색어 없음
+function shelfFilter(list, keyword, transfer) {
+  var k = String(keyword || '').trim().toLowerCase();
+  return list.filter(function (s) {
+    var tr = String(s.transfer || '').split(',').map(function (t) { return t.trim(); });
+    var hay = [s.name, s.oneLiner, s.academy, s.problem].join(' ').toLowerCase();
+    return (!transfer || tr.indexOf(transfer) >= 0) && (!k || hay.indexOf(k) >= 0);
+  });
+}
+function shelfCard(s) {
+  var n = ('0' + (shelfState.list.indexOf(s) + 1)).slice(-2);
+  return '<a class="card" href="?id=' + encodeURIComponent(s.id) + '"><div class="num">' + n + '</div>' +
+    shot(s, '', '화면 준비 중') + '<div class="name">' + esc(s.name) + '</div><div class="meta">' + esc(s.oneLiner) + '<br>' + esc(s.academy) + '</div></a>';
+}
+// 진행 막대: 보이는 폭 / 전체 폭 = 막대 길이, 스크롤 위치 = 막대 위치. 넘치지 않으면 막대와 단추를 숨긴다
+function shelfProgress() {
+  var t = document.getElementById('shelf-track'), bar = document.getElementById('shelf-bar'), th = document.getElementById('shelf-thumb');
+  if (!t || !bar || !th) return;
+  var over = t.scrollWidth > t.clientWidth + 2;
+  bar.hidden = !over;
+  if (!over) return;
+  var w = t.clientWidth / t.scrollWidth, max = t.scrollWidth - t.clientWidth;
+  th.style.width = (w * 100) + '%';
+  th.style.left = ((1 - w) * 100 * (t.scrollLeft / max)) + '%';
+}
+function shelfDraw() {
+  var t = document.getElementById('shelf-track');
+  if (!t) return;
+  var rows = shelfFilter(shelfState.list, shelfState.keyword, shelfState.transfer), html = rows.map(shelfCard).join('');
+  if (!rows.length) {
+    html = '<div class="shelf-empty">' + (shelfState.keyword
+      ? '찾으시는 서비스가 없습니다.<br>다른 말로 찾아보거나 전체 보기를 눌러 주세요.'
+      : '이 방식으로 넘기는 서비스는 아직 없습니다.<br>다른 탭을 눌러 보세요.') + '</div>';
+  } else if (!shelfState.transfer && !shelfState.keyword && rows.length < 3) {
+    html += '<div class="card empty">곧 더 많은 서비스가<br>올라옵니다</div>';
+  }
+  t.innerHTML = html;
+  t.scrollLeft = 0;
+  document.querySelectorAll('.shelf-tabs [data-shelf]').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.shelf === shelfState.transfer); });
+  shelfProgress();
+}
+// 바깥(탭 클릭, 찾기 막대)에서 부르는 입구. 넘긴 칸만 바뀐다: shelfSet({transfer:'사용권'}), shelfSet({keyword:'학부모'})
+function shelfSet(patch) {
+  if (patch.transfer != null) shelfState.transfer = patch.transfer;
+  if (patch.keyword != null) shelfState.keyword = patch.keyword;
+  shelfDraw();
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-shelf]');
+  if (b) shelfSet({ transfer: b.dataset.shelf });   // 「전체 보기」 링크는 data-shelf="" 이므로 전체로 돌아가며 #services로 이동
+  var g = e.target.closest('[data-shelf-go]');
+  var t = document.getElementById('shelf-track');
+  if (g && t) t.scrollBy({ left: t.clientWidth * 0.8 * Number(g.dataset.shelfGo), behavior: 'smooth' });
+});
+window.addEventListener('resize', shelfProgress);
 function renderBoard(data) {
   var rank = data.popular.length
     ? '<ol>' + data.popular.map(function (r, i) {
         return '<li><a href="?id=' + encodeURIComponent(r.id) + '"><b>' + (i + 1) + '</b><span>' + esc(r.name) + '</span>' + (r.isNew ? '<i>N</i>' : '') + '</a></li>';
       }).join('') + '</ol>'
     : '<div class="rank-empty">공개된 서비스가 생기면<br>순위가 나옵니다</div>';
-  var cards = data.services.map(function (s, i) {
-    return '<a class="card" href="?id=' + encodeURIComponent(s.id) + '"><div class="num">' + ('0' + (i + 1)).slice(-2) + '</div>' +
-      shot(s, '', '화면 준비 중') + '<div class="name">' + esc(s.name) + '</div><div class="meta">' + esc(s.oneLiner) + '<br>' + esc(s.academy) + '</div></a>';
-  }).join('');
+  shelfState.list = data.services;
   document.getElementById('board').innerHTML =
     '<aside class="rank"><div class="rank-head"><b>실시간 인기 서비스</b><span>오늘 ' + esc(data.updated) + ' 기준</span></div>' + rank +
     '<div class="rank-note">최근 7일 조회 수 기준</div></aside>' +
-    '<div class="cards">' + cards + '<div class="card empty">곧 더 많은 서비스가<br>올라옵니다</div></div>';
+    '<div class="shelf-main"><div class="shelf-track" id="shelf-track" tabindex="0" role="region" aria-label="서비스 카드 목록"></div>' +
+    '<div class="shelf-bar" id="shelf-bar" hidden><div class="shelf-prog"><i id="shelf-thumb"></i></div>' +
+    '<button type="button" data-shelf-go="-1" aria-label="이전 카드">‹</button><button type="button" data-shelf-go="1" aria-label="다음 카드">›</button></div></div>';
+  shelfDraw();
+  document.getElementById('shelf-track').addEventListener('scroll', shelfProgress, { passive: true });
 }
 
+function renderSitemap(data) {
+  document.getElementById('map-services').innerHTML = data.services.length
+    ? data.services.map(function (s) { return '<li><a href="?id=' + encodeURIComponent(s.id) + '">' + esc(s.name) + '</a></li>'; }).join('')
+    : '<li class="map-wait">공개된 서비스가 생기면 여기에 나옵니다</li>';
+}
+// 다른 화면에서 ./#services 처럼 들어오면, 화면이 그려진 뒤에 그 구획으로 내려간다
+function jumpHash() {
+  var t = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (t) t.scrollIntoView();
+}
 var ORDINAL = ['첫 번째', '두 번째', '세 번째', '네 번째', '다섯 번째', '여섯 번째', '일곱 번째', '여덟 번째', '아홉 번째', '열 번째'];
 var TRANSFER = { '사용권': '매달 이용료를 내고 그대로 씁니다.', '설치 대행': '구매한 학원에 맞게 만든 사람이 설치해 드립니다.', '소스 판매': '화면 파일과 코드를 넘겨받아 직접 고쳐 씁니다.' };
 function fmtDate(t) { var d = new Date(t); return d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.'; }
@@ -409,9 +865,32 @@ function renderDetail(s, data) {
     '<div class="bar"><button class="btn ghost" type="button" data-copy>주소 복사</button>' + demoBtn + askBtn.replace('btn ghost', 'btn') + '</div>';
 }
 
+// 서비스 찾기 막대: 진열 탭과 같은 거르기 상태(shelfSet)를 바꾸고, 결과 수를 알린다
+function initFind() {
+  var q = document.getElementById('find-q'), t = document.getElementById('find-t'), msg = document.getElementById('find-msg');
+  function run() {
+    shelfSet({ keyword: q.value, transfer: t.value });
+    if (!q.value.trim() && !t.value) { msg.innerHTML = ''; return; }
+    var n = shelfFilter(shelfState.list, q.value, t.value).length;
+    var reset = '<button type="button" class="find-reset">모두 보기</button>';
+    msg.innerHTML = n
+      ? '서비스 ' + shelfState.list.length + '개 중 <b>' + n + '개</b>를 찾았습니다.' + reset
+      : '맞는 서비스가 아직 없습니다. 검색어를 줄이거나 넘기는 방식을 「전체」로 바꿔 보세요. 찾는 서비스가 없다면 <a href="?page=edu">직접 만들어 보는 과정</a>도 있습니다.' + reset;
+  }
+  q.addEventListener('input', run);
+  t.addEventListener('change', run);
+  document.getElementById('find').addEventListener('submit', function () { run(); document.getElementById('services').scrollIntoView(); });
+  msg.addEventListener('click', function (e) {
+    if (!e.target.closest('.find-reset')) return;
+    q.value = ''; t.value = ''; run(); q.focus();
+  });
+  // 진열 탭을 누르면 찾기 막대의 넘기는 방식도 같은 값으로 맞춘다
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-shelf]'); if (b) { t.value = b.dataset.shelf; if (!q.value.trim()) msg.innerHTML = ''; } });
+}
 var q = new URLSearchParams(location.search);
 var page = q.get('page'), id = q.get('id');
-document.getElementById(page === 'edu' ? 'menu-edu' : 'menu-services').className = 'on';
+var cur = document.getElementById(page === 'edu' ? 'menu-edu' : page === 'sitemap' ? '' : 'menu-services');
+if (cur) { cur.className = 'on'; cur.setAttribute('aria-current', 'page'); }
 if (page === 'edu') {
   show('tpl-edu');
   // 탭 내용은 템플릿 안의 tpl-edu-intro·tpl-edu-notice에 있다
@@ -419,6 +898,11 @@ if (page === 'edu') {
   box.outerHTML = tabsHTML([['소개', document.getElementById('tpl-edu-intro').innerHTML], ['안내사항', document.getElementById('tpl-edu-notice').innerHTML]]);
   load().then(function (data) { document.getElementById('interest-count').textContent = data.interest; },
     function () { document.getElementById('interest-count').textContent = '-'; });
+} else if (page === 'sitemap') {
+  show('tpl-sitemap');
+  load().then(renderSitemap, function () {
+    document.getElementById('map-services').innerHTML = '<li class="map-wait">서비스 목록을 불러오지 못했습니다</li>';
+  });
 } else if (page === 'privacy') {
   show('tpl-privacy');
 } else if (id) {
@@ -427,10 +911,12 @@ if (page === 'edu') {
     if (s) renderDetail(s, data); else location.replace('./');
   });
 } else {
-  show('tpl-home');
-  load().then(renderBoard, function () {
+  show('tpl-home'); initVisual(); initFind(); jumpHash();
+  // 움직임을 줄이도록 설정한 사람에게는 배경 영상을 멈춰 둔다
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.getElementById('vis-video').pause();
+  load().then(function (data) { renderBoard(data); renderVisual(data); }, function () {
     document.getElementById('board').innerHTML = '<div class="rank"><div class="rank-empty">서비스 목록을 불러오지 못했습니다.<br>잠시 뒤 다시 열어 주세요.</div></div>';
-  });
+  }).then(jumpHash);
 }
 </script>
 </body>
