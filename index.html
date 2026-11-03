@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   /* 디자인 = 06. 와이어프레임 (v0.2 디자인): 흰 바탕·코발트 블루·기기 목업 / 번호 카드 / 남색 정보 구획 */
-  :root { --white:#f5f4f0; --pearl-hi:#f8f7f4; --pearl-lo:#f3f2ee; --gold:#c9a24c; --paper:#f2f1ec; --line:#e3e8f0; --blue:#1a2744; --blue-soft:#efeee8; --navy:#1b2a4a; --ink:#1a1f2b; --ink-soft:#667085; --shot:#dfe5ef; --shot-ink:#8a96aa; }
+  :root { --white:#f9f8f5; --pearl-hi:#fbfaf8; --pearl-lo:#f6f5f1; --gold:#c9a24c; --paper:#f5f4f0; --line:#e3e8f0; --blue:#1a2744; --blue-soft:#f2f1ec; --navy:#1b2a4a; --ink:#1a1f2b; --ink-soft:#667085; --shot:#dfe5ef; --shot-ink:#8a96aa; }
   * { box-sizing: border-box; margin: 0; }
   body { background: var(--white); font-family: "Pretendard", "Malgun Gothic", sans-serif; color: var(--ink); }
   a { color: inherit; text-decoration: none; }
@@ -431,13 +431,13 @@
   /* 메인 색 세 가지(2026-11-04): 다크 네이비 · 우유니 화이트(진주 흰색, 제네시스 색을 화면용으로 근사) · 로열 골드. 넓은 흰 면에는 옅은 진주 광택을 준다 */
   .status, .case-card, .hd { background: linear-gradient(180deg, var(--pearl-hi), var(--pearl-lo)); }
   /* 우유니 화이트 바탕(2026-11-04): 고급스러움 = 아이보리 진주색과 미세한 입자, 신비함 = 푸른 은빛과 라일락빛 진주광, 희망 = 왼쪽 위 흰 빛과 오른쪽 아래 샴페인빛. 빛의 층은 화면에 고정한다 */
-  body { background-color: #f5f4f0; background-attachment: fixed; background-image:
+  body { background-color: #f9f8f5; background-attachment: fixed; background-image:
       url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 .5  0 0 0 0 .48  0 0 0 0 .44  0 0 0 .2 0%22/%3E%3C/filter%3E%3Crect width=%22160%22 height=%22160%22 filter=%22url(%23n)%22/%3E%3C/svg%3E"),
-      radial-gradient(1100px 680px at 8% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 62%),
-      radial-gradient(900px 620px at 96% 12%, rgba(206,218,240,.42), rgba(206,218,240,0) 66%),
-      radial-gradient(820px 620px at -4% 86%, rgba(224,214,238,.34), rgba(224,214,238,0) 64%),
-      radial-gradient(1000px 700px at 78% 108%, rgba(236,216,168,.30), rgba(236,216,168,0) 64%),
-      linear-gradient(180deg, #f7f6f2 0%, #f4f3ee 55%, #f2f0ea 100%);
+      radial-gradient(1400px 820px at 8% -8%, rgba(255,255,255,1), rgba(255,255,255,0) 70%),
+      radial-gradient(900px 620px at 96% 12%, rgba(206,218,240,.3), rgba(206,218,240,0) 66%),
+      radial-gradient(820px 620px at -4% 86%, rgba(224,214,238,.24), rgba(224,214,238,0) 64%),
+      radial-gradient(1000px 700px at 78% 108%, rgba(236,216,168,.21), rgba(236,216,168,0) 64%),
+      linear-gradient(180deg, #faf9f6 0%, #f8f7f3 55%, #f5f4f0 100%);
     background-size: 160px 160px, auto, auto, auto, auto, auto; }
   .vis { background: transparent; }
   .hd-logo { display: inline-flex; align-items: center; gap: 10px; }
