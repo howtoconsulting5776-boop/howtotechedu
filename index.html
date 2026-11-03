@@ -367,14 +367,14 @@
   @media (max-width: 760px) { .detail-compare, .detail-tour-row { grid-template-columns: minmax(0, 1fr); } .detail-question h2 { font-size: 26px; } .detail-compare > span { justify-self: center; transform: rotate(90deg); } }
   /* 휴대폰 틀(2026-11-04): 참고 이미지 분석 = 가는 금속 테두리 · 얇은 검은 베젤 · 기울어진 쪽 옆면 · 왼쪽 버튼 · 렌즈가 있는 카메라 구멍 · 상태 표시줄과 아래 막대.
      서비스 화면은 상태 표시줄 아래에서 시작해 모서리 곡선과 카메라 구멍에 잘리지 않는다 */
-  .devices .phone { border: 0; padding: 3px; border-radius: 38px; background: #07080b; overflow: visible;
+  .devices .phone { border: 0; padding: 3px; border-radius: 8px; background: #07080b; overflow: visible;
     box-shadow: 0 0 0 1.5px #c3c8d0, 0 0 0 2.5px #5b616b,
       -1px 1px 0 2.5px #9aa0aa, -2px 2px 0 2.5px #7a808b, -3px 3px 0 2.5px #5b616b, -4px 4px 0 2.5px #3c4048,
       -20px 32px 42px -14px rgba(20,32,70,.45); }
   .devices .phone::before { top: 10px; width: 27%; height: 16px; border-radius: 10px; background: radial-gradient(circle at 80% 50%, #24324f 0 2.2px, #0b0d12 2.8px); z-index: 3; }
   .devices .phone::after { content: ""; position: absolute; left: -5px; top: 20%; width: 2.5px; height: 6%; background: #6b717c; border-radius: 2px 0 0 2px;
     box-shadow: 0 34px 0 0 #6b717c, 0 34px 0 2px transparent, 0 66px 0 0 #6b717c; }
-  .devices .phone .shot { position: relative; height: 100%; border-radius: 35px; overflow: hidden;
+  .devices .phone .shot { position: relative; height: 100%; border-radius: 6px; overflow: hidden;
     background: #fff linear-gradient(#1b1f27, #1b1f27) no-repeat center bottom 5px / 32% 4px; }
   .devices .phone .shot img { top: 34px; bottom: 14px; height: calc(100% - 48px); }
   .devices .phone .shot::before { content: "9:41"; position: absolute; top: 13px; left: 9%; z-index: 2; font: 600 8px/1 -apple-system, "Pretendard", sans-serif; color: #111; letter-spacing: -.01em; }
