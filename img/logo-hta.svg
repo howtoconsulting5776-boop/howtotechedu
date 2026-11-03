@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 95 615 332" role="img" aria-label="HTA">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 95 600 332" role="img" aria-label="HTA">
   <!-- HTA 로고(원본 79×59를 8배 좌표로 재구성). 메인 색 = 다크 네이비 #1A2744 · 우유니 화이트 #F5F4F0 · 로열 골드 #C9A24C
-       세 도형은 같은 기울기(가로 0.666 / 세로 1)의 평행사변형이다. 글자는 도형 방향으로 약 20° 기울였다(기준선 y=316).
+       세 도형은 같은 기울기(가로 0.666 / 세로 1)의 평행사변형이다. 글자는 도형 방향으로 약 27° 기울였다(기준선 y=316).
        H는 네이비 위 흰 글자, T는 두 도형 사이 흰 바탕 위 네이비 글자, A는 골드 위 네이비 글자 -->
   <path fill="#1A2744" d="M205 110 H375 L225 335 H55 Z"/>
-  <path fill="none" stroke="#F5F4F0" stroke-width="12" stroke-linejoin="miter" d="M442 198 H640 L497 412 H299 Z"/>
-  <path fill="#C9A24C" d="M442 198 H640 L497 412 H299 Z"/>
-  <g transform="matrix(1 0 -0.36 1 113.76 0)">
+  <path fill="none" stroke="#F5F4F0" stroke-width="12" stroke-linejoin="miter" d="M427 198 H625 L482 412 H284 Z"/>
+  <path fill="#C9A24C" d="M427 198 H625 L482 412 H284 Z"/>
+  <g transform="matrix(1 0 -0.5 1 158 0)">
     <path fill="#F5F4F0" d="M140 220 H162 V257 H208 V220 H230 V316 H208 V279 H162 V316 H140 Z"/>
-    <path fill="#1A2744" d="M275 220 H353 V242 H325 V316 H303 V242 H275 Z"/>
-    <path fill="#1A2744" fill-rule="evenodd" d="M413 220 H441 L485 316 H457 L449 296 H405 L397 316 H369 Z M427 246 L440 276 H414 Z"/>
+    <path fill="#1A2744" d="M262 220 H340 V242 H312 V316 H290 V242 H262 Z"/>
+    <path fill="#1A2744" fill-rule="evenodd" d="M398 220 H426 L470 316 H442 L434 296 H390 L382 316 H354 Z M412 246 L425 276 H399 Z"/>
   </g>
 </svg>
