@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   /* 디자인 = 06. 와이어프레임 (v0.2 디자인): 흰 바탕·코발트 블루·기기 목업 / 번호 카드 / 남색 정보 구획 */
-  :root { --white:#fff; --paper:#f5f7fb; --line:#e3e8f0; --blue:#2547d0; --blue-soft:#e8edfc; --navy:#1b2a4a; --ink:#1a1f2b; --ink-soft:#667085; --shot:#dfe5ef; --shot-ink:#8a96aa; }
+  :root { --white:#fff; --paper:#f5f7fb; --line:#e3e8f0; --blue:#1a2744; --blue-soft:#e9edf5; --navy:#1b2a4a; --ink:#1a1f2b; --ink-soft:#667085; --shot:#dfe5ef; --shot-ink:#8a96aa; }
   * { box-sizing: border-box; margin: 0; }
   body { background: var(--white); font-family: "Pretendard", "Malgun Gothic", sans-serif; color: var(--ink); }
   a { color: inherit; text-decoration: none; }
@@ -71,7 +71,7 @@
   .feat b { color: var(--blue); font-size: 12px; display: block; margin-bottom: 6px; }
   .soon { border: 1.5px dashed #b9c4d8; border-radius: 12px; padding: 28px; text-align: center; color: var(--ink-soft); font-size: 15px; margin-top: 18px; }
   /* 서비스 상세·교육 화면: 예스펀딩 구조(왼쪽 대표 화면 + 오른쪽 상황 상자 → 탭 → 고정 하단 막대) */
-  .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
   .status { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 26px; min-width: 0; }
   .status .h1 { font-size: 30px; }
   .status .btn { margin-top: 16px; }
@@ -408,58 +408,22 @@
      lavender 라벤더 스튜디오 · azure 푸른 고요 · zen 초록 정원 · night 한밤의 파란 스튜디오 */
   .hero-bg[data-stage] { position: relative; overflow: hidden; isolation: isolate; }
   .hero-bg[data-stage] > .top { position: relative; z-index: 1; }
-  .hero-bg[data-stage]::before, .hero-bg[data-stage]::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
   .hero-bg[data-stage] .status { box-shadow: 0 30px 60px -30px rgba(10,20,40,.45); }
   .hero-bg[data-stage] .devices { height: 380px; }
+  /* 넓은 화면에서는 기기를 더 크게 보여 준다(2026-11-04) */
+  @media (min-width: 721px) { .hero-bg[data-stage] .devices { height: 450px; } .hero-bg[data-stage] .laptop .screen { height: 270px; } .hero-bg[data-stage] .devices .phone { height: 390px; } }
   .hero-bg[data-stage] .devices .phone { left: 7%; top: 30px; }
   .hero-bg[data-stage] .devices .laptop { top: 64px; right: 4%; }
-  @media (max-width: 720px) { .hero-bg[data-stage]::before, .hero-bg[data-stage]::after { display: none; } }
 
-  /* lavender: 왼쪽 위 은은한 빛, 보라 벽, 밝은 바닥, 기기와 카드 사이 은색 화병과 보라 꽃가지 */
-  .hero-bg[data-stage="lavender"] { background: radial-gradient(70% 90% at 12% 15%, rgba(255,255,255,.38), transparent 60%),
-      linear-gradient(transparent 80%, #ebe6f1 80%, #d8cfe4 100%), linear-gradient(100deg, #bba8d3 0%, #9b85ba 50%, #7d68a0 100%); }
-  .hero-bg[data-stage="lavender"] .laptop { filter: drop-shadow(10px 18px 16px rgba(60,40,90,.35)); }
-  .hero-bg[data-stage="lavender"]::before { left: calc(50% - 11px); bottom: 20%; width: 22px; height: 72px; border-radius: 42% 42% 18% 18% / 24% 24% 10% 10%;
-    background: linear-gradient(90deg, #7f7b8c, #f5f4f8 34%, #bdb8c8 58%, #6c6879); box-shadow: 10px 8px 12px rgba(60,40,90,.3); }
-  .hero-bg[data-stage="lavender"]::after { left: calc(50% - 34px); bottom: calc(20% + 66px); width: 68px; height: 150px; background:
-      radial-gradient(circle 4px at 20% 30%, #7a4aa8 0 3px, transparent 4px), radial-gradient(circle 4px at 26% 20%, #9a6bc6 0 3px, transparent 4px),
-      radial-gradient(circle 4px at 32% 12%, #8657b4 0 3px, transparent 4px), radial-gradient(circle 4px at 46% 8%, #9a6bc6 0 3px, transparent 4px),
-      radial-gradient(circle 4px at 52% 18%, #7a4aa8 0 3px, transparent 4px), radial-gradient(circle 4px at 64% 14%, #a77bd0 0 3px, transparent 4px),
-      radial-gradient(circle 4px at 74% 26%, #8657b4 0 3px, transparent 4px), radial-gradient(circle 4px at 80% 38%, #9a6bc6 0 3px, transparent 4px),
-      radial-gradient(circle 4px at 16% 44%, #9a6bc6 0 3px, transparent 4px), radial-gradient(circle 4px at 40% 28%, #a77bd0 0 3px, transparent 4px),
-      radial-gradient(circle 4px at 60% 32%, #7a4aa8 0 3px, transparent 4px), radial-gradient(circle 4px at 70% 50%, #a77bd0 0 3px, transparent 4px),
-      linear-gradient(165deg, transparent 49%, #6b5a4a 49% 51%, transparent 51%) 0 0 / 50% 100% no-repeat,
-      linear-gradient(195deg, transparent 49%, #6b5a4a 49% 51%, transparent 51%) 100% 0 / 50% 100% no-repeat; }
-
-  /* azure: 왼쪽에서 번지는 빛, 푸른 벽과 바닥, 기기와 카드 사이 흰 둥근 화병과 조약돌 */
-  .hero-bg[data-stage="azure"] { background: radial-gradient(60% 90% at 4% 30%, rgba(200,222,250,.6), transparent 60%),
-      linear-gradient(transparent 80%, #6595c9 80%, #4f80b7 100%), linear-gradient(100deg, #5585bf 0%, #34649f 55%, #1f467c 100%); }
-  .hero-bg[data-stage="azure"] .laptop { filter: drop-shadow(10px 18px 16px rgba(10,30,70,.45)); }
-  .hero-bg[data-stage="azure"]::before { left: calc(50% - 4px); bottom: calc(20% - 4px); width: 36px; height: 44px; border-radius: 50% 50% 44% 44% / 56% 56% 44% 44%;
-    background: radial-gradient(circle at 34% 32%, #ffffff, #e1eaf5 58%, #b7c7db); box-shadow: 8px 6px 12px rgba(10,30,70,.35); }
-  .hero-bg[data-stage="azure"]::after { left: calc(50% - 50px); bottom: calc(20% - 6px); width: 42px; height: 17px; border-radius: 50%;
-    background: radial-gradient(ellipse at 40% 34%, #f4f7fb, #c8d4e3 70%, #a8b8cc); box-shadow: 6px 5px 10px rgba(10,30,70,.3); }
-
-  /* zen: 초록 벽 위쪽의 부드러운 빛, 짙은 물 바닥, 쌓은 돌탑과 연잎 */
-  .hero-bg[data-stage="zen"] { background: radial-gradient(70% 80% at 30% 8%, rgba(225,242,205,.5), transparent 60%),
-      linear-gradient(transparent 80%, #3e5c3c 80%, #2b4530 100%), linear-gradient(#82aa72, #5f8b56 80%); }
-  .hero-bg[data-stage="zen"] .laptop { filter: drop-shadow(10px 18px 16px rgba(20,40,20,.4)); }
-  .hero-bg[data-stage="zen"]::before { left: calc(50% - 27px); bottom: calc(20% - 4px); width: 54px; height: 48px; background:
-      radial-gradient(ellipse 27px 9px at 50% 86%, #2b2d2f 0 95%, transparent 100%), radial-gradient(ellipse 21px 8px at 50% 58%, #35383b 0 95%, transparent 100%),
-      radial-gradient(ellipse 15px 6px at 50% 34%, #3e4245 0 95%, transparent 100%), radial-gradient(ellipse 10px 5px at 50% 14%, #484c50 0 95%, transparent 100%); }
-  .hero-bg[data-stage="zen"]::after { left: 0; right: 0; bottom: 4%; height: 40px; background:
-      radial-gradient(ellipse 34px 8px at 18% 40%, #6f9b5e 0 92%, transparent 100%), radial-gradient(ellipse 26px 6px at 30% 70%, #5f8a50 0 92%, transparent 100%),
-      radial-gradient(ellipse 30px 7px at 62% 55%, #6f9b5e 0 92%, transparent 100%), radial-gradient(ellipse 24px 6px at 84% 35%, #5f8a50 0 92%, transparent 100%); }
-
-  /* night: 짙은 남색 벽, 왼쪽 위 파란 빛, 화면 폭 전체로 이어지는 짙은 책상 */
-  .hero-bg[data-stage="night"] { background: radial-gradient(60% 80% at 6% 0%, rgba(91,130,255,.55), transparent 60%),
-      linear-gradient(transparent 80%, #14171d 80%, #0a0c10 100%), linear-gradient(115deg, #172659 0%, #0b1230 45%, #05070c 100%); }
-  .hero-bg[data-stage="night"] .laptop { filter: drop-shadow(0 16px 14px rgba(0,0,0,.55)); }
-  .hero-bg[data-stage="night"]::before { left: 0; right: 0; top: 80%; height: 1px; background: rgba(255,255,255,.08); }
-
+  /* 무대 사진: img/stage/의 배경 사진을 위쪽 구역 전체에 깐다. 사진 가운데의 소품이 기기와 정보 카드 사이에 오도록 가로 위치를 24%로 둔다 */
+  .hero-bg[data-stage] { background-color: #d9dde5; background-size: cover; background-position: 24% bottom; background-repeat: no-repeat; }
+  .hero-bg[data-stage] .laptop { filter: drop-shadow(10px 18px 16px rgba(20,25,40,.35)); }
   /* 헤더 「교육 관심 등록」: 다크 네이비 */
   .hd-cta { background: linear-gradient(180deg, #1d2b4d, #0f1830); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 6px 14px -8px rgba(10,20,45,.6); letter-spacing: .01em; }
   .hd-cta:hover { background: linear-gradient(180deg, #26375f, #15203d); }
+  /* 채워진 단추와 상자: 다크 네이비 그라데이션(2026-11-04). 어두운 바탕 위에서도 보이도록 가는 밝은 테두리를 둔다 */
+  .btn:not(.ghost):not(.band-line):not(.band-fill), .bar .btn { background: linear-gradient(180deg, #24345c, #121c35); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 0 0 1px rgba(255,255,255,.08), 0 8px 18px -10px rgba(10,20,45,.6); }
+  .btn:not(.ghost):not(.band-line):not(.band-fill):hover { background: linear-gradient(180deg, #2d3f6b, #182442); }
   /* 자판: SVG로 그린 실제 배열(기능 키·숫자·Q·A·Z·스페이스 6줄, 넓은 키와 방향키). 본체를 두껍게 하고 터치패드를 자판 아래에 둔다 */
   .laptop .base { height: 42px; clip-path: polygon(6% 0, 94% 0, 100% 80%, 100% 100%, 0 100%, 0 80%);
     background: radial-gradient(ellipse 6% 26% at 50% 100%, #b4bcc7 0 60%, transparent 64%), linear-gradient(#eef1f5 0, #d6dbe2 79%, #aeb6c2 80%, #dde1e7 90%, #c2c9d3 100%); }
@@ -645,7 +609,7 @@
   </section>
 </template>
 <template id="tpl-edu">
-  <div class="hero-bg" data-stage="zen"><section class="wrap top">
+  <div class="hero-bg" data-stage style="background-image:url(img/stage/st14-lotus.jpg)"><section class="wrap top">
     <div class="devices">
       <div class="laptop"><div class="screen"><div class="shot photo-fill">수업 사진<img src="img/photo/edu.jpg" alt="학원장들이 노트북으로 앱을 만드는 수업 장면"></div></div><div class="base"></div></div>
       <div class="phone"><div class="shot photo-fill">수강생 서비스<img src="img/photo/step-make.jpg" alt="노트북·휴대폰·앱 스케치 노트가 놓인 책상" style="object-position:70% center"></div></div>
@@ -792,8 +756,8 @@ function visSync() {
 // 서비스 데이터가 오면 슬라이드를 덧붙인다. 캡처가 없으면 남색 바탕만 남는다
 // 데모를 실제로 조작하는 장면을 녹화한 영상이 있는 서비스(img/video/<id>.mp4)
 var VIS_VIDEO = { 'S-001': 1, 'S-002': 1 };
-// 상세 화면 위쪽 구역 무대: lavender · azure · zen · night 가운데 서비스마다 하나
-var STAGE = { 'S-001': 'lavender', 'S-002': 'azure' };
+// 상세 화면 위쪽 구역 무대 사진(img/stage/<이름>.jpg). 목록과 어울리는 주제는 볼트 노트 12번이 소유한다
+var STAGE = { 'S-001': 'st04-lavender', 'S-002': 'st05-azure' };
 function renderVisual(data) {
   var t = document.getElementById('vis-track');
   if (!t || !data.services.length) return;
@@ -1166,7 +1130,7 @@ function renderDetail(s, data) {
       '<li>문의에 적어 주신 연락처는 <a href="?page=privacy">개인정보 처리방침</a>에 따라 보관하고 지웁니다.</li></ul></div>';
 
   document.getElementById('app').innerHTML =
-    '<div class="hero-bg" data-stage="' + (STAGE[s.id] || 'night') + '"><section class="wrap top">' +
+    '<div class="hero-bg" data-stage style="background-image:url(img/stage/' + (STAGE[s.id] || 'st03-night') + '.jpg)"><section class="wrap top">' +
       '<div class="devices"><div class="laptop"><div class="screen">' + (VIS_VIDEO[s.id] && !matchMedia('(prefers-reduced-motion: reduce)').matches ? '<video muted loop playsinline autoplay preload="metadata" poster="img/video/' + encodeURIComponent(s.id) + '-poster.jpg"><source src="img/video/' + encodeURIComponent(s.id) + '.mp4" type="video/mp4"></video>' : shot(s, '', '화면 준비 중')) + '</div><div class="base"></div></div>' +
       '<div class="phone">' + shot(s, '-m', '모바일') + '</div></div>' +
       '<div class="status"><a class="p" style="margin:0" href="./">← 서비스 목록</a>' +
