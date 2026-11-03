@@ -659,7 +659,11 @@ function renderSitemap(data) {
 function jumpHash() {
   var t = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (t) t.scrollIntoView();
+  // 이동한 뒤 주소의 #표시를 지운다. 남아 있으면 새로고침하거나 데이터가 늦게 올 때 다시 아래로 내려간다
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
 }
+// 화면 안 단추(#cases 등)로 내려간 뒤에도 주소의 #표시를 지운다
+addEventListener('hashchange', function () { history.replaceState(null, '', location.pathname + location.search); });
 var ORDINAL = ['첫 번째', '두 번째', '세 번째', '네 번째', '다섯 번째', '여섯 번째', '일곱 번째', '여덟 번째', '아홉 번째', '열 번째'];
 var TRANSFER = { '사용권': '매달 이용료를 내고 그대로 씁니다.', '설치 대행': '서비스를 만든 사람이 구매한 학원에 맞게 설치해 드립니다.', '소스 판매': '화면 파일과 코드를 넘겨받아 직접 고쳐 씁니다.' };
 function fmtDate(t) { var d = new Date(t); return d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.'; }
