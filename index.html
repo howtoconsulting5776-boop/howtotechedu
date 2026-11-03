@@ -325,6 +325,8 @@
   .case-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
   .case-actions .btn { margin: 0; }
   @media (max-width: 760px) { .case-grid { grid-template-columns: minmax(0, 1fr); } }
+  /* 제목은 낱말 중간에서 줄을 바꾸지 않는다(2026-11-03) */
+  .h1, .h2, .vis-title, h1, h2, h3 { word-break: keep-all; }
 </style>
 </head>
 <body>
@@ -350,9 +352,9 @@
         <video class="vis-bg" id="vis-video" autoplay muted loop playsinline poster="img/photo/hero-poster.jpg" aria-hidden="true"><source src="img/photo/hero.mp4" type="video/mp4"></video>
         <div class="vis-in">
           <div class="vis-acad">AI SERVICE SHOWCASE</div>
-          <h1 class="vis-title">현직 학원장이 만든<br>학원 전용 AI 서비스</h1>
-          <div class="vis-line">학원 맞춤 서비스를 둘러보고 직접 만드세요.</div>
-          <a class="btn" href="#cases">사례 둘러보기</a><a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">과정 관심 등록</a>
+          <h1 class="vis-title">학부모가 AI에 학원을 물을 때<br>우리 학원도 나올까요?</h1>
+          <div class="vis-line">현직 학원장이 이 고민을 풀려고 만든 데모를 둘러보세요.</div>
+          <a class="btn" href="#cases">데모 둘러보기</a><a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
         </div>
       </div>
     </div>
@@ -366,24 +368,24 @@
   </div>
 
   <section class="wrap" id="cases">
-    <div class="shelf-head"><div class="shelf-title"><h2 class="shelf-h">CASES</h2><p class="shelf-sub">원장님이 직접 만든 서비스입니다. 운영자가 직접 제작한 시연용 서비스를 공개합니다.</p></div></div>
+    <div class="shelf-head"><div class="shelf-title"><h2 class="shelf-h">CASES</h2><p class="shelf-sub">현직 학원장이 AI로 만든 시연 데모입니다. 로그인 없이 써 보세요. 학원 이름·수치는 가상입니다.</p></div></div>
     <div class="case-grid">
       <article class="case-card">
         <img src="img/S-001.jpg" alt="학부모 AI 질문 지도 화면" loading="lazy">
         <div class="case-body">
           <h3>학부모 AI 질문 지도</h3>
-          <h4>이런 고민</h4><p>학부모가 AI에 무엇을 묻는지 몰라 다음 홍보 글감을 정하기 어렵습니다.</p>
-          <h4>이렇게 만들었습니다</h4><p>학기별 질문을 지도로 모으고 학원 언급 비율을 색으로 표시했습니다. 다음에 올릴 글을 정할 때 씁니다.</p>
-          <div class="case-actions"><a class="btn" href="https://claude.ai/artifact/BtgsXDsX3SBru3mkkoPYBF" target="_blank" rel="noopener">데모 체험하기</a><a class="btn ghost" href="?id=S-001">자세히 보기</a></div>
+          <h4>원장님의 고민</h4><p>학부모가 AI에 학원을 묻는다면 무엇을 물을지 몰라, 다음 블로그 글감이 막막합니다.</p>
+          <h4>이렇게 만들었습니다</h4><p>학기마다 AI에 물을 법한 질문을 지도로 모았습니다. 답변에 학원이 나온 비율을 색으로 보고 다음 글감을 정합니다.</p>
+          <div class="case-actions"><a class="btn" href="https://claude.ai/artifact/BtgsXDsX3SBru3mkkoPYBF" target="_blank" rel="noopener">데모 체험하기</a><a class="btn ghost" href="?id=S-001">서비스 자세히 보기</a></div>
         </div>
       </article>
       <article class="case-card">
         <img src="img/S-002.jpg" alt="학원 AI 노출 모니터 화면" loading="lazy">
         <div class="case-body">
           <h3>학원 AI 노출 모니터</h3>
-          <h4>이런 고민</h4><p>ChatGPT와 포털 검색에 우리 학원이 얼마나 나오는지 매주 찾아보기 번거롭습니다.</p>
-          <h4>이렇게 만들었습니다</h4><p>주간 노출 빈도를 기록하고 다음에 올릴 글의 방향과 초안을 제안합니다.</p>
-          <div class="case-actions"><a class="btn" href="https://claude.ai/artifact/37z1pGfTPTjXH5uUWfQ9vi" target="_blank" rel="noopener">데모 체험하기</a><a class="btn ghost" href="?id=S-002">자세히 보기</a></div>
+          <h4>원장님의 고민</h4><p>ChatGPT와 네이버 검색에 우리 학원이 나오는지 매주 찾아볼 시간이 없습니다.</p>
+          <h4>이렇게 만들었습니다</h4><p>AI 답변·검색에 학원이 나오는지 매주 기록하고, 다음 글의 방향과 초안을 제안합니다.</p>
+          <div class="case-actions"><a class="btn" href="https://claude.ai/artifact/37z1pGfTPTjXH5uUWfQ9vi" target="_blank" rel="noopener">데모 체험하기</a><a class="btn ghost" href="?id=S-002">서비스 자세히 보기</a></div>
         </div>
       </article>
     </div>
@@ -392,32 +394,32 @@
   <div class="band-member"><img src="img/photo/edu.jpg" alt="" loading="lazy"><section class="wrap band-member-in" aria-labelledby="band-member-title">
     <div>
       <div class="eyebrow">AI BUILDER COURSE</div>
-      <h2 id="band-member-title">내 손으로 만드는<br>학원 맞춤 AI</h2>
-      <p class="band-lead">AX 바이블 과정을 마친 원장님을 위한 실전 후속 교육입니다. 수료와 함께 내 학원 전용 서비스 하나를 완성해 플랫폼에 올립니다.</p>
+      <h2 id="band-member-title">내 학원용 서비스,<br>8회 수업으로 직접 만듭니다</h2>
+      <p class="band-lead">AX 바이블 과정을 마친 학원장·교육자를 위한 후속 교육입니다. 8회 오프라인 수업과 온라인 지원으로 내 학원용 서비스 1개를 완성해 이 사이트에 전시합니다.</p>
       <div class="band-actions">
-        <a class="btn band-fill" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a>
+        <a class="btn band-fill" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
         <a class="btn band-line" href="?page=edu">교육 알아보기</a>
       </div>
     </div>
     <ul class="band-perks">
-      <li><i>01</i><div><b>8회 오프라인 수업</b><span>회당 3시간 오프라인 수업으로 배웁니다.</span></div></li>
-      <li><i>02</i><div><b>회차 사이 온라인 지원</b><span>수업이 없는 날에도 온라인으로 질문을 받습니다.</span></div></li>
-      <li><i>03</i><div><b>서비스 1개 완성</b><span>완성한 전용 서비스를 플랫폼에 전시합니다.</span></div></li>
+      <li><i>01</i><div><b>8회 오프라인 수업</b><span>매주 1회, 회당 3시간씩 직접 만들며 배웁니다.</span></div></li>
+      <li><i>02</i><div><b>수업 없는 날도 온라인 지원</b><span>만들다 막히면 수업 사이에도 온라인으로 질문하세요.</span></div></li>
+      <li><i>03</i><div><b>내 학원용 서비스 1개 완성</b><span>완성한 서비스를 이 사이트에 전시합니다.</span></div></li>
     </ul>
   </section></div>
 
   <div class="band-how" id="how"><section class="wrap" aria-labelledby="band-how-title">
     <div class="shelf-head"><div class="shelf-title">
       <h2 class="shelf-h" id="band-how-title">HOW IT WORKS</h2>
-      <p class="shelf-sub">둘러보고, 써 보고, 문의 한 번이면 됩니다.</p>
+      <p class="shelf-sub">로그인 없이 데모를 써 보고, 문의만 남기면 됩니다.</p>
     </div></div>
     <div class="band-grid">
-      <div class="band-cell band-c1 band-photo"><img src="img/photo/step-try.jpg" alt="학원 상담석에서 학부모와 교사가 태블릿 앱을 함께 보는 모습" loading="lazy"><span class="band-num" aria-hidden="true">01</span><span class="band-tag">STEP 1</span><h3>데모 체험</h3><p>로그인 없이 바로 써 봅니다.</p></div>
-      <div class="band-cell band-c2"><span class="band-num" aria-hidden="true">02</span><span class="band-tag">STEP 2</span><h3>도입 문의</h3><p>문의를 남겨 조건을 확인합니다.</p></div>
-      <div class="band-cell band-c3 band-photo"><img src="img/photo/step-deal.jpg" alt="두 학원장이 상담 탁자에서 악수하는 모습" loading="lazy"><span class="band-num" aria-hidden="true">03</span><span class="band-tag">STEP 3</span><h3>맞춤 안내</h3><p>운영자가 만든 이와 상의해 안내합니다.</p></div>
+      <div class="band-cell band-c1 band-photo"><img src="img/photo/step-try.jpg" alt="학원 상담석에서 학부모와 교사가 태블릿 앱을 함께 보는 모습" loading="lazy"><span class="band-num" aria-hidden="true">01</span><span class="band-tag">STEP 1</span><h3>데모 체험</h3><p>로그인 없이 써 봅니다.</p></div>
+      <div class="band-cell band-c2"><span class="band-num" aria-hidden="true">02</span><span class="band-tag">STEP 2</span><h3>도입 문의</h3><p>우리 학원 사정에 맞는 조건을 문의합니다.</p></div>
+      <div class="band-cell band-c3 band-photo"><img src="img/photo/step-deal.jpg" alt="두 학원장이 상담 탁자에서 악수하는 모습" loading="lazy"><span class="band-num" aria-hidden="true">03</span><span class="band-tag">STEP 3</span><h3>도입 조건 안내</h3><p>운영자가 서비스를 만든 사람과 조건을 정해 안내합니다.</p></div>
       <div class="band-cell band-c4">
-        <div><span class="band-tag">FOR MAKERS</span><h3>서비스를 등록하고 싶은 분</h3><p>직접 만든 서비스를 등록해 학원에 제안하세요. 거래가 성사됐을 때만 금액의 10%를 수수료로 냅니다.</p></div>
-        <div class="band-fee"><b>10%</b><span>거래 성사 시 수수료</span></div>
+        <div><span class="band-tag">FOR MAKERS</span><h3>만든 서비스, 다른 학원에도 선보이세요</h3><p>직접 만든 학원용 서비스를 등록해 보세요. 운영자 점검 뒤 공개하며, 거래가 성사될 때만 금액의 10%를 수수료로 냅니다.</p></div>
+        <div class="band-fee"><b>10%</b><span>거래가 성사될 때만 내는 수수료</span></div>
       </div>
     </div>
   </section></div>
@@ -491,7 +493,7 @@
         <div class="eyebrow">EDUCATION</div><h2 class="map-title">교육</h2>
         <ul class="map-list">
           <li><a href="?page=edu">교육 소개</a></li>
-          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a></li>
         </ul>
       </div>
       <div class="map-col">
@@ -512,42 +514,42 @@
     </div>
     <div class="status">
       <div class="eyebrow">AI BUILDER COURSE</div>
-      <div class="h1">내 학원에서 쓸 서비스,<br>AI로 직접 만듭니다</div>
-      <div class="p">8회 과정을 마치면 자기 학원용 웹·앱 서비스 하나가 완성되고, 이 플랫폼에 전시됩니다.</div>
+      <div class="h1">수업도 홍보도 맡고 있다면<br>필요한 기능부터 만들어 보세요</div>
+      <div class="p">8회 과정을 마치면 내 학원용 웹·앱 서비스 1개가 완성되고, 이 사이트에 전시됩니다.</div>
       <dl class="facts">
         <dt>관심 등록</dt><dd><span class="big-stat" id="interest-count">…</span>명</dd>
-        <dt>개강일</dt><dd>확정 전 · 관심 등록하신 분께 먼저 안내</dd>
+        <dt>개강일</dt><dd>확정 전 · 관심 등록하신 분께 먼저 알려 드립니다</dd>
         <dt>정원</dt><dd>확정 전</dd>
         <dt>형식</dt><dd>8회 · 회당 3시간 · 오프라인 수업과 온라인 지원</dd>
         <dt>대상</dt><dd>AX 바이블 과정을 마친 학원장·교육자</dd>
       </dl>
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
     </div>
   </section></div>
   <div id="edu-tabs"></div>
-  <div class="bar"><button class="btn ghost" type="button" data-copy>주소 복사</button><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">관심 등록하기</a></div>
+  <div class="bar"><button class="btn ghost" type="button" data-copy>주소 복사</button><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a></div>
 </template>
 <template id="tpl-edu-intro">
-  <div class="block"><div class="eyebrow">OVERVIEW</div><div class="h2">과정 한눈에</div>
+  <div class="block"><div class="eyebrow">OVERVIEW</div><div class="h2">8회 과정 한눈에 보기</div>
     <div class="info">
-      <div><div class="ico">8</div><h4>8회 · 회당 3시간</h4><p>매주 한 번, 직접 만들며 배웁니다</p></div>
-      <div><div class="ico">⌂</div><h4>오프라인 수업</h4><p>회차 사이에는 온라인으로 막힌 곳을 돕습니다</p></div>
-      <div><div class="ico">★</div><h4>수료하면 서비스 1개</h4><p>완성한 서비스는 이 플랫폼에 전시됩니다</p></div>
+      <div><div class="ico">8</div><h4>8회 · 회당 3시간</h4><p>매주 1회, 3시간씩 오프라인 수업으로 직접 만듭니다</p></div>
+      <div><div class="ico">⌂</div><h4>수업 없는 날도 온라인 지원</h4><p>수업 사이에 막히면 온라인으로 질문하세요</p></div>
+      <div><div class="ico">★</div><h4>내 학원용 서비스 1개 완성</h4><p>완성한 서비스는 이 사이트에 전시합니다</p></div>
     </div></div>
   <div class="block"><div class="eyebrow">FOR WHOM</div><div class="h2">이런 분께 권합니다</div>
     <ol class="points">
       <li><b>첫 번째</b>AX 바이블 과정을 마치고 다음 단계를 찾는 학원장·교육자</li>
-      <li><b>두 번째</b>자기 학원에서 쓸 웹·앱 서비스를 직접 만들어 보고 싶은 분</li>
-      <li><b>세 번째</b>만든 서비스를 다른 학원에 선보이고 판매까지 해 보고 싶은 분</li>
+      <li><b>두 번째</b>내 학원에 꼭 맞는 서비스를 직접 만들고 싶은 분</li>
+      <li><b>세 번째</b>내가 만든 서비스를 다른 원장님께 선보이고 판매까지 해 보고 싶은 분</li>
     </ol></div>
   <div class="block"><div class="eyebrow">CURRICULUM</div><div class="h2">회차별 내용</div>
-    <div class="soon">준비 중입니다. 관심 등록을 해 두시면 확정되는 대로 안내해 드립니다.</div></div>
+    <div class="soon">회차별 내용은 준비 중입니다. 정해지면 관심 등록하신 분께 먼저 알려 드립니다.</div></div>
 </template>
 <template id="tpl-edu-notice">
   <div class="block"><div class="eyebrow">NOTICE</div><div class="h2">알아 두실 점</div>
     <ul class="notes">
-      <li>관심 등록은 수강 신청이 아니며 비용이 들지 않습니다.</li>
-      <li>개강일·정원·수강료가 정해지면 관심 등록하신 분께 먼저 안내해 드립니다.</li>
+      <li>관심 등록은 수강 신청이 아니며 비용도 없습니다.</li>
+      <li>개강일·정원·수강료가 정해지면 관심 등록하신 분께 먼저 알려 드립니다.</li>
       <li>관심 등록 정보는 등록한 날부터 1년 동안 보관하며, 원하시면 바로 지웁니다. 자세한 내용은 <a href="?page=privacy">개인정보 처리방침</a>에 있습니다.</li>
     </ul></div>
 </template>
@@ -659,7 +661,7 @@ function jumpHash() {
   if (t) t.scrollIntoView();
 }
 var ORDINAL = ['첫 번째', '두 번째', '세 번째', '네 번째', '다섯 번째', '여섯 번째', '일곱 번째', '여덟 번째', '아홉 번째', '열 번째'];
-var TRANSFER = { '사용권': '매달 이용료를 내고 그대로 씁니다.', '설치 대행': '구매한 학원에 맞게 만든 사람이 설치해 드립니다.', '소스 판매': '화면 파일과 코드를 넘겨받아 직접 고쳐 씁니다.' };
+var TRANSFER = { '사용권': '매달 이용료를 내고 그대로 씁니다.', '설치 대행': '서비스를 만든 사람이 구매한 학원에 맞게 설치해 드립니다.', '소스 판매': '화면 파일과 코드를 넘겨받아 직접 고쳐 씁니다.' };
 function fmtDate(t) { var d = new Date(t); return d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.'; }
 // 탭 이름과 각 탭 내용(HTML)을 받아 탭 막대와 내용 칸을 만든다. 첫 탭이 열린 채로 시작한다
 function tabsHTML(list) {
@@ -702,12 +704,12 @@ function renderDetail(s, data) {
 
   var terms =
     '<div class="block"><div class="eyebrow">TRANSFER</div><div class="h2">넘기는 방식</div><ul class="notes">' +
-      transfers.map(function (t) { return '<li><b>' + esc(t) + '</b>: ' + esc(TRANSFER[t] || '문의하시면 자세히 안내해 드립니다.') + '</li>'; }).join('') + '</ul></div>' +
-    '<div class="block"><div class="eyebrow">PRICE</div><div class="h2">가격</div><div class="p">가격은 공개하지 않습니다. 문의를 남기시면 운영자가 만든 사람과 학원 사정에 맞춰 정한 뒤 안내해 드립니다.</div></div>' +
+      transfers.map(function (t) { return '<li><b>' + esc(t) + '</b>: ' + esc(TRANSFER[t] || '문의하시면 이용 방식과 조건을 안내합니다.') + '</li>'; }).join('') + '</ul></div>' +
+    '<div class="block"><div class="eyebrow">PRICE</div><div class="h2">가격</div><div class="p">가격은 공개하지 않습니다. 문의를 남겨 주시면 운영자가 서비스를 만든 사람과 학원 사정에 맞춰 조건을 정해 안내해 드립니다.</div></div>' +
     '<div class="block"><div class="eyebrow">HOW IT WORKS</div><div class="h2">진행 순서</div><div class="steps">' +
-      '<div class="step"><b>1</b><p>체험 주소로<br>직접 써 봅니다</p></div>' +
-      '<div class="step"><b>2</b><p>문의를 남깁니다</p></div>' +
-      '<div class="step"><b>3</b><p>운영자가 만든 사람과<br>조건을 정해 안내합니다</p></div></div></div>';
+      '<div class="step"><b>1</b><p>체험 주소에서<br>데모를 써 봅니다</p></div>' +
+      '<div class="step"><b>2</b><p>도입 문의를 남깁니다</p></div>' +
+      '<div class="step"><b>3</b><p>운영자가 서비스를 만든 사람과<br>조건을 정해 안내합니다</p></div></div></div>';
 
   var notice =
     '<div class="block"><div class="eyebrow">CHECK</div><div class="h2">판매 전 점검</div><div class="info">' +
@@ -715,8 +717,8 @@ function renderDetail(s, data) {
       '<div><div class="ico">©</div><h4>교재·문항 저작권</h4><p>' + esc(s.copyright) + '</p></div>' +
       '<div><div class="ico">☎</div><h4>고장 시 담당자</h4><p>' + esc(s.maintainer) + '</p></div></div></div>' +
     '<div class="block"><div class="eyebrow">NOTICE</div><div class="h2">알아 두실 점</div><ul class="notes">' +
-      '<li>체험 주소는 가명·예시 데이터로만 동작합니다. 실제 학생 정보를 넣지 마세요.</li>' +
-      '<li>체험 주소가 멈추면 고칠 때까지 이 전시가 잠시 비공개로 바뀝니다.</li>' +
+      '<li>체험 주소는 가명·예시 데이터로만 동작합니다. 실제 학생 정보는 넣지 마세요.</li>' +
+      '<li>체험 주소가 멈추면 고칠 때까지 이 전시는 잠시 비공개로 바뀝니다.</li>' +
       '<li>문의에 적어 주신 연락처는 <a href="?page=privacy">개인정보 처리방침</a>에 따라 보관하고 지웁니다.</li></ul></div>';
 
   document.getElementById('app').innerHTML =
