@@ -430,6 +430,16 @@
   .hd-cta:hover { background: linear-gradient(180deg, #26375f, #15203d); }
   /* 메인 색 세 가지(2026-11-04): 다크 네이비 · 우유니 화이트(진주 흰색, 제네시스 색을 화면용으로 근사) · 로열 골드. 넓은 흰 면에는 옅은 진주 광택을 준다 */
   .status, .case-card, .hd { background: linear-gradient(180deg, var(--pearl-hi), var(--pearl-lo)); }
+  /* 우유니 화이트 바탕(2026-11-04): 고급스러움 = 아이보리 진주색과 미세한 입자, 신비함 = 푸른 은빛과 라일락빛 진주광, 희망 = 왼쪽 위 흰 빛과 오른쪽 아래 샴페인빛. 빛의 층은 화면에 고정한다 */
+  body { background-color: #f5f4f0; background-attachment: fixed; background-image:
+      url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 .5  0 0 0 0 .48  0 0 0 0 .44  0 0 0 .2 0%22/%3E%3C/filter%3E%3Crect width=%22160%22 height=%22160%22 filter=%22url(%23n)%22/%3E%3C/svg%3E"),
+      radial-gradient(1100px 680px at 8% -8%, rgba(255,255,255,.95), rgba(255,255,255,0) 62%),
+      radial-gradient(900px 620px at 96% 12%, rgba(206,218,240,.42), rgba(206,218,240,0) 66%),
+      radial-gradient(820px 620px at -4% 86%, rgba(224,214,238,.34), rgba(224,214,238,0) 64%),
+      radial-gradient(1000px 700px at 78% 108%, rgba(236,216,168,.30), rgba(236,216,168,0) 64%),
+      linear-gradient(180deg, #f7f6f2 0%, #f4f3ee 55%, #f2f0ea 100%);
+    background-size: 160px 160px, auto, auto, auto, auto, auto; }
+  .vis { background: transparent; }
   .hd-logo { display: inline-flex; align-items: center; gap: 10px; }
   .hd-logo img { height: 30px; width: auto; display: block; }
   @media (max-width: 720px) { .hd-logo img { height: 24px; } }
