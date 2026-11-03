@@ -327,6 +327,8 @@
   @media (max-width: 760px) { .case-grid { grid-template-columns: minmax(0, 1fr); } }
   /* 제목은 낱말 중간에서 줄을 바꾸지 않는다(2026-11-03) */
   .h1, .h2, .vis-title, h1, h2, h3 { word-break: keep-all; }
+  /* 슬라이더 아래 진행 막대·번호·멈춤·화살표 줄을 숨긴다(2026-11-03). 슬라이드는 계속 자동으로 넘어간다 */
+  .vis-ctl { display: none !important; }
 </style>
 </head>
 <body>
