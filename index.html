@@ -400,6 +400,101 @@
     background: repeating-linear-gradient(180deg, transparent 0 2px, #b3bac4 2px 3px), repeating-linear-gradient(90deg, #2c3038 0 8px, #b3bac4 8px 9px); }
   .laptop .base::before { top: 17px; }
   .hero-bg { overflow-x: clip; }
+  /* 기기 무대(2026-11-04): 옅은 점 격자 바탕, 기기 뒤 파란 빛 번짐, 기기 아래 바닥 그림자 */
+  .hero-bg { background: radial-gradient(circle, rgba(37,71,208,.07) 1px, transparent 1.4px) 0 0 / 22px 22px, linear-gradient(180deg, #f8faff 0%, #edf1fb 100%); }
+  .devices { isolation: isolate; }
+
+  /* 기기 무대(2026-11-04): 서비스마다 data-stage로 고른다. night 어두운 조명 · sage 올리브 스튜디오 · navy 남색 책상 · bulbs 청록 벽과 전구 · mint 민트 벽과 받침대 */
+  .devices[data-stage] { height: 380px; overflow: hidden; isolation: isolate; }
+  .devices[data-stage] .phone { left: 7%; top: 30px; }
+  .devices[data-stage] .laptop { top: 64px; }
+  .devices[data-stage]::before, .devices[data-stage]::after { content: ""; position: absolute; z-index: -1; }
+  /* 소품이 있는 무대는 노트북을 줄여 오른쪽에 소품 자리를 비운다 */
+  .devices[data-stage="sage"] .laptop, .devices[data-stage="navy"] .laptop, .devices[data-stage="bulbs"] .laptop, .devices[data-stage="mint"] .laptop, .devices[data-stage="white"] .laptop, .devices[data-stage="aqua"] .laptop, .devices[data-stage="lemon"] .laptop { width: 58%; right: 15%; }
+
+  /* night: 왼쪽 위 파란 빛, 오른쪽으로 갈수록 어두운 벽, 짙은 책상 */
+  .devices[data-stage="night"] { background: radial-gradient(130% 100% at 0% 0%, #5b82ff 0%, #2747c2 22%, #12204d 48%, #080b15 78%, #05070c 100%); }
+  .devices[data-stage="night"] .laptop { right: 4%; filter: drop-shadow(0 16px 14px rgba(0,0,0,.5)); }
+  .devices[data-stage="night"]::before { left: 0; right: 0; bottom: 0; height: 25%; border-top: 1px solid rgba(255,255,255,.09);
+    background: radial-gradient(90% 160% at 0% 0%, rgba(91,130,255,.32), transparent 62%), linear-gradient(#1c2027, #0b0d11); }
+  .devices[data-stage="night"]::after { left: 6%; right: 2%; bottom: 7%; height: 40px; background: radial-gradient(closest-side, rgba(0,0,0,.7), rgba(0,0,0,.25) 60%, transparent 100%); }
+
+  /* sage: 벽과 바닥이 같은 올리브색, 노트북 뒤로 보이는 원형 나무 쟁반, 오른쪽 바닥의 흰 도자기 화병 */
+  .devices[data-stage="sage"] { background:
+      radial-gradient(ellipse 34px 30px at 92% 86%, #efe8dc 0 62%, #d8cebd 80%, transparent 82%),
+      linear-gradient(#ece5d8, #d6ccbb) 87% 66% / 18px 56px no-repeat,
+      radial-gradient(ellipse 60px 14px at 92% 95%, rgba(40,50,25,.35), transparent 70%),
+      radial-gradient(circle 82px at 74% 30%, #574536 0 64px, #cfb68e 64px 74px, #a98f69 74px 80px, transparent 81px),
+      linear-gradient(transparent 76%, #5f7045 76%, #6b7c50 100%),
+      linear-gradient(#73855a, #677a4c 76%); }
+  .devices[data-stage="sage"] .laptop { filter: drop-shadow(10px 16px 14px rgba(35,45,20,.4)); }
+  .devices[data-stage="sage"]::after { left: 22%; right: 12%; bottom: 6%; height: 34px; background: radial-gradient(closest-side, rgba(35,45,20,.45), transparent 100%); }
+
+  /* navy: 위에서 본 짙은 남색 책상, 오른쪽 위 노트, 왼쪽 아래 펜 */
+  .devices[data-stage="navy"] { background: radial-gradient(120% 120% at 20% 10%, #2d4a73 0%, #1d3557 45%, #12233c 100%); }
+  .devices[data-stage="navy"] .laptop { filter: drop-shadow(0 18px 16px rgba(5,10,25,.55)); }
+  .devices[data-stage="navy"]::before { right: -10%; top: -14%; width: 34%; height: 58%; transform: rotate(28deg); background: linear-gradient(135deg, #24426b, #1a3152); box-shadow: -10px 14px 24px rgba(5,10,25,.5), inset -6px 0 0 #2f527f; }
+  .devices[data-stage="navy"]::after { left: 4%; bottom: 14%; width: 42%; height: 4px; transform: rotate(-58deg); transform-origin: left center; border-radius: 2px;
+    background: linear-gradient(90deg, #0c0e12 0 82%, #e9ecf1 82% 100%); box-shadow: 4px 6px 8px rgba(5,10,25,.45); }
+
+  /* bulbs: 왼쪽이 밝은 청록 벽, 오른쪽 위에서 내려오는 전구 세 개 */
+  .devices[data-stage="bulbs"] { background: radial-gradient(120% 110% at 0% 20%, #9ad6df 0%, #5fa9b8 45%, #2f6f80 100%); }
+  .devices[data-stage="bulbs"] .laptop { filter: drop-shadow(0 18px 16px rgba(10,40,50,.45)); }
+  .devices[data-stage="bulbs"]::before { right: 0; top: 0; width: 18%; height: 70%; background:
+      radial-gradient(circle 9px at 30% 30%, #fff3c4 0 3px, #ffb347 5px, rgba(255,170,70,.0) 9px),
+      radial-gradient(circle 9px at 62% 52%, #fff3c4 0 3px, #ffb347 5px, rgba(255,170,70,.0) 9px),
+      radial-gradient(circle 9px at 85% 40%, #fff3c4 0 3px, #ffb347 5px, rgba(255,170,70,.0) 9px),
+      radial-gradient(circle 16px at 30% 31%, rgba(220,240,245,.35) 0 14px, transparent 15px),
+      radial-gradient(circle 16px at 62% 53%, rgba(220,240,245,.35) 0 14px, transparent 15px),
+      radial-gradient(circle 16px at 85% 41%, rgba(220,240,245,.35) 0 14px, transparent 15px),
+      radial-gradient(circle 60px at 62% 48%, rgba(255,180,90,.35), transparent 70%),
+      linear-gradient(#1a1c20, #1a1c20) 30% 0 / 1px 26% no-repeat,
+      linear-gradient(#1a1c20, #1a1c20) 62% 0 / 1px 48% no-repeat,
+      linear-gradient(#1a1c20, #1a1c20) 85% 0 / 1px 36% no-repeat; }
+
+  /* mint: 왼쪽 위가 밝은 민트 벽, 오른쪽 아래 각진 받침대와 빨간 화병 */
+  .devices[data-stage="mint"] { background: radial-gradient(120% 120% at 0% 0%, #a8ddd3 0%, #6fb6aa 45%, #3f8a80 100%); }
+  .devices[data-stage="mint"] .laptop { filter: drop-shadow(0 18px 16px rgba(15,50,45,.4)); }
+  .devices[data-stage="mint"]::before { right: 0; bottom: 0; width: 19%; height: 34%; background: linear-gradient(#3b8178, #2c655e); box-shadow: inset 0 10px 0 #58a296, -8px 0 18px rgba(15,50,45,.3); }
+  .devices[data-stage="mint"]::after { right: 6%; bottom: 31%; width: 22px; height: 46px; border-radius: 7px 7px 5px 5px;
+    background: linear-gradient(90deg, #6e0d10, #c9302c 38%, #e5574f 48%, #8f1516 100%); box-shadow: 6px 4px 10px rgba(15,50,45,.35); }
+
+  /* white: 창살 그림자가 비스듬히 지는 흰 방, 오른쪽 회색 화병과 노란 꽃 */
+  .devices[data-stage="white"] { background:
+      repeating-linear-gradient(118deg, rgba(255,255,255,0) 0 46px, rgba(160,170,185,.16) 46px 62px),
+      linear-gradient(transparent 76%, #f4f6f9 76%, #e9edf2 100%),
+      linear-gradient(110deg, #ffffff 0%, #eef1f5 55%, #dfe4ea 100%); }
+  .devices[data-stage="white"] .laptop { filter: drop-shadow(8px 16px 14px rgba(60,70,90,.25)); }
+  .devices[data-stage="white"]::before { right: 3%; bottom: 8%; width: 9%; height: 26%; border-radius: 45% 45% 30% 30% / 40% 40% 22% 22%;
+    background: linear-gradient(90deg, #b6bcc5, #d9dde3 40%, #c2c8d0 100%); box-shadow: 8px 6px 14px rgba(60,70,90,.2); }
+  .devices[data-stage="white"]::after { right: 0; top: 12%; width: 16%; height: 46%; background:
+      radial-gradient(circle 5px at 20% 70%, #f7c500 0 4px, transparent 5px), radial-gradient(circle 5px at 38% 52%, #f9cf10 0 4px, transparent 5px),
+      radial-gradient(circle 4px at 55% 38%, #f7c500 0 3px, transparent 4px), radial-gradient(circle 5px at 70% 22%, #ffd61f 0 4px, transparent 5px),
+      radial-gradient(circle 4px at 30% 30%, #ffd61f 0 3px, transparent 4px), radial-gradient(circle 5px at 82% 48%, #f7c500 0 4px, transparent 5px),
+      radial-gradient(circle 4px at 48% 66%, #ffd61f 0 3px, transparent 4px), radial-gradient(circle 4px at 66% 80%, #f9cf10 0 3px, transparent 4px),
+      linear-gradient(62deg, transparent 49%, #556b2f 49% 51%, transparent 51%), linear-gradient(118deg, transparent 49%, #556b2f 49% 51%, transparent 51%); }
+
+  /* aqua: 비스듬한 빛줄기가 드는 청록 벽, 밝은 타일 바닥, 오른쪽 노란 화병 */
+  .devices[data-stage="aqua"] { background:
+      repeating-linear-gradient(130deg, rgba(255,255,255,0) 0 40px, rgba(235,255,230,.28) 40px 64px),
+      linear-gradient(90deg, rgba(255,255,255,.35) 0 1px, transparent 1px) 0 76% / 48px 100% repeat-x,
+      linear-gradient(transparent 76%, #d8eef2 76%, #b9dde4 100%),
+      linear-gradient(115deg, #7fcbd8 0%, #4fa8b9 60%, #3b8fa1 100%); }
+  .devices[data-stage="aqua"] .laptop { filter: drop-shadow(8px 16px 14px rgba(20,60,70,.35)); }
+  .devices[data-stage="aqua"]::before { right: 5%; bottom: 7%; width: 7%; height: 22%; border-radius: 40% 40% 30% 30% / 30% 30% 22% 22%;
+    background: linear-gradient(90deg, #b88a00, #f2c31b 40%, #ffe15a 50%, #c99a05 100%); box-shadow: 8px 6px 12px rgba(20,60,70,.3); }
+  .devices[data-stage="aqua"]::after { right: 1%; bottom: 28%; width: 16%; height: 20%; background:
+      radial-gradient(ellipse 30px 6px at 30% 60%, #2f7d32 0 70%, transparent 72%), radial-gradient(ellipse 28px 5px at 70% 40%, #388e3c 0 70%, transparent 72%),
+      radial-gradient(ellipse 24px 5px at 55% 75%, #2e7031 0 70%, transparent 72%); }
+
+  /* lemon: 강한 그림자가 지는 노란 벽, 오른쪽 흰 화분과 짙은 초록 잎 */
+  .devices[data-stage="lemon"] { background: linear-gradient(transparent 76%, #f2c400 76%, #e9b800 100%), linear-gradient(120deg, #ffe34a 0%, #fbd21c 55%, #f0c000 100%); }
+  .devices[data-stage="lemon"] .laptop { filter: drop-shadow(14px 18px 10px rgba(120,90,0,.35)); }
+  .devices[data-stage="lemon"]::before { right: 4%; bottom: 7%; width: 9%; height: 17%; border-radius: 3px 3px 8px 8px;
+    background: linear-gradient(90deg, #e8e8e8, #ffffff 45%, #dcdcdc 100%); box-shadow: 14px 8px 8px rgba(120,90,0,.35); }
+  .devices[data-stage="lemon"]::after { right: 1%; bottom: 23%; width: 16%; height: 28%; background:
+      radial-gradient(ellipse 14px 22px at 30% 55%, #1f4a2a 0 70%, transparent 72%), radial-gradient(ellipse 16px 24px at 62% 35%, #24563a 0 70%, transparent 72%),
+      radial-gradient(ellipse 13px 20px at 78% 65%, #1b4226 0 70%, transparent 72%), radial-gradient(ellipse 12px 19px at 46% 78%, #2a5e3b 0 70%, transparent 72%); }
   /* 자판: SVG로 그린 실제 배열(기능 키·숫자·Q·A·Z·스페이스 6줄, 넓은 키와 방향키). 본체를 두껍게 하고 터치패드를 자판 아래에 둔다 */
   .laptop .base { height: 42px; clip-path: polygon(6% 0, 94% 0, 100% 80%, 100% 100%, 0 100%, 0 80%);
     background: radial-gradient(ellipse 6% 26% at 50% 100%, #b4bcc7 0 60%, transparent 64%), linear-gradient(#eef1f5 0, #d6dbe2 79%, #aeb6c2 80%, #dde1e7 90%, #c2c9d3 100%); }
@@ -586,7 +681,7 @@
 </template>
 <template id="tpl-edu">
   <div class="hero-bg"><section class="wrap top">
-    <div class="devices">
+    <div class="devices" data-stage="mint">
       <div class="laptop"><div class="screen"><div class="shot photo-fill">수업 사진<img src="img/photo/edu.jpg" alt="학원장들이 노트북으로 앱을 만드는 수업 장면"></div></div><div class="base"></div></div>
       <div class="phone"><div class="shot photo-fill">수강생 서비스<img src="img/photo/step-make.jpg" alt="노트북·휴대폰·앱 스케치 노트가 놓인 책상" style="object-position:70% center"></div></div>
     </div>
@@ -732,6 +827,8 @@ function visSync() {
 // 서비스 데이터가 오면 슬라이드를 덧붙인다. 캡처가 없으면 남색 바탕만 남는다
 // 데모를 실제로 조작하는 장면을 녹화한 영상이 있는 서비스(img/video/<id>.mp4)
 var VIS_VIDEO = { 'S-001': 1, 'S-002': 1 };
+// 상세 화면 기기 무대: night · sage · navy · bulbs · mint · white · aqua · lemon 가운데 서비스마다 하나
+var STAGE = { 'S-001': 'sage', 'S-002': 'night' };
 function renderVisual(data) {
   var t = document.getElementById('vis-track');
   if (!t || !data.services.length) return;
@@ -1105,7 +1202,7 @@ function renderDetail(s, data) {
 
   document.getElementById('app').innerHTML =
     '<div class="hero-bg"><section class="wrap top">' +
-      '<div class="devices"><div class="laptop"><div class="screen">' + (VIS_VIDEO[s.id] && !matchMedia('(prefers-reduced-motion: reduce)').matches ? '<video muted loop playsinline autoplay preload="metadata" poster="img/video/' + encodeURIComponent(s.id) + '-poster.jpg"><source src="img/video/' + encodeURIComponent(s.id) + '.mp4" type="video/mp4"></video>' : shot(s, '', '화면 준비 중')) + '</div><div class="base"></div></div>' +
+      '<div class="devices" data-stage="' + (STAGE[s.id] || 'night') + '"><div class="laptop"><div class="screen">' + (VIS_VIDEO[s.id] && !matchMedia('(prefers-reduced-motion: reduce)').matches ? '<video muted loop playsinline autoplay preload="metadata" poster="img/video/' + encodeURIComponent(s.id) + '-poster.jpg"><source src="img/video/' + encodeURIComponent(s.id) + '.mp4" type="video/mp4"></video>' : shot(s, '', '화면 준비 중')) + '</div><div class="base"></div></div>' +
       '<div class="phone">' + shot(s, '-m', '모바일') + '</div></div>' +
       '<div class="status"><a class="p" style="margin:0" href="./">← 서비스 목록</a>' +
         '<div class="eyebrow" style="margin-top:12px">SERVICE ' + esc(s.id) + '</div>' +
