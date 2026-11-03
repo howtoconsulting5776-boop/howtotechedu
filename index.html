@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>하우투테크에듀</title>
+<link rel="icon" href="img/logo-hta.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   /* 디자인 = 06. 와이어프레임 (v0.2 디자인): 흰 바탕·코발트 블루·기기 목업 / 번호 카드 / 남색 정보 구획 */
-  :root { --white:#fff; --paper:#f5f7fb; --line:#e3e8f0; --blue:#1a2744; --blue-soft:#e9edf5; --navy:#1b2a4a; --ink:#1a1f2b; --ink-soft:#667085; --shot:#dfe5ef; --shot-ink:#8a96aa; }
+  :root { --white:#f5f4f0; --pearl-hi:#f8f7f4; --pearl-lo:#f3f2ee; --gold:#c9a24c; --paper:#f2f1ec; --line:#e3e8f0; --blue:#1a2744; --blue-soft:#efeee8; --navy:#1b2a4a; --ink:#1a1f2b; --ink-soft:#667085; --shot:#dfe5ef; --shot-ink:#8a96aa; }
   * { box-sizing: border-box; margin: 0; }
   body { background: var(--white); font-family: "Pretendard", "Malgun Gothic", sans-serif; color: var(--ink); }
   a { color: inherit; text-decoration: none; }
@@ -51,12 +52,12 @@
   .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
-  .step { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid var(--line); }
+  .step { background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid var(--line); }
   .step b { display: inline-flex; width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; align-items: center; justify-content: center; }
   .step p { font-size: 15px; margin-top: 12px; line-height: 1.6; }
   .banner { background: var(--blue); color: #fff; border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
   .banner .p { color: #dbe3ff; }
-  .banner .btn { background: #fff; color: var(--blue); margin: 0; white-space: nowrap; }
+  .banner .btn { background: var(--white); color: var(--blue); margin: 0; white-space: nowrap; }
 
   .info { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 22px; border-top: 2px solid var(--navy); }
   .info > div { padding: 22px 18px; border-right: 1px solid var(--line); }
@@ -72,7 +73,7 @@
   .soon { border: 1.5px dashed #b9c4d8; border-radius: 12px; padding: 28px; text-align: center; color: var(--ink-soft); font-size: 15px; margin-top: 18px; }
   /* 서비스 상세·교육 화면: 예스펀딩 구조(왼쪽 대표 화면 + 오른쪽 상황 상자 → 탭 → 고정 하단 막대) */
   .top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
-  .status { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 26px; min-width: 0; }
+  .status { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 26px; min-width: 0; }
   .status .h1 { font-size: 30px; }
   .status .btn { margin-top: 16px; }
   .facts { display: grid; grid-template-columns: 92px 1fr; gap: 10px 14px; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; }
@@ -80,7 +81,7 @@
   .facts dd { margin: 0; font-weight: 600; min-width: 0; }
   .facts .tags span { margin: 0 6px 0 0; padding: 3px 10px; }
   .big-stat { font-size: 26px; font-weight: 800; color: var(--blue); }
-  .tabbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: #fff; border-bottom: 1px solid var(--line); }
+  .tabbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--white); border-bottom: 1px solid var(--line); }
   .tabbar .wrap { display: flex; gap: 4px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); overflow-x: auto; }
   .tabbar button { font: inherit; font-size: 15px; background: none; border: 0; border-bottom: 3px solid transparent; padding: 14px 12px 11px; color: var(--ink-soft); cursor: pointer; white-space: nowrap; }
   .tabbar button[aria-selected="true"] { color: var(--ink); border-color: var(--blue); font-weight: 700; }
@@ -92,7 +93,7 @@
   .notes { margin: 14px 0 0; padding-left: 20px; }
   .notes li { font-size: 15px; line-height: 1.75; color: var(--ink); margin-top: 6px; }
   .notes a { color: var(--blue); text-decoration: underline; }
-  .bar { position: sticky; bottom: 0; z-index: 6; background: #fff; border-top: 1px solid var(--line); display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  .bar { position: sticky; bottom: 0; z-index: 6; background: var(--white); border-top: 1px solid var(--line); display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
     padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
   .bar .btn { margin: 0; }
   .bar button.btn { font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
@@ -135,7 +136,7 @@
 .vis-bar { flex: 1; height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
 .vis-bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .3s; }
 .vis-num { font-size: 13px; font-weight: 700; color: var(--ink-soft); min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
-.vis-ctl button { font: inherit; font-size: 15px; cursor: pointer; background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; min-width: 40px; height: 40px; padding: 0 12px; }
+.vis-ctl button { font: inherit; font-size: 15px; cursor: pointer; background: var(--white); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; min-width: 40px; height: 40px; padding: 0 12px; }
 .vis-ctl button:hover { border-color: var(--blue); color: var(--blue); }
 .vis-ctl .vis-pause { font-size: 13px; font-weight: 700; }
 @media (prefers-reduced-motion: reduce) { .vis-track { scroll-behavior: auto; } .vis-bar i { transition: none; } }
@@ -178,7 +179,7 @@
   .band-c1 h3 { font-size: 30px; }
   .band-c1 p { color: #c9d2e3; font-size: 16px; }
   .band-c1 .band-tag { color: #a9bcff; }
-  .band-c2 { grid-column: 6 / 10; background: #fff; border: 1px solid var(--line); }
+  .band-c2 { grid-column: 6 / 10; background: var(--white); border: 1px solid var(--line); }
   .band-c2 .band-num { color: var(--blue); }
   .band-c2 p { color: var(--ink-soft); }
   .band-c2 .band-tag { color: var(--blue); }
@@ -200,7 +201,7 @@
   .band-member .band-lead { font-size: 16px; color: #c9d2e3; line-height: 1.7; margin-top: 12px; }
   .band-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
   .band-actions .btn { margin: 0; }
-  .band-actions .btn.band-fill { background: #fff; color: var(--navy); }
+  .band-actions .btn.band-fill { background: var(--white); color: var(--navy); }
   .band-actions .btn.band-line { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.6); padding: 10.5px 20.5px; }
   .band-actions .btn:hover { opacity: .88; }
   .band-member a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
@@ -427,6 +428,11 @@
   /* 헤더 「교육 관심 등록」: 다크 네이비 */
   .hd-cta { background: linear-gradient(180deg, #1d2b4d, #0f1830); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 6px 14px -8px rgba(10,20,45,.6); letter-spacing: .01em; }
   .hd-cta:hover { background: linear-gradient(180deg, #26375f, #15203d); }
+  /* 메인 색 세 가지(2026-11-04): 다크 네이비 · 우유니 화이트(진주 흰색, 제네시스 색을 화면용으로 근사) · 로열 골드. 넓은 흰 면에는 옅은 진주 광택을 준다 */
+  .status, .case-card, .hd { background: linear-gradient(180deg, var(--pearl-hi), var(--pearl-lo)); }
+  .hd-logo { display: inline-flex; align-items: center; gap: 10px; }
+  .hd-logo img { height: 30px; width: auto; display: block; }
+  @media (max-width: 720px) { .hd-logo img { height: 24px; } }
   /* 채워진 단추와 상자: 다크 네이비 그라데이션(2026-11-04). 어두운 바탕 위에서도 보이도록 가는 밝은 테두리를 둔다 */
   .btn:not(.ghost):not(.band-line):not(.band-fill), .bar .btn { background: linear-gradient(180deg, #24345c, #121c35); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 0 0 1px rgba(255,255,255,.08), 0 8px 18px -10px rgba(10,20,45,.6); }
   .btn:not(.ghost):not(.band-line):not(.band-fill):hover { background: linear-gradient(180deg, #2d3f6b, #182442); }
@@ -446,7 +452,7 @@
       <a href="?page=edu" id="menu-edu">교육</a>
       <a href="./#how" id="menu-guide">이용 안내</a>
     </nav>
-    <a class="hd-logo" href="./">하우투테크에듀</a>
+    <a class="hd-logo" href="./"><img src="img/logo-hta.svg" alt="" width="62" height="33">하우투테크에듀</a>
     <a class="hd-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
   </div>
 </header>
