@@ -636,11 +636,21 @@ function visInfo() {
 function visGo(dir) {
   var v = visInfo(), to = (v.i + dir + v.n) % v.n;
   v.t.scrollTo({ left: to * v.w });
+  // 작동 영상이 있는 슬라이드로 넘어가면 영상을 처음부터 다시 튼다
+  var vid = v.t.children[to].querySelector('video.vis-demo');
+  if (vid) { vid.currentTime = 0; vid.play().catch(function () {}); }
+  return to;
 }
-function visPlay() {
-  clearInterval(visTimer);
+// 지금 슬라이드에 머무는 시간: 작동 영상이 있으면 영상 길이만큼, 없으면 6초
+// 넘어가는 중에는 스크롤 위치가 아직 이전 슬라이드라서, 넘어갈 슬라이드 번호(i)를 받아 계산한다
+function visDelay(i) {
+  var v = visInfo(), vid = v.t.children[i == null ? v.i : i].querySelector('video.vis-demo');
+  return vid && vid.duration > 6 ? vid.duration * 1000 : 6000;
+}
+function visPlay(i) {
+  clearTimeout(visTimer);
   if (visPaused || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  visTimer = setInterval(function () { if (document.getElementById('vis-track')) visGo(1); else clearInterval(visTimer); }, 6000);
+  visTimer = setTimeout(function () { if (!document.getElementById('vis-track')) return; visPlay(visGo(1)); }, visDelay(i));
 }
 // 홈을 그린 직후 한 번 부른다. 첫 슬라이드는 이미 HTML에 있고, 번호·단추는 서비스 슬라이드가 붙은 뒤에 나온다
 function initVisual() {
@@ -651,7 +661,7 @@ function initVisual() {
   document.getElementById('vis-pause').onclick = function () { visPaused = !visPaused; visSync(); };
   // 마우스를 올려도 계속 넘긴다(2026-11-03). 키보드로 들어오면 멈췄다가 나가면 다시 넘긴다
   box.addEventListener('focusin', function () { clearInterval(visTimer); });
-  box.addEventListener('focusout', visPlay);
+  box.addEventListener('focusout', function () { visPlay(); });
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { visPaused = true; document.getElementById('vis-pause').hidden = true; }
 }
 function visSync() {
@@ -661,13 +671,17 @@ function visSync() {
   visPlay();
 }
 // 서비스 데이터가 오면 슬라이드를 덧붙인다. 캡처가 없으면 남색 바탕만 남는다
+// 데모를 실제로 조작하는 장면을 녹화한 영상이 있는 서비스(img/video/<id>.mp4)
+var VIS_VIDEO = { 'S-001': 1, 'S-002': 1 };
 function renderVisual(data) {
   var t = document.getElementById('vis-track');
   if (!t || !data.services.length) return;
   var total = data.services.length + 1;
   t.insertAdjacentHTML('beforeend', data.services.map(function (s, i) {
     return '<div class="vis-slide vis-svc" role="group" aria-roledescription="slide" aria-label="' + (i + 2) + ' / ' + total + '">' +
-      '<img class="vis-bg" src="img/' + encodeURIComponent(s.id) + '.jpg" alt="" onerror="this.remove()">' +
+      (VIS_VIDEO[s.id] && !matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? '<video class="vis-bg vis-demo" muted loop playsinline autoplay preload="metadata" poster="img/video/' + s.id + '-poster.jpg" aria-hidden="true"><source src="img/video/' + s.id + '.mp4" type="video/mp4"></video>'
+        : '<img class="vis-bg" src="img/' + encodeURIComponent(s.id) + '.jpg" alt="" onerror="this.remove()">') +
       '<div class="vis-in"><div class="vis-acad">' + esc(s.academy) + '</div>' +
       '<div class="vis-title">' + esc(s.name) + '</div><div class="vis-line">' + esc(s.oneLiner) + '</div>' +
       '<a class="vis-more" href="?id=' + encodeURIComponent(s.id) + '">서비스 자세히 보기</a></div></div>';
