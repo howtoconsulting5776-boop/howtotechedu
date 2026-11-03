@@ -31,7 +31,9 @@
   .laptop .screen { border: 6px solid #11151d; border-radius: 10px 10px 0 0; height: 220px; overflow: hidden; background: #11151d; box-shadow: 0 28px 50px -22px rgba(20,32,70,.45); }
   .laptop .base { position: relative; height: 9px; background: linear-gradient(#eef1f6, #c3cad6); border-radius: 0 0 10px 10px / 0 0 7px 7px; margin: 0 -5%; box-shadow: 0 10px 18px -10px rgba(20,32,70,.4); }
   .laptop .base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 3px; transform: translateX(-50%); background: #aab3c2; border-radius: 0 0 4px 4px; }
-  .phone { position: absolute; left: 0; top: 0; width: 36%; height: 330px; border: 5px solid #11151d; border-radius: 24px; overflow: hidden; background: #11151d; box-shadow: 0 26px 44px -18px rgba(20,32,70,.5); z-index: 1; transform: rotate(-7deg); transform-origin: 50% 100%; top: 8px; left: 6%; }
+  .phone { position: absolute; left: 7%; top: 6px; width: 34%; height: 330px; border: 5px solid #0b0d12; border-radius: 34px; overflow: hidden; background: #0b0d12; z-index: 1; transform: perspective(1100px) rotateY(22deg) rotateX(6deg) rotate(-8deg); transform-origin: 50% 60%; box-shadow: -1px 1px 0 #4a505b, -2px 2px 0 #8a919d, -3px 3px 0 #c9ced6, -4px 4px 0 #9aa1ac, -5px 5px 0 #5b616c, -6px 6px 0 #2c3038, -20px 34px 44px -14px rgba(20,32,70,.45); }
+  /* 화면 위쪽 가운데 알약 모양 카메라 구멍 */
+  .phone::before { content: ""; position: absolute; top: 9px; left: 50%; width: 30%; height: 15px; transform: translateX(-50%); background: #0b0d12; border-radius: 10px; z-index: 2; }
   .phone .shot, .laptop .shot { height: 100%; }
 
 
