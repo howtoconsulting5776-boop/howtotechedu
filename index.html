@@ -681,9 +681,9 @@ function initVisual() {
   document.getElementById('vis-prev').onclick = function () { visPaused = true; visGo(-1); visSync(); };
   document.getElementById('vis-next').onclick = function () { visPaused = true; visGo(1); visSync(); };
   document.getElementById('vis-pause').onclick = function () { visPaused = !visPaused; visSync(); };
-  box.addEventListener('mouseenter', function () { clearInterval(visTimer); });
-  box.addEventListener('mouseleave', visPlay);
+  // 마우스를 올려도 계속 넘긴다(2026-11-03). 키보드로 들어오면 멈췄다가 나가면 다시 넘긴다
   box.addEventListener('focusin', function () { clearInterval(visTimer); });
+  box.addEventListener('focusout', visPlay);
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { visPaused = true; document.getElementById('vis-pause').hidden = true; }
 }
 function visSync() {
