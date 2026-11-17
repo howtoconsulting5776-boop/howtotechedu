@@ -460,6 +460,11 @@
   .od-teacher { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center; margin-top: 18px; }
   .od-teacher img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--line); }
   @media (max-width: 720px) { .od-teacher { grid-template-columns: 1fr; } .od-banner { flex-direction: column; align-items: flex-start; } }
+  /* 헤더 로고(2026-11-17): HTA 마크 + 하우투경영컨설팅 한글·영문 두 줄 워드마크 */
+  .hd-word { display: inline-flex; flex-direction: column; line-height: 1; }
+  .hd-word b { font-size: 20px; font-weight: 800; letter-spacing: -.02em; color: var(--blue); }
+  .hd-word small { margin-top: 4px; font-size: 8.5px; font-weight: 600; letter-spacing: .2em; color: var(--ink-soft); }
+  @media (max-width: 720px) { .hd-word b { font-size: 17px; } .hd-word small { font-size: 7px; letter-spacing: .16em; } }
 </style>
 </head>
 <body>
@@ -471,7 +476,7 @@
       <a href="?page=edu" id="menu-edu">교육</a>
       <a href="./#how" id="menu-guide">이용 안내</a>
     </nav>
-    <a class="hd-logo" href="./"><img src="img/logo-hta.svg" alt="" width="62" height="33">하우투테크에듀</a>
+    <a class="hd-logo" href="./" aria-label="하우투경영컨설팅 홈"><img src="img/logo-hta.svg" alt="" width="62" height="33"><span class="hd-word"><b>하우투경영컨설팅</b><small>HOWTO MANAGEMENT CONSULTING</small></span></a>
     <a class="hd-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
   </div>
 </header>
