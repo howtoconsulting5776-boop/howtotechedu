@@ -317,6 +317,36 @@
   /* 버튼 테두리선은 투명하게 한다(2026-11-03) */
 .btn, .vis-ctl button, .hd-cta { border-color: transparent !important; }
 
+  /* ===== 교육 목록(?page=edu) ===== */
+  .edu-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .edu-filter button { font: inherit; font-size: 14px; font-weight: 600; padding: 8px 14px; border: 1px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; }
+  .edu-filter button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .edu-filter button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .edu-count { margin-top: 22px; font-size: 14px; color: var(--ink-soft); }
+  .course-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 12px; }
+  .course-card { display: block; min-width: 0; border: 1px solid var(--line); background: linear-gradient(180deg, var(--pearl-hi), var(--pearl-lo)); color: inherit; text-decoration: none; }
+  .course-card[hidden] { display: none; }
+  .course-card:hover h3 { color: var(--blue); text-decoration: underline; }
+  .course-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .course-thumb { position: relative; }
+  .course-thumb img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .course-state { position: absolute; left: 12px; top: 12px; padding: 4px 10px; font-size: 13px; font-weight: 700; background: var(--navy); color: #fff; }
+  .course-state.off { background: #5b6478; }
+  .course-body { padding: 18px 20px 22px; }
+  .course-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .course-tags span { font-size: 12px; font-weight: 700; padding: 3px 8px; border: 1px solid var(--line); color: var(--blue); background: var(--white); }
+  .course-body h3 { margin-top: 12px; font-size: 19px; line-height: 1.4; }
+  .course-body p { margin-top: 6px; font-size: 14px; line-height: 1.65; color: var(--ink-soft); }
+  .course-meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 14px 0 0; font-size: 13px; }
+  .course-meta dt { color: var(--ink-soft); }
+  .course-meta dd { margin: 0; }
+  .edu-topics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 20px; }
+  .edu-topics h3 { font-size: 15px; border-top: 2px solid var(--navy); padding-top: 12px; }
+  .edu-topics ul { list-style: none; padding: 0; margin: 10px 0 0; }
+  .edu-topics li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .edu-topics li b { font-size: 12px; color: var(--blue); margin-left: 6px; }
+  @media (max-width: 960px) { .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .edu-topics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .course-grid, .edu-topics { grid-template-columns: minmax(0, 1fr); } }
   .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
   .case-card { min-width: 0; border: 1px solid var(--line); border-radius: 0; background: var(--white); }
   .case-card > img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
@@ -549,7 +579,7 @@
       <p class="band-lead">AX 바이블 과정을 마친 학원장·교육자를 위한 후속 교육입니다. 8회 오프라인 수업과 온라인 지원으로 내 학원용 서비스 1개를 완성해 이 사이트에 전시합니다.</p>
       <div class="band-actions">
         <a class="btn band-fill" href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a>
-        <a class="btn band-line" href="?page=edu">교육 알아보기</a>
+        <a class="btn band-line" href="?page=builder">교육 알아보기</a>
       </div>
     </div>
     <ul class="band-perks">
@@ -643,7 +673,9 @@
       <div class="map-col">
         <div class="eyebrow">EDUCATION</div><h2 class="map-title">교육</h2>
         <ul class="map-list">
-          <li><a href="?page=edu">교육 소개</a></li>
+          <li><a href="?page=edu">교육 과정 전체</a></li>
+          <li><a href="?page=oneday">주간 AI 라이브 · AI로 만드는 학원 광고</a></li>
+          <li><a href="?page=builder">AI 빌더 과정</a></li>
           <li><a href="?page=oneday">원데이 클래스 · AI로 만드는 학원 광고</a></li>
           <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScNNjezN1Bs8Le3zog0G4guSq5jYUuqq375iyA3OaSQ9KT_-A/viewform" target="_blank" rel="noopener">교육 관심 등록</a></li>
         </ul>
@@ -659,6 +691,61 @@
   </section>
 </template>
 <template id="tpl-edu">
+  <section class="wrap">
+    <div class="eyebrow">EDUCATION</div>
+    <div class="h1">교육 과정</div>
+    <div class="p">학원 운영과 창업에 필요한 교육을 한곳에 모았습니다. 무료 주간 AI 라이브로 먼저 맛보고, 희망이 모인 주제는 단과로 엽니다.</div>
+    <div class="edu-filter" role="group" aria-label="분야로 거르기" data-filter="field">
+      <button type="button" data-v="" aria-pressed="true">전체 분야</button>
+      <button type="button" data-v="content" aria-pressed="false">AI 콘텐츠·마케팅</button>
+      <button type="button" data-v="program" aria-pressed="false">AI 교육 프로그램</button>
+      <button type="button" data-v="manage" aria-pressed="false">학원 경영</button>
+      <button type="button" data-v="people" aria-pressed="false">사람과 조직</button>
+    </div>
+    <div class="edu-filter" role="group" aria-label="형식으로 거르기" data-filter="type">
+      <button type="button" data-v="" aria-pressed="true">전체 형식</button>
+      <button type="button" data-v="live" aria-pressed="false">주간 AI 라이브 · 무료</button>
+      <button type="button" data-v="course" aria-pressed="false">단과·과정</button>
+    </div>
+    <p class="edu-count" id="edu-count" aria-live="polite"></p>
+    <!-- 강의를 더할 때: course-card 하나를 복사해 href·data-field·data-type·글을 고친다.
+         data-field = content|program|manage|people, data-type = live|course.
+         상태 글은 data-close(신청 마감)·data-end(수업 끝) 시각으로 바뀐다. 두 값이 없으면 적힌 글 그대로 둔다. -->
+    <div class="course-grid" id="course-grid">
+      <a class="course-card" href="?page=oneday" data-field="content" data-type="live">
+        <div class="course-thumb"><img src="img/oneday/ad-h-poster.jpg" alt="" loading="lazy"><span class="course-state" data-close="2026-11-21T18:00:00+09:00" data-end="2026-11-22T17:00:00+09:00">모집 중</span></div>
+        <div class="course-body">
+          <div class="course-tags"><span>주간 AI 라이브 1회</span><span>무료</span><span>ZOOM 온라인</span></div>
+          <h3>AI로 만드는 학원 광고</h3>
+          <p>Midjourney와 Higgsfield로 우리 학원 광고 영상을 완성합니다.</p>
+          <dl class="course-meta"><dt>일시</dt><dd>11월 22일(일) 오후 3시~5시</dd><dt>분량</dt><dd>1회 · 2시간</dd><dt>대상</dt><dd>학원장·강사</dd></dl>
+        </div>
+      </a>
+      <a class="course-card" href="?page=builder" data-field="program" data-type="course">
+        <div class="course-thumb"><img src="img/photo/edu.jpg" alt="" loading="lazy"><span class="course-state">관심 등록 중</span></div>
+        <div class="course-body">
+          <div class="course-tags"><span>8회 과정</span><span>오프라인</span></div>
+          <h3>AI 빌더 과정 · 내 학원용 서비스 만들기</h3>
+          <p>8회 수업으로 내 학원용 웹·앱 서비스 1개를 완성하고 이 사이트에 전시합니다.</p>
+          <dl class="course-meta"><dt>개강</dt><dd>확정 전</dd><dt>분량</dt><dd>8회 · 회당 3시간</dd><dt>대상</dt><dd>AX 바이블 과정을 마친 학원장·교육자</dd></dl>
+        </div>
+      </a>
+    </div>
+    <div class="soon" id="edu-empty" hidden>이 조건에 맞는 강의는 아직 열리지 않았습니다. 아래 주제 가운데 희망이 모인 것부터 엽니다.</div>
+  </section>
+  <section class="wrap">
+    <div class="eyebrow">NEXT</div>
+    <div class="h2">앞으로 열 주간 AI 라이브 주제</div>
+    <div class="p">한 회에 한 주제씩 무료로 엽니다. 수업 뒤 설문에서 희망을 받아, 희망이 모인 주제는 단과로 이어 갑니다.</div>
+    <div class="edu-topics">
+      <div><h3>AI 콘텐츠·마케팅</h3><ul><li>AI 마케팅</li><li>AI 영상<b>1회 진행</b></li><li>AI 이미지</li></ul></div>
+      <div><h3>AI 교육 프로그램</h3><ul><li>학원 관리 프로그램</li><li>학습 프로그램</li><li>학습 분석</li><li>진로진학</li></ul></div>
+      <div><h3>학원 경영</h3><ul><li>전략경영</li><li>AI 경영</li><li>회계·재무</li></ul></div>
+      <div><h3>사람과 조직</h3><ul><li>인사관리</li><li>조직관리</li><li>리더십</li></ul></div>
+    </div>
+  </section>
+</template>
+<template id="tpl-builder">
   <div class="hero-bg" data-stage style="background-image:url(img/stage/st14-lotus.jpg)"><section class="wrap top">
     <div class="devices">
       <div class="laptop"><div class="screen"><div class="shot photo-fill">수업 사진<img src="img/photo/edu.jpg" alt="학원장들이 노트북으로 앱을 만드는 수업 장면"></div></div><div class="base"></div></div>
@@ -1298,10 +1385,38 @@ function renderDetail(s, data) {
 
 var q = new URLSearchParams(location.search);
 var page = q.get('page'), id = q.get('id');
-var cur = document.getElementById(page === 'edu' || page === 'oneday' ? 'menu-edu' : page === 'sitemap' ? '' : 'menu-services');
+var cur = document.getElementById(page === 'edu' || page === 'oneday' || page === 'builder' ? 'menu-edu' : page === 'sitemap' ? '' : 'menu-services');
 if (cur) { cur.className = 'on'; cur.setAttribute('aria-current', 'page'); }
 if (page === 'edu') {
   show('tpl-edu');
+  document.title = '교육 과정 | 하우투테크에듀';
+  // 신청 마감·수업 끝 시각이 지나면 상태 글을 바꾼다
+  document.querySelectorAll('.course-state[data-end]').forEach(function (el) {
+    var now = Date.now();
+    if (now > Date.parse(el.dataset.end)) { el.textContent = '종료'; el.classList.add('off'); }
+    else if (now > Date.parse(el.dataset.close)) { el.textContent = '신청 마감'; el.classList.add('off'); }
+  });
+  var want = { field: '', type: '' };
+  function filterCourses() {
+    var n = 0;
+    document.querySelectorAll('.course-card').forEach(function (c) {
+      var ok = (!want.field || c.dataset.field === want.field) && (!want.type || c.dataset.type === want.type);
+      c.hidden = !ok; if (ok) n++;
+    });
+    document.getElementById('edu-count').textContent = '강의 ' + n + '개';
+    document.getElementById('edu-empty').hidden = n > 0;
+  }
+  document.querySelectorAll('.edu-filter button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = b.parentNode;
+      g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      want[g.dataset.filter] = b.dataset.v;
+      filterCourses();
+    });
+  });
+  filterCourses();
+} else if (page === 'builder') {
+  show('tpl-builder');
   // 탭 내용은 템플릿 안의 tpl-edu-intro·tpl-edu-notice에 있다
   var box = document.getElementById('edu-tabs');
   box.outerHTML = tabsHTML([['소개', document.getElementById('tpl-edu-intro').innerHTML], ['안내사항', document.getElementById('tpl-edu-notice').innerHTML]]);
