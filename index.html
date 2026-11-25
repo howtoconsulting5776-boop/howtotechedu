@@ -809,7 +809,7 @@
     </ol></div>
 </template>
 
-<!-- 단과 「AI로 만드는 학원 광고 · CEP에서 자동화까지」 상세(내용 원본: 볼트 21번 노트 v0.3). 공개 전 초안: 메뉴에 연결하지 않았고 신청 단추를 막아 두었다 -->
+<!-- 단과 「AI로 만드는 학원 광고 · 영상 제작부터 자동화까지」 상세(내용 원본: 볼트 21번 노트 v0.3). 공개 전 초안: 메뉴에 연결하지 않았고 신청 단추를 막아 두었다 -->
 <template id="tpl-course">
   <div class="draft-note">공개 전 초안입니다. 환불 규정과 신청 절차가 확정되면 신청을 엽니다.</div>
   <div class="hero-bg" data-stage style="background-image:url(img/stage/st17-tulip.jpg)"><section class="wrap top">
@@ -819,7 +819,7 @@
     </div>
     <div class="status">
       <div class="eyebrow">단과 과정 · 8주</div>
-      <div class="h1">AI로 만드는 학원 광고<br>CEP에서 자동화까지</div>
+      <div class="h1">AI로 만드는 학원 광고<br>영상 제작부터 자동화까지</div>
       <div class="p">첫 시간부터 직접 만듭니다. 학부모가 학원을 찾게 되는 순간(CEP) 하나를 정해 모션그래픽·이미지·영상으로 광고를 완성하고, 여러 채널에 올려 대시보드와 자동화로 매달 이어 가는 체계까지 8주 동안 만듭니다.</div>
       <dl class="facts">
         <dt>일정</dt><dd>12월 15일~2월 2일, 매주 화요일 오전 10시~12시 (8회)</dd>
@@ -1419,7 +1419,7 @@ if (page === 'edu') {
 } else if (page === 'course-ad') {
   show('tpl-course');
   document.getElementById('course-tabs').outerHTML = tabsHTML([['소개', document.getElementById('tpl-course-intro').innerHTML], ['수강료', document.getElementById('tpl-course-fee').innerHTML], ['안내사항', document.getElementById('tpl-course-notice').innerHTML]]);
-  document.title = 'AI로 만드는 학원 광고 · CEP에서 자동화까지 | 하우투테크에듀';
+  document.title = 'AI로 만드는 학원 광고 · 영상 제작부터 자동화까지 | 하우투테크에듀';
   // 지금 적용되는 등록 구간 하나만 머리에 보인다(구간 경계는 21번 노트 8절, 한국 시각 기준)
   var now = Date.now(), fee = document.getElementById('course-fee-now');
   if (now >= Date.parse('2026-12-12T18:00:00+09:00')) fee.textContent = '신청 마감';
