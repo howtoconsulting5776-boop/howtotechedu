@@ -166,7 +166,7 @@
       <div class="price" data-price>
         <div class="row"><span class="tier" data-tier>얼리버드 할인 1차</span></div>
         <div class="row" style="margin-top:4px"><span class="list" data-list>749,000원</span></div>
-        <div class="row"><span class="rate" data-rate>34%</span><span class="now" data-now>490,000원</span></div>
+        <div class="row"><span class="rate" data-rate>21%</span><span class="now" data-now>590,000원</span></div>
         <div class="meta" data-meta>11월 30일(월) 24시까지 신청하시면 이 금액을 적용합니다</div>
         <a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청하기</a>
       </div>
@@ -367,8 +367,8 @@
     <h2>수강료</h2>
     <p class="lead">신청서를 내신 날짜에 해당하는 수강료를 적용합니다. 해당 기간이 끝나는 날까지 입금해 주시면 됩니다. 안내해 드린 금액이 최종 결제 금액입니다.</p>
     <div class="tiers">
-      <div data-t="0"><h4>얼리버드 할인 1차</h4><div class="d">~ 11월 30일(월) 24시</div><div class="p">490,000원</div><div class="r">정가 대비 34% 할인</div><span class="s" hidden>지금 적용</span></div>
-      <div data-t="1"><h4>얼리버드 할인 2차</h4><div class="d">12월 1일(화) ~ 12월 7일(월) 24시</div><div class="p">540,000원</div><div class="r">정가 대비 27% 할인</div><span class="s" hidden>지금 적용</span></div>
+      <div data-t="0"><h4>얼리버드 할인 1차</h4><div class="d">~ 11월 30일(월) 24시</div><div class="p">590,000원</div><div class="r">정가 대비 21% 할인</div><span class="s" hidden>지금 적용</span></div>
+      <div data-t="1"><h4>얼리버드 할인 2차</h4><div class="d">12월 1일(화) ~ 12월 7일(월) 24시</div><div class="p">640,000원</div><div class="r">정가 대비 14% 할인</div><span class="s" hidden>지금 적용</span></div>
       <div data-t="2"><h4>정가</h4><div class="d">12월 8일(화) ~ 12월 14일(월) 18시</div><div class="p">749,000원</div><div class="r">&nbsp;</div><span class="s" hidden>지금 적용</span></div>
     </div>
     <ul class="notes">
@@ -418,7 +418,7 @@
 
 <div class="bar">
   <div class="wrap">
-    <div class="t">AI로 만드는 학원 광고 · 영상 제작부터 자동화까지<small data-bar>얼리버드 할인 1차 490,000원 · 11월 30일까지</small></div>
+    <div class="t">AI로 만드는 학원 광고 · 영상 제작부터 자동화까지<small data-bar>얼리버드 할인 1차 590,000원 · 11월 30일까지</small></div>
     <a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청하기</a>
   </div>
 </div>
@@ -426,8 +426,8 @@
 <script>
   // 지금 적용되는 수강료 구간(한국 시각). 볼트 21번 노트 8절과 신청서 스크립트(scripts/form_price_update.gs)와 같은 경계를 쓴다.
   var TIERS = [
-    { end:'2026-12-01T00:00:00+09:00', tier:'얼리버드 할인 1차', list:'749,000원', rate:'34%', now:'490,000원', meta:'11월 30일(월) 24시까지 신청 시 적용', bar:'얼리버드 할인 1차 490,000원 · 11월 30일까지' },
-    { end:'2026-12-08T00:00:00+09:00', tier:'얼리버드 할인 2차', list:'749,000원', rate:'27%', now:'540,000원', meta:'12월 7일(월) 24시까지 신청 시 적용', bar:'얼리버드 할인 2차 540,000원 · 12월 7일까지' },
+    { end:'2026-12-01T00:00:00+09:00', tier:'얼리버드 할인 1차', list:'749,000원', rate:'21%', now:'590,000원', meta:'11월 30일(월) 24시까지 신청 시 적용', bar:'얼리버드 할인 1차 590,000원 · 11월 30일까지' },
+    { end:'2026-12-08T00:00:00+09:00', tier:'얼리버드 할인 2차', list:'749,000원', rate:'14%', now:'640,000원', meta:'12월 7일(월) 24시까지 신청 시 적용', bar:'얼리버드 할인 2차 640,000원 · 12월 7일까지' },
     { end:'2026-12-14T18:00:00+09:00', tier:'정가', list:'', rate:'', now:'749,000원', meta:'12월 14일(월) 오후 6시 신청 마감', bar:'정가 749,000원 · 12월 14일 오후 6시 마감' }
   ];
   (function () {

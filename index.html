@@ -824,7 +824,7 @@
       <dl class="facts">
         <dt>일정</dt><dd>12월 15일~2월 2일, 매주 화요일 오전 10시~12시 (8회)</dd>
         <dt>형식</dt><dd>ZOOM 실시간 + 2주 사후 코칭</dd>
-        <dt>수강료</dt><dd id="course-fee-now">얼리버드 할인 1차 490,000원 (11/22~11/30)</dd>
+        <dt>수강료</dt><dd id="course-fee-now">얼리버드 할인 1차 590,000원 (11/22~11/30)</dd>
         <dt>대상</dt><dd>원장·강사·실장</dd>
         <dt>도구</dt><dd>생성형 AI(Claude·Gemini·ChatGPT), Midjourney·Higgsfield·Magnific·VEED Fabric·Suno 등 (별도 결제), Blender(무료), 편집 앱 하나</dd>
         <dt>강사</dt><dd>장의웅 · 가천대학교 경영대학원 에듀컨설팅 전공교수</dd>
@@ -877,8 +877,8 @@
   <div class="block"><div class="eyebrow">FEE</div><div class="h2">등록 기간별 수강료</div>
     <table class="ct">
       <tr><th>구간</th><th>신청 기간</th><th>수강료</th></tr>
-      <tr><td>얼리버드 할인 1차</td><td>11/22(일) 원데이 수업 뒤 ~ 11/30(월) 24시</td><td>490,000원</td></tr>
-      <tr><td>얼리버드 할인 2차</td><td>12/1(화) ~ 12/7(월) 24시</td><td>540,000원</td></tr>
+      <tr><td>얼리버드 할인 1차</td><td>11/22(일) 원데이 수업 뒤 ~ 11/30(월) 24시</td><td>590,000원</td></tr>
+      <tr><td>얼리버드 할인 2차</td><td>12/1(화) ~ 12/7(월) 24시</td><td>640,000원</td></tr>
       <tr><td>정가</td><td>12/8(화) ~ 12/14(월) 18시</td><td>749,000원</td></tr>
     </table>
     <ul class="notes">
@@ -1423,7 +1423,7 @@ if (page === 'edu') {
   var now = Date.now(), fee = document.getElementById('course-fee-now');
   if (now >= Date.parse('2026-12-14T18:00:00+09:00')) fee.textContent = '신청 마감';
   else if (now >= Date.parse('2026-12-08T00:00:00+09:00')) fee.textContent = '정가 749,000원 (12/8~12/14)';
-  else if (now >= Date.parse('2026-12-01T00:00:00+09:00')) fee.textContent = '얼리버드 할인 2차 540,000원 (12/1~12/7)';
+  else if (now >= Date.parse('2026-12-01T00:00:00+09:00')) fee.textContent = '얼리버드 할인 2차 640,000원 (12/1~12/7)';
 } else if (page === 'sitemap') {
   show('tpl-sitemap');
   load().then(renderSitemap, function () {
