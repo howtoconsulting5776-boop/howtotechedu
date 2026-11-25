@@ -830,7 +830,7 @@
         <dt>강사</dt><dd>장의웅 · 가천대학교 경영대학원 에듀컨설팅 전공교수</dd>
         <dt>신청 마감</dt><dd>12월 12일(토) 18:00</dd>
       </dl>
-      <span class="btn btn-off" aria-disabled="true">신청 안내 준비 중</span>
+      <a class="btn" href="ad-course.html">강의안내서 보기 · 신청</a>
     </div>
   </section></div>
   <div id="course-tabs"></div>
@@ -879,7 +879,7 @@
       <tr><th>구간</th><th>신청 기간</th><th>수강료</th></tr>
       <tr><td>얼리버드 할인 1차</td><td>11/22(일) 원데이 수업 뒤 ~ 11/30(월) 24시</td><td>490,000원</td></tr>
       <tr><td>얼리버드 할인 2차</td><td>12/1(화) ~ 12/7(월) 24시</td><td>540,000원</td></tr>
-      <tr><td>일반 등록</td><td>12/8(화) ~ 12/12(토) 18시</td><td>590,000원</td></tr>
+      <tr><td>정가</td><td>12/8(화) ~ 12/12(토) 18시</td><td>749,000원</td></tr>
     </table>
     <ul class="notes">
       <li>신청서를 제출한 날짜의 구간 수강료가 적용됩니다. 표시한 금액이 최종 금액입니다.</li>
@@ -1423,7 +1423,7 @@ if (page === 'edu') {
   // 지금 적용되는 등록 구간 하나만 머리에 보인다(구간 경계는 21번 노트 8절, 한국 시각 기준)
   var now = Date.now(), fee = document.getElementById('course-fee-now');
   if (now >= Date.parse('2026-12-12T18:00:00+09:00')) fee.textContent = '신청 마감';
-  else if (now >= Date.parse('2026-12-08T00:00:00+09:00')) fee.textContent = '일반 등록 590,000원 (12/8~12/12)';
+  else if (now >= Date.parse('2026-12-08T00:00:00+09:00')) fee.textContent = '정가 749,000원 (12/8~12/12)';
   else if (now >= Date.parse('2026-12-01T00:00:00+09:00')) fee.textContent = '얼리버드 할인 2차 540,000원 (12/1~12/7)';
 } else if (page === 'sitemap') {
   show('tpl-sitemap');
