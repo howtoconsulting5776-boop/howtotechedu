@@ -7,185 +7,229 @@
 <meta name="description" content="8주 동안 학원 광고 영상을 직접 만들고, 여러 채널에 올리고, 매달 이어 가는 체계까지 완성하는 ZOOM 실시간 단과 과정">
 <link rel="icon" href="img/logo-hta.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- 강의안내서(랜딩페이지). 내용 원본: 볼트 12. 테크에듀플랫폼 21번(과정)·22번(환불·신청서)·23번(구성) 노트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500&family=Noto+Serif+KR:wght@400;500;600&display=swap">
+<!-- 강의안내서(랜딩페이지). 내용 원본: 볼트 12. 테크에듀플랫폼 21번(과정)·22번(환불·신청서)·23번(구성) 노트.
+     디자인 기준: 여백이 넓고 색을 아낀 호텔 웹사이트 양식(영문 세리프 구역 제목 + 한글 명조 부제, 왼쪽 제목·오른쪽 내용, 모서리·그림자 없음). -->
 <style>
-  :root { --ink:#1a1f2b; --soft:#5f6878; --line:#e3e6ec; --paper:#f7f6f2; --white:#fff; --navy:#16213d; --navy2:#0f172c; --gold:#c9a24c; --gold2:#e3c57a; --red:#c8102e; }
+  :root {
+    --ink:#1c1c1c; --body:#555; --mute:#8a8580; --line:#e6e1da;
+    --white:#fff; --gray:#f8f8f8; --beige:#f8f5f0;
+    --brown:#4d393b; --dark:#312425; --tag:#93755a;
+    --serif:"Noto Serif KR","Batang",serif; --latin:"Crimson Pro","Times New Roman",serif;
+  }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:"Pretendard","Malgun Gothic",sans-serif; color:var(--ink); background:var(--white); line-height:1.6; word-break:keep-all; }
+  body { font-family:"Pretendard","Malgun Gothic",sans-serif; font-size:15px; color:var(--body); background:var(--white); line-height:1.75; letter-spacing:-0.02em; word-break:keep-all; padding-bottom:72px; }
   a { color:inherit; }
-  .wrap { max-width:1080px; margin:0 auto; padding:0 20px; }
-  section { padding:88px 0; }
-  .eyebrow { font-size:13px; font-weight:800; letter-spacing:.14em; color:var(--gold); }
-  h2 { font-size:clamp(26px,3.4vw,38px); line-height:1.3; margin-top:10px; font-weight:800; }
-  .lead { font-size:17px; color:var(--soft); margin-top:14px; }
-  .dark { background:var(--navy2); color:#eef0f5; }
-  .dark .lead { color:#b8bfcf; }
-  .paper { background:var(--paper); }
-  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--gold); color:#1a1405; font-weight:800; font-size:17px; padding:16px 28px; border-radius:12px; text-decoration:none; }
-  .btn:hover { background:var(--gold2); }
-  .btn.ghost { background:transparent; color:inherit; border:1.5px solid currentColor; }
+  b, strong { color:var(--ink); font-weight:600; }
+  .wrap { max-width:1170px; margin:0 auto; padding:0 24px; }
+  section { padding:110px 0; }
+  .gray { background:var(--gray); }
+  .beige { background:var(--beige); }
 
-  /* 고정 신청 바 */
-  .bar { position:fixed; left:0; right:0; bottom:0; z-index:50; background:rgba(15,23,44,.96); color:#fff; backdrop-filter:blur(6px); }
-  .bar .wrap { display:flex; align-items:center; gap:16px; padding-top:12px; padding-bottom:12px; }
-  .bar .t { font-weight:700; font-size:15px; flex:1; min-width:0; }
-  .bar .t small { display:block; font-weight:500; color:#b8bfcf; font-size:13px; }
-  .bar .btn { padding:12px 22px; font-size:15px; }
-  body { padding-bottom:76px; }
+  /* 구역 머리: 영문 세리프 제목 + 한글 명조 부제 */
+  .split { display:grid; grid-template-columns:270px 1fr; gap:70px; align-items:start; }
+  .split > .hd { position:sticky; top:100px; }
+  .en { font-family:var(--latin); font-size:46px; font-weight:400; line-height:1.15; color:var(--ink); letter-spacing:0; }
+  h2 { font-family:var(--serif); font-size:17px; font-weight:500; color:var(--ink); line-height:1.6; margin-top:14px; }
+  .hd p { font-size:14px; margin-top:14px; }
+  .lead { font-size:15px; margin-bottom:34px; }
 
-  /* 히어로 */
-  .hero { background:radial-gradient(1200px 600px at 75% 20%, #24345d 0%, var(--navy2) 60%); color:#fff; padding:72px 0 80px; }
-  .hero .grid { display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; }
-  .hero h1 { font-size:clamp(32px,4.6vw,54px); line-height:1.22; font-weight:900; margin-top:14px; }
-  .hero h1 em { font-style:normal; color:var(--gold2); }
-  .hero .sub { font-size:18px; color:#c9cfdb; margin-top:18px; }
-  .phone { width:100%; max-width:330px; margin-left:auto; aspect-ratio:9/16; border-radius:28px; overflow:hidden; border:6px solid #2b3a63; box-shadow:0 30px 80px rgba(0,0,0,.45); background:#000; }
-  .phone video { width:100%; height:100%; object-fit:cover; display:block; }
+  /* 버튼 */
+  .btn { display:inline-block; background:var(--dark); color:#fff; font-size:15px; padding:15px 38px; text-decoration:none; letter-spacing:0; }
+  .btn:hover { background:var(--brown); }
+  .line-btn { display:inline-block; border:1px solid #b9b2aa; color:var(--ink); font-size:14px; padding:9px 22px; text-decoration:none; }
+  .txt-link { color:inherit; font-size:14px; text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px; }
 
-  /* 가격 상자 */
-  .price { margin-top:28px; background:#fff; color:var(--ink); border-radius:18px; padding:22px 24px; max-width:460px; }
-  .price .row { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
-  .price .tier { font-size:14px; font-weight:800; color:var(--red); }
-  .price .list { color:#98a0ae; text-decoration:line-through; font-size:15px; }
-  .price .rate { color:var(--red); font-weight:900; font-size:28px; }
-  .price .now { font-weight:900; font-size:32px; }
-  .price .meta { font-size:14px; color:var(--soft); margin-top:6px; }
-  .price .btn { width:100%; margin-top:16px; }
-  .facts { display:grid; grid-template-columns:80px 1fr; gap:6px 14px; font-size:15px; margin-top:22px; color:#d7dbe5; }
-  .facts dt { color:#8f98ad; }
+  /* 머리글 */
+  .top { background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:40; }
+  .top .wrap { display:flex; align-items:center; justify-content:space-between; height:68px; }
+  .logo { font-family:var(--latin); font-size:22px; letter-spacing:.16em; color:var(--ink); text-decoration:none; line-height:1; }
+  .logo small { display:block; font-family:var(--serif); font-size:10px; letter-spacing:.3em; color:var(--mute); margin-top:5px; }
+  .top nav { display:flex; gap:34px; font-size:14px; color:var(--ink); }
+  .top nav a { text-decoration:none; }
 
-  /* 갤러리 */
-  .gal { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; margin-top:36px; }
-  .gal figure { background:#fff; border-radius:14px; overflow:hidden; border:1px solid var(--line); }
-  .gal video { width:100%; aspect-ratio:9/16; object-fit:cover; display:block; background:#000; }
+  /* 첫 화면 */
+  .hero { position:relative; height:min(78vh,720px); min-height:480px; overflow:hidden; background:#1c1c1c; color:#fff; }
+  .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.62; }
+  .hero .in { position:relative; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 24px; }
+  .hero .lab { font-size:14px; letter-spacing:.04em; }
+  .hero h1 { font-family:var(--serif); font-weight:500; font-size:clamp(30px,4.4vw,52px); line-height:1.35; margin-top:18px; }
+  .hero .sub { font-size:16px; margin-top:18px; color:#eee; }
+  .hero .txt-link { margin-top:34px; color:#fff; }
+
+  /* 신청 막대(첫 화면 아래) */
+  .book { background:var(--gray); border-bottom:1px solid var(--line); }
+  .book .wrap { display:grid; grid-template-columns:1fr 1fr 1.3fr auto; align-items:center; min-height:96px; }
+  .book .c { padding:18px 26px; border-left:1px solid var(--line); font-size:14px; }
+  .book .c:first-child { border-left:0; padding-left:0; }
+  .book .k { display:block; font-size:12px; color:var(--mute); }
+  .book .v { color:var(--ink); }
+  .book .price { font-family:var(--serif); }
+  .book .price [data-list] { color:var(--mute); text-decoration:line-through; font-size:13px; margin-right:6px; }
+  .book .price [data-rate] { color:var(--tag); margin-right:6px; }
+  .book .price [data-now] { font-size:20px; color:var(--ink); font-weight:600; }
+  .book .price [data-tier] { margin-right:8px; }
+  .book .btn { height:56px; line-height:26px; }
+
+  /* 영상 목록 */
+  .gal { display:grid; grid-template-columns:repeat(4,1fr); gap:34px 22px; }
   .gal figure.wide { grid-column:span 2; }
+  .gal video { display:block; width:100%; aspect-ratio:9/16; object-fit:cover; background:#ddd; }
   .gal figure.wide video { aspect-ratio:16/9; }
-  .gal figcaption { font-size:13px; padding:10px 12px; color:var(--soft); }
-  .gal figcaption b { display:block; color:var(--ink); font-size:14px; }
-  .dark .gal figure { background:#18233f; border-color:#26345a; }
-  .dark .gal figcaption { color:#aab2c4; }
-  .dark .gal figcaption b { color:#fff; }
+  .gal figcaption { margin-top:14px; font-size:13px; color:var(--mute); }
+  .gal figcaption b { display:block; font-family:var(--serif); font-weight:500; font-size:16px; color:var(--ink); margin-bottom:2px; }
 
   /* 고민 */
-  .worry { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; margin-top:34px; }
-  .worry div { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
-  .worry q { display:block; font-weight:700; font-size:16px; quotes:"「" "」"; }
-  .worry span { display:block; margin-top:8px; font-size:14px; color:var(--soft); }
-  .worry span b { color:var(--gold); }
+  .worry { border-top:1px solid var(--ink); }
+  .worry div { display:grid; grid-template-columns:1fr 1fr; gap:30px; padding:24px 0; border-bottom:1px solid var(--line); }
+  .worry q { font-family:var(--serif); font-size:16px; color:var(--ink); quotes:"「" "」"; }
+  .worry span b { color:var(--tag); font-weight:500; margin-right:8px; }
 
-  /* 숫자 */
-  .nums { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:34px; }
-  .nums div { background:#18233f; border-radius:16px; padding:26px 22px; }
-  .nums strong { font-size:44px; font-weight:900; color:var(--gold2); line-height:1.1; }
-  .nums p { color:#c9cfdb; font-size:15px; margin-top:8px; }
-  .src { font-size:13px; color:#8f98ad; margin-top:14px; }
+  /* 기록(숫자) */
+  .rec { display:grid; grid-template-columns:repeat(2,1fr); }
+  .rec div { text-align:center; padding:6px 20px; }
+  .rec div + div { border-left:1px solid var(--line); }
+  .rec strong { display:block; font-family:var(--latin); font-size:60px; font-weight:400; line-height:1; color:var(--brown); }
+  .rec p { margin-top:14px; }
+  .src { font-size:12.5px; color:var(--mute); margin-top:34px; }
 
   /* 후기 */
-  .reviews { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; margin-top:34px; }
-  .reviews blockquote { background:#fff; border-radius:16px; padding:22px; border:1px solid var(--line); font-size:15.5px; }
-  .reviews blockquote cite { display:block; margin-top:12px; font-style:normal; font-size:13px; color:var(--soft); }
+  .reviews { columns:2; column-gap:44px; }
+  .reviews blockquote { break-inside:avoid; border-top:1px solid var(--line); padding:22px 0 26px; font-family:var(--serif); font-size:15.5px; color:var(--ink); line-height:1.85; }
+  .reviews cite { display:block; margin-top:10px; font-family:"Pretendard",sans-serif; font-style:normal; font-size:12.5px; color:var(--mute); }
 
-  /* 핵심 셋 */
-  .three { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:36px; }
-  .three div { border-radius:18px; padding:28px 24px; background:#fff; border:1px solid var(--line); }
-  .three .n { font-size:13px; font-weight:800; color:var(--gold); }
-  .three h3 { font-size:20px; margin-top:8px; line-height:1.4; }
-  .three p { font-size:15px; color:var(--soft); margin-top:10px; }
+  /* 세 칸 */
+  .three { display:grid; grid-template-columns:repeat(3,1fr); }
+  .three div { padding:0 28px; border-left:1px solid var(--line); }
+  .three div:first-child { padding-left:0; border-left:0; }
+  .three .n { font-family:var(--latin); font-size:15px; color:var(--tag); letter-spacing:.06em; }
+  .three h3 { font-family:var(--serif); font-weight:500; font-size:19px; color:var(--ink); margin-top:10px; line-height:1.5; }
+  .three p { margin-top:12px; font-size:14.5px; }
 
-  /* 기법 사다리 */
-  .ladder { margin-top:38px; display:grid; gap:10px; }
-  .step { display:grid; grid-template-columns:64px 140px 1fr; gap:16px; align-items:center; background:#18233f; border-radius:14px; padding:16px 20px; }
-  .step .w { font-weight:900; color:var(--gold2); font-size:15px; }
-  .step .v { font-weight:800; }
-  .step .k { font-size:14px; color:#b8bfcf; }
-  .step .bar2 { height:6px; border-radius:6px; background:linear-gradient(90deg,var(--gold),var(--gold2)); margin-top:8px; }
+  /* 회차별 영상 */
+  .ladder { border-top:1px solid var(--ink); }
+  .ladder div { display:grid; grid-template-columns:70px 180px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--line); align-items:baseline; }
+  .ladder .w { font-family:var(--latin); font-size:20px; color:var(--tag); }
+  .ladder .v { font-family:var(--serif); color:var(--ink); font-size:16px; }
 
   /* 커리큘럼 */
-  table.cur { width:100%; border-collapse:collapse; margin-top:30px; font-size:15px; }
-  .cur th, .cur td { border-bottom:1px solid var(--line); padding:14px 10px; text-align:left; vertical-align:top; }
-  .cur th { font-size:13px; color:var(--soft); font-weight:700; }
-  .cur td:first-child { font-weight:900; color:var(--gold); white-space:nowrap; }
-  .cur td.st { font-weight:800; white-space:nowrap; }
-  .cur .tool { display:inline-block; font-size:12px; background:#eef1f6; border-radius:999px; padding:2px 9px; margin:4px 4px 0 0; color:#3b4660; }
+  table.cur { width:100%; border-collapse:collapse; font-size:14.5px; border-top:1px solid var(--ink); }
+  .cur th, .cur td { border-bottom:1px solid var(--line); padding:18px 12px; text-align:left; vertical-align:top; }
+  .cur th { font-size:12.5px; color:var(--mute); font-weight:400; }
+  .cur td:first-child { font-family:var(--latin); font-size:20px; color:var(--tag); white-space:nowrap; padding-left:0; }
+  .cur td.st { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+  .cur .tool { display:block; margin-top:6px; font-size:12.5px; color:var(--mute); }
 
   /* 강사 */
-  .teacher { display:grid; grid-template-columns:260px 1fr; gap:36px; align-items:start; margin-top:34px; }
-  .teacher img { width:100%; border-radius:18px; }
-  .teacher ul { list-style:none; margin-top:14px; }
-  .teacher li { padding:10px 0; border-bottom:1px solid #26345a; font-size:15.5px; }
-  .teacher blockquote { font-size:19px; font-weight:700; line-height:1.55; color:#fff; }
+  .teacher { display:grid; grid-template-columns:300px 1fr; gap:50px; align-items:start; }
+  .teacher img { width:100%; display:block; }
+  .teacher blockquote { font-family:var(--serif); font-size:20px; color:var(--ink); line-height:1.7; }
+  .teacher ul { list-style:none; margin-top:26px; border-top:1px solid var(--line); }
+  .teacher li { padding:12px 0; border-bottom:1px solid var(--line); }
 
-  /* 수강료 표 */
-  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:32px; }
-  .tiers div { border:1.5px solid var(--line); border-radius:16px; padding:22px; background:#fff; }
-  .tiers div.on { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,162,76,.18); }
-  .tiers div.off { opacity:.5; }
-  .tiers h4 { font-size:15px; }
-  .tiers .d { font-size:13px; color:var(--soft); margin-top:2px; }
-  .tiers .p { font-size:26px; font-weight:900; margin-top:12px; }
-  .tiers .r { color:var(--red); font-weight:800; font-size:14px; }
+  /* 수강료 */
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .tiers > div { padding:30px 28px; border-left:1px solid var(--line); position:relative; }
+  .tiers > div:first-child { border-left:0; }
+  .tiers > div.on { background:#fff; box-shadow:inset 0 2px 0 var(--dark); }
+  .tiers > div.off { opacity:.45; }
+  .tiers h4 { font-family:var(--serif); font-weight:500; font-size:16px; color:var(--ink); }
+  .tiers .d { font-size:13px; color:var(--mute); margin-top:4px; }
+  .tiers .p { font-family:var(--serif); font-size:26px; color:var(--ink); margin-top:18px; }
+  .tiers .r { font-size:13px; color:var(--tag); margin-top:2px; }
   .tiers .s[hidden] { display:none; }
-  .tiers .s { font-size:12px; font-weight:800; color:#fff; background:var(--gold); border-radius:999px; padding:2px 10px; display:inline-block; margin-top:10px; }
-  .notes { margin-top:22px; padding-left:18px; font-size:14.5px; color:var(--soft); }
-  .notes li { margin-top:6px; }
+  .tiers .s { position:absolute; top:30px; right:28px; font-size:12px; color:var(--dark); }
+  .notes { list-style:none; margin-top:30px; font-size:14px; }
+  .notes li { padding-left:12px; position:relative; margin-top:8px; }
+  .notes li::before { content:""; position:absolute; left:0; top:11px; width:3px; height:3px; background:var(--mute); }
 
-  /* FAQ */
-  details { border-bottom:1px solid var(--line); padding:18px 0; }
-  summary { font-weight:800; font-size:16.5px; cursor:pointer; list-style:none; }
-  summary::before { content:"Q. "; color:var(--gold); }
-  details p { margin-top:10px; color:var(--soft); font-size:15px; }
+  /* 자주 묻는 질문 */
+  .faq { border-top:1px solid var(--ink); }
+  details { border-bottom:1px solid var(--line); }
+  summary { list-style:none; cursor:pointer; padding:22px 40px 22px 0; position:relative; font-family:var(--serif); font-size:16px; color:var(--ink); }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; position:absolute; right:4px; top:18px; font-family:var(--latin); font-size:24px; color:var(--mute); }
+  details[open] summary::after { content:"−"; }
+  details p { padding:0 0 24px; font-size:14.5px; }
 
-  .policy ol { padding-left:20px; margin-top:14px; font-size:14.5px; color:var(--soft); }
-  .policy li { margin-top:8px; }
-  footer { background:var(--navy2); color:#9aa3b6; font-size:13px; padding:36px 0 30px; }
+  .policy ol { padding-left:18px; font-size:14.5px; border-top:1px solid var(--ink); padding-top:18px; }
+  .policy li { margin-top:10px; padding-left:4px; }
 
-  @media (max-width:860px) {
-    .hero .grid, .teacher { grid-template-columns:1fr; }
-    .phone { margin:0 auto; max-width:280px; }
-    .nums, .three, .tiers { grid-template-columns:1fr; }
-    .step { grid-template-columns:52px 1fr; }
-    .step .k { grid-column:1 / -1; }
-    .gal figure.wide { grid-column:span 1; }
+  footer { background:#2a2a2a; color:#9a9a9a; font-size:12.5px; padding:40px 0; }
+  footer b { color:#ddd; font-weight:500; }
+
+  /* 고정 신청 막대 */
+  .bar { position:fixed; left:0; right:0; bottom:0; z-index:50; background:#fff; border-top:1px solid var(--line); }
+  .bar .wrap { display:flex; align-items:center; gap:20px; height:72px; }
+  .bar .t { flex:1; min-width:0; font-family:var(--serif); color:var(--ink); font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .bar .t small { font-family:"Pretendard",sans-serif; font-size:13px; color:var(--mute); margin-left:14px; }
+  .bar .btn { padding:13px 30px; font-size:14px; }
+
+  @media (max-width:960px) {
+    .split, .teacher { grid-template-columns:1fr; gap:34px; }
+    .split > .hd { position:static; }
+    .en { font-size:36px; }
+    .gal { grid-template-columns:repeat(2,1fr); }
+    .book .wrap { grid-template-columns:1fr 1fr; padding-top:10px; padding-bottom:16px; }
+    .book .c { border-left:0; padding:10px 0; }
+    .book .c.pr, .book .btn { grid-column:1 / -1; }
+    .book .btn { text-align:center; }
+    .top nav { display:none; }
+  }
+  @media (max-width:640px) {
+    section { padding:72px 0; }
+    .worry div, .ladder div { grid-template-columns:1fr; gap:6px; }
+    .ladder div { grid-template-columns:56px 1fr; }
+    .ladder .k { grid-column:1 / -1; }
+    .rec, .three, .tiers { grid-template-columns:1fr; }
+    .rec div + div { border-left:0; border-top:1px solid var(--line); padding-top:24px; margin-top:24px; }
+    .three div, .tiers > div { padding:24px 0; border-left:0; border-top:1px solid var(--line); }
+    .three div:first-child { border-top:0; padding-top:0; }
+    .tiers .s { right:0; }
+    .reviews { columns:1; }
+    .gal figure.wide { grid-column:1 / -1; }
     .cur thead { display:none; }
-    .cur tr { display:block; border-bottom:1px solid var(--line); padding:12px 0; }
-    .cur td { display:block; border:0; padding:3px 0; }
+    .cur tr { display:block; border-bottom:1px solid var(--line); padding:14px 0; }
+    .cur td { display:block; border:0; padding:2px 0; }
     .bar .t small { display:none; }
-    section { padding:64px 0; }
   }
 </style>
 </head>
 <body>
 
-<!-- 히어로 -->
-<header class="hero">
-  <div class="wrap grid">
-    <div>
-      <div class="eyebrow">하우투경영컨설팅 단과 · ZOOM 실시간 8주</div>
-      <h1>AI로 만드는 학원 광고<br><em>영상 제작부터 자동화까지</em></h1>
-      <p class="sub">움직이는 글자 영상 하나로 시작합니다. 8주 뒤에는 학원 광고를 직접 만들어 매달 여러 채널에 올리게 됩니다.</p>
-      <div class="price" data-price>
-        <div class="row"><span class="tier" data-tier>얼리버드 할인 1차</span></div>
-        <div class="row" style="margin-top:4px"><span class="list" data-list>749,000원</span></div>
-        <div class="row"><span class="rate" data-rate>21%</span><span class="now" data-now>590,000원</span></div>
-        <div class="meta" data-meta>11월 30일(월) 24시까지 신청하시면 이 금액을 적용합니다</div>
-        <a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청하기</a>
-      </div>
-      <dl class="facts">
-        <dt>일정</dt><dd>2026. 12. 15. ~ 2027. 2. 2. 매주 화요일 오전 10시~12시(8회)</dd>
-        <dt>형식</dt><dd>ZOOM 실시간 수업과 2주 사후 코칭을 진행하고, 수업 당일에 녹화본을 드립니다</dd>
-        <dt>대상</dt><dd>학원 원장 · 강사 · 실장</dd>
-      </dl>
-    </div>
-    <div class="phone"><video autoplay muted loop playsinline preload="metadata" poster="img/course/s1.jpg" aria-label="강사가 AI로 만든 학원 교육 홍보 영상"><source src="img/course/s1.mp4" type="video/mp4"></video></div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">HOWTO<small>하우투경영컨설팅</small></a>
+    <nav><a href="#works">작품</a><a href="#curriculum">커리큘럼</a><a href="#instructor">강사</a><a href="#price">수강료</a><a href="#faq">자주 묻는 질문</a></nav>
   </div>
 </header>
 
-<!-- 결과물 먼저 -->
-<section class="paper">
+<!-- 첫 화면 -->
+<div class="hero">
+  <video autoplay muted loop playsinline preload="metadata" poster="img/course/s10.jpg" aria-label="강사가 AI로 만든 학원 브랜드 영상"><source src="img/course/s10.mp4" type="video/mp4"></video>
+  <div class="in">
+    <p class="lab">하우투경영컨설팅 단과 · ZOOM 실시간 8회</p>
+    <h1>AI로 만드는 학원 광고<br>영상 제작부터 자동화까지</h1>
+    <p class="sub">움직이는 글자 영상 하나로 시작해, 8주 뒤에는 학원 광고를 직접 만들어 매달 여러 채널에 올립니다.</p>
+    <a class="txt-link" href="#works">수강생 작품 보기</a>
+  </div>
+</div>
+
+<div class="book">
   <div class="wrap">
-    <div class="eyebrow">WORKS</div>
-    <h2>수강생 작품</h2>
-    <p class="lead">8주 단과에서는 이런 영상을 바탕으로 학원 광고 한 편을 완성하고, 매달 새로운 콘텐츠를 만듭니다.</p>
+    <div class="c"><span class="k">일정</span><span class="v">2026. 12. 15. ~ 2027. 2. 2.<br>매주 화요일 오전 10시~12시</span></div>
+    <div class="c"><span class="k">형식</span><span class="v">ZOOM 실시간 8회 · 사후 코칭 2주<br>수업 당일 녹화본 제공</span></div>
+    <div class="c pr"><span class="k" data-meta>11월 30일(월) 24시까지 신청 시 적용</span><span class="v price"><span data-tier>얼리버드 할인 1차</span><span data-list>749,000원</span><span data-rate>21%</span><span data-now>590,000원</span></span></div>
+    <a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청</a>
+  </div>
+</div>
+
+<!-- 수강생 작품 -->
+<section id="works">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Works</div><h2>수강생 작품</h2><p>8주 단과에서는 이런 영상을 바탕으로 학원 광고 한 편을 완성하고, 매달 새로운 콘텐츠를 만듭니다.</p></div>
     <div class="gal">
       <figure><video controls playsinline preload="none" poster="img/oneday/works/w1.jpg" src="img/oneday/works/w1.mp4"></video><figcaption><b>원생 모집</b>몬스터수학논술학원</figcaption></figure>
       <figure><video controls playsinline preload="none" poster="img/oneday/works/w11.jpg" src="img/oneday/works/w11.mp4"></video><figcaption><b>수험생 응원</b>몬스터수학논술학원</figcaption></figure>
@@ -203,41 +247,38 @@
   </div>
 </section>
 
-<!-- 공감 -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">WHY</div>
-    <h2>학원 영상을 만들고 싶지만<br>막막하셨나요?</h2>
-    <p class="lead">원데이 클래스에 오신 원장님들이 남겨 주신 고민입니다. 8주 동안 차근차근 해결해 드립니다.</p>
+<!-- 고민 -->
+<section class="gray">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Concerns</div><h2>원장님들이 남겨 주신 고민</h2><p>원데이 클래스 설문에 적어 주신 말씀과, 그 고민을 다루는 회차입니다.</p></div>
     <div class="worry">
-      <div><q>영상 만들기를 계속 하고 싶었는데 엄두가 안 났어요</q><span>→ <b>1~3회</b> 글자 영상부터 시작해 차근차근 실력을 쌓습니다</span></div>
-      <div><q>AI 도구가 너무 많아 무엇부터 써야 할지 모르겠어요</q><span>→ <b>회차마다</b> 꼭 필요한 실무 도구 한두 가지만 다룹니다</span></div>
-      <div><q>풀영상 제작까지 해 보고 싶어요</q><span>→ <b>3~5회</b> 스토리보드를 짜고 수정·립싱크·음악·보정을 거쳐 30초 광고를 완성합니다</span></div>
-      <div><q>한 번에 여러 채널에 홍보하고 싶어요</q><span>→ <b>6회</b> 광고 한 편을 블로그·인스타·플레이스·당근·카카오톡 채널에 맞게 편집합니다</span></div>
-      <div><q>자동화를 배우고 싶어요</q><span>→ <b>7~8회</b> 성과 대시보드를 만들고 지시문을 저장해, 매달 다시 만드는 틀을 완성합니다</span></div>
+      <div><q>영상 만들기를 계속 하고 싶었는데 엄두가 안 났어요</q><span><b>1~3회</b>글자 영상부터 시작해 한 단계씩 더해 갑니다</span></div>
+      <div><q>AI 도구가 너무 많아 무엇부터 써야 할지 모르겠어요</q><span><b>매 회차</b>그 회차에 필요한 도구 한두 가지만 씁니다</span></div>
+      <div><q>풀영상 제작까지 해 보고 싶어요</q><span><b>3~5회</b>스토리보드를 짜고 수정·립싱크·음악·보정을 거쳐 30초 광고를 완성합니다</span></div>
+      <div><q>한 번에 여러 채널에 홍보하고 싶어요</q><span><b>6회</b>광고 한 편을 블로그·인스타·플레이스·당근·카카오톡 채널에 맞게 편집합니다</span></div>
+      <div><q>자동화를 배우고 싶어요</q><span><b>7~8회</b>성과 대시보드를 만들고 지시문을 저장해, 매달 다시 만드는 틀을 갖춥니다</span></div>
     </div>
   </div>
 </section>
 
-<!-- 숫자 -->
-<section class="dark">
-  <div class="wrap">
-    <div class="eyebrow">ONE-DAY CLASS</div>
-    <h2>원데이 클래스 수강생이 남겨 주신 기록</h2>
-    <div class="nums">
-      <div><strong>94%</strong><p>지인에게 이 수업을 꼭 추천하겠다고 답하셨습니다</p></div>
-      <div><strong>94%</strong><p>이 주제로 단과가 열리면 듣고 싶다고 답하셨습니다</p></div>
+<!-- 기록 -->
+<section class="beige">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Record</div><h2>원데이 클래스 설문</h2></div>
+    <div>
+      <div class="rec">
+        <div><strong>94%</strong><p>지인에게 이 수업을 꼭 추천하겠다고 답하셨습니다</p></div>
+        <div><strong>94%</strong><p>이 주제로 단과가 열리면 듣고 싶다고 답하셨습니다</p></div>
+      </div>
+      <p class="src">출처: 원데이 클래스 수업 뒤 설문 결과입니다(2026. 11. 25. 기준 응답 16건). 한 분이 두 번 응답했을 수 있습니다.</p>
     </div>
-    <p class="src">출처: 원데이 클래스 수업 뒤 설문 결과입니다(2026. 11. 25. 기준 응답 16건). 한 분이 두 번 응답했을 수 있습니다.</p>
   </div>
 </section>
 
 <!-- 후기 -->
-<section class="paper">
-  <div class="wrap">
-    <div class="eyebrow">REVIEWS</div>
-    <h2>수강 후기</h2>
-    <p class="lead">수업 뒤 설문에 남겨 주신 후기 16건을 모두 실었습니다(16건 모두 공개에 동의). 이름과 학원 이름은 싣지 않았고, 맞춤법만 다듬었습니다.</p>
+<section>
+  <div class="wrap split">
+    <div class="hd"><div class="en">Reviews</div><h2>수강 후기</h2><p>수업 뒤 설문에 남겨 주신 후기 16건을 모두 실었습니다(16건 모두 공개에 동의). 이름과 학원 이름은 싣지 않았고, 맞춤법만 다듬었습니다.</p></div>
     <div class="reviews">
       <blockquote>단순한 이론이 아니라 학원 현장에서 당장 적용할 수 있는 살아 있는 지식을 배웠습니다. 막연했던 AI 활용법에 대해 새로운 눈을 뜨게 해 주신 교수님께 진심으로 감사드립니다. 정말 저만 알기 아까운 수업입니다! 다른 분들께 강력히 추천합니다!<cite>원데이 클래스 수강생</cite></blockquote>
       <blockquote>영상 만들기를 계속 하고 싶었는데 엄두가 안 났었는데, 도전해 보고 싶은 계기가 되었습니다. 강의 정말 감사드립니다.<cite>원데이 클래스 수강생</cite></blockquote>
@@ -259,43 +300,39 @@
   </div>
 </section>
 
-<!-- 핵심 셋 -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">POINT</div>
-    <h2>이 과정만의 세 가지 특징</h2>
+<!-- 과정 원칙 -->
+<section class="gray">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Approach</div><h2>과정 운영 방식</h2></div>
     <div class="three">
-      <div><div class="n">POINT 1</div><h3>매 회차 영상 한 편,<br>한 겹씩 풍부하게</h3><p>이전 회차에서 만든 영상에 새로운 기법을 더해 발전시킵니다. 8회 발표 시간에는 1회 영상과 8회 영상을 나란히 틀어 비교합니다.</p></div>
-      <div><div class="n">POINT 2</div><h3>실무 도구를<br>필요한 만큼만 다룹니다</h3><p>단계마다 꼭 필요한 도구만 씁니다. Midjourney, Magnific, Kling, Seedance, MiniMax, VEED Fabric, Suno, Blender, 생성형 AI(Claude, Gemini, ChatGPT)를 활용합니다.</p></div>
-      <div><div class="n">POINT 3</div><h3>만들고, 올리고,<br>이어 갑니다</h3><p>광고 한 편을 만들고 끝내지 않습니다. 영상을 다섯 채널에 배포하고 성과 대시보드와 저장 지시문을 활용해, 수업이 끝난 뒤에도 매달 새로운 영상을 만듭니다.</p></div>
+      <div><div class="n">01</div><h3>매 회차 영상 한 편</h3><p>이전 회차에서 만든 영상에 새로운 기법을 더해 발전시킵니다. 8회 발표 시간에는 1회 영상과 8회 영상을 나란히 틀어 비교합니다.</p></div>
+      <div><div class="n">02</div><h3>실무 도구를 필요한 만큼만</h3><p>Midjourney, Magnific, Kling, Seedance, MiniMax, VEED Fabric, Suno, Blender, 생성형 AI(Claude, Gemini, ChatGPT) 가운데 그 단계에 필요한 도구만 씁니다.</p></div>
+      <div><div class="n">03</div><h3>배포와 기록까지</h3><p>완성한 영상을 다섯 채널에 올리고, 성과 대시보드와 저장 지시문을 만들어 수업이 끝난 뒤에도 매달 새 영상을 만듭니다.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 기법 사다리 -->
-<section class="dark">
-  <div class="wrap">
-    <div class="eyebrow">VIDEO LADDER</div>
-    <h2>가장 기초적인 영상으로 시작해<br>8주 동안 차근차근 실력을 키웁니다</h2>
-    <div class="ladder">
-      <div class="step"><span class="w">1회</span><span class="v">글자 모션 15초<div class="bar2" style="width:12%"></div></span><span class="k">문구가 움직이며 나타나는 영상 · 컷 리듬 · 끝 화면</span></div>
-      <div class="step"><span class="w">2회</span><span class="v">이미지 모션 20초<div class="bar2" style="width:25%"></div></span><span class="k">AI 이미지 · 캐릭터 시트로 같은 얼굴 유지 · 장면 일부만 움직이는 무빙 포스터</span></div>
-      <div class="step"><span class="w">3회</span><span class="v">첫 영상 30초<div class="bar2" style="width:38%"></div></span><span class="k">6컷 스토리보드 · 이미지를 영상으로 · 세 영상 모델 비교 · 장면 잇기</span></div>
-      <div class="step"><span class="w">4회</span><span class="v">업그레이드 30초<div class="bar2" style="width:50%"></div></span><span class="k">장면 수정 · 캐릭터 립싱크 · 배경음악 · 색 보정 · 자막</span></div>
-      <div class="step"><span class="w">5회</span><span class="v">메인 광고 완성<div class="bar2" style="width:63%"></div></span><span class="k">학부모 질문으로 여는 첫 2초 · 글자·로고 복원 · 문의 안내 화면 · 게시 전 점검</span></div>
-      <div class="step"><span class="w">6회</span><span class="v">채널판 영상<div class="bar2" style="width:75%"></div></span><span class="k">세로·가로·정사각 재구성 · 채널별 첫 2초 · 소리 없이 읽히는 자막</span></div>
-      <div class="step"><span class="w">7회</span><span class="v">개선판 두 가지<div class="bar2" style="width:88%"></div></span><span class="k">숫자를 보고 편집하기 · 두 판 비교(A/B) · 성과 그래픽</span></div>
-      <div class="step"><span class="w">8회</span><span class="v">시리즈 영상<div class="bar2" style="width:100%"></div></span><span class="k">여는·닫는 화면 템플릿 · 저장 지시문으로 대본 · 소재만 바꿔 다시 만들기</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 강사 제작 샘플 -->
+<!-- 회차별 영상 -->
 <section>
-  <div class="wrap">
-    <div class="eyebrow">SAMPLES</div>
-    <h2>강사가 이 과정의 도구로 직접 만든 영상</h2>
-    <p class="lead">수업에서 배우는 기법을 적용하면 어떤 결과물이 나오는지 직접 확인하실 수 있습니다.</p>
+  <div class="wrap split">
+    <div class="hd"><div class="en">Eight Videos</div><h2>회차별로 만드는 영상</h2><p>가장 단순한 영상에서 시작해 회차마다 기법을 하나씩 더합니다.</p></div>
+    <div class="ladder">
+      <div><span class="w">01</span><span class="v">글자 모션 15초</span><span class="k">문구가 움직이며 나타나는 영상 · 컷 리듬 · 끝 화면</span></div>
+      <div><span class="w">02</span><span class="v">이미지 모션 20초</span><span class="k">AI 이미지 · 캐릭터 시트로 같은 얼굴 유지 · 장면 일부만 움직이는 무빙 포스터</span></div>
+      <div><span class="w">03</span><span class="v">첫 영상 30초</span><span class="k">6컷 스토리보드 · 이미지를 영상으로 · 세 영상 모델 비교 · 장면 잇기</span></div>
+      <div><span class="w">04</span><span class="v">업그레이드 30초</span><span class="k">장면 수정 · 캐릭터 립싱크 · 배경음악 · 색 보정 · 자막</span></div>
+      <div><span class="w">05</span><span class="v">메인 광고 완성</span><span class="k">학부모 질문으로 여는 첫 2초 · 글자·로고 복원 · 문의 안내 화면 · 게시 전 점검</span></div>
+      <div><span class="w">06</span><span class="v">채널판 영상</span><span class="k">세로·가로·정사각 재구성 · 채널별 첫 2초 · 소리 없이 읽히는 자막</span></div>
+      <div><span class="w">07</span><span class="v">개선판 두 가지</span><span class="k">숫자를 보고 편집하기 · 두 판 비교(A/B) · 성과 그래픽</span></div>
+      <div><span class="w">08</span><span class="v">시리즈 영상</span><span class="k">여는·닫는 화면 템플릿 · 저장 지시문으로 대본 · 소재만 바꿔 다시 만들기</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 강사 제작 영상 -->
+<section class="gray">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Samples</div><h2>강사가 이 과정의 도구로 직접 만든 영상</h2><p>수업에서 배우는 기법을 적용하면 어떤 결과물이 나오는지 직접 확인하실 수 있습니다.</p></div>
     <div class="gal">
       <figure><video controls playsinline preload="none" poster="img/course/s1.jpg" src="img/course/s1.mp4"></video><figcaption><b>교육 홍보 광고 · 25초</b>장면 잇기 · 배경음악</figcaption></figure>
       <figure><video controls playsinline preload="none" poster="img/course/s2.jpg" src="img/course/s2.mp4"></video><figcaption><b>창가의 학생 · 21초</b>마무리 문구 · 노래</figcaption></figure>
@@ -318,33 +355,30 @@
 </section>
 
 <!-- 커리큘럼 -->
-<section class="paper" id="curriculum">
-  <div class="wrap">
-    <div class="eyebrow">CURRICULUM</div>
-    <h2>8주 커리큘럼</h2>
-    <p class="lead">1회 첫 10분 동안 학부모가 학원을 찾게 되는 상황(CEP)을 짧게 알아봅니다. 미리 준비한 CEP 카드에서 하나를 고르거나 원장님 학원만의 CEP를 정해, 8주 동안 이를 주제로 영상을 만듭니다.</p>
+<section id="curriculum">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Curriculum</div><h2>8주 커리큘럼</h2><p>1회 첫 10분 동안 학부모가 학원을 찾게 되는 상황(CEP)을 짧게 알아봅니다. 미리 준비한 CEP 카드에서 하나를 고르거나 원장님 학원만의 CEP를 정해, 8주 동안 이를 주제로 영상을 만듭니다.</p></div>
     <table class="cur">
       <thead><tr><th>회</th><th>날짜</th><th>단계</th><th>수업에서 하는 것</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>12/15</td><td class="st">모션그래픽</td><td>CEP 정하기, 문구가 움직이는 영상, 도형·아이콘 움직임, 끝 화면<br><span class="tool">편집 앱</span></td></tr>
-        <tr><td>2</td><td>12/22</td><td class="st">이미지</td><td>키비주얼, 합성·일관성 다듬기, 캐릭터 시트, 교실 사진을 배경으로, 장면 일부만 움직이는 무빙 포스터<br><span class="tool">Midjourney</span><span class="tool">Magnific</span><span class="tool">Kling</span></td></tr>
-        <tr><td>3</td><td>12/29</td><td class="st">영상 만들기</td><td>6컷 스토리보드, 이미지를 영상으로, 세 모델 결과 비교, 카메라 동선 미리 보기, 낮은 화질로 시험해 크레딧 아끼기<br><span class="tool">Seedance</span><span class="tool">Kling</span><span class="tool">MiniMax</span><span class="tool">Blender</span><span class="tool">생성형 AI</span></td></tr>
-        <tr><td>4</td><td>1/5</td><td class="st">영상 업그레이드</td><td>어색한 장면 수정, 캐릭터 립싱크, 배경음악, 색 보정, 자막<br><span class="tool">VEED Fabric</span><span class="tool">Suno</span><span class="tool">편집 앱</span></td></tr>
-        <tr><td>5</td><td>1/12</td><td class="st">영상 완성</td><td>학부모 질문으로 여는 첫 2초, 빠진 장면 추가, 뭉개진 글자·로고 복원, 문의 안내 화면, 가상인물 표시 안내, 게시 전 점검 → 메인 광고 게시<br><span class="tool">Magnific</span><span class="tool">편집 앱</span></td></tr>
-        <tr><td>6</td><td>1/19</td><td class="st">배포</td><td>한 편을 블로그·인스타·플레이스·당근·카카오톡 채널용으로 나누기, AI 표시, 승인 점검표, 예약 게시, 카카오톡 광고 메시지 규정<br><span class="tool">생성형 AI</span><span class="tool">채널 예약 기능</span></td></tr>
-        <tr><td>7</td><td>1/26</td><td class="st">대시보드</td><td>채널 통계 모으기, 성과 대시보드(조회·저장·문의·상담 예약), AI 노출 비교<br><span class="tool">생성형 AI</span></td></tr>
-        <tr><td>8</td><td>2/2</td><td class="st">자동화</td><td>학원 정보·말투·규정을 저장한 지시문, 소재 하나로 다섯 채널 초안, 한 달 일정표, 1회·8회 영상 비교 발표<br><span class="tool">생성형 AI</span></td></tr>
-        <tr><td>사후</td><td>2/3~2/16</td><td class="st">사후 코칭</td><td>2주 동안 모인 대시보드 기록과 다음 영상 콘티를 보내 주시면, 강사가 개별로 피드백을 드립니다</td></tr>
+        <tr><td>01</td><td>12/15</td><td class="st">모션그래픽</td><td>CEP 정하기, 문구가 움직이는 영상, 도형·아이콘 움직임, 끝 화면<span class="tool">편집 앱</span></td></tr>
+        <tr><td>02</td><td>12/22</td><td class="st">이미지</td><td>키비주얼, 합성·일관성 다듬기, 캐릭터 시트, 교실 사진을 배경으로, 장면 일부만 움직이는 무빙 포스터<span class="tool">Midjourney · Magnific · Kling</span></td></tr>
+        <tr><td>03</td><td>12/29</td><td class="st">영상 만들기</td><td>6컷 스토리보드, 이미지를 영상으로, 세 모델 결과 비교, 카메라 동선 미리 보기, 낮은 화질로 시험해 크레딧 아끼기<span class="tool">Seedance · Kling · MiniMax · Blender · 생성형 AI</span></td></tr>
+        <tr><td>04</td><td>1/5</td><td class="st">영상 업그레이드</td><td>어색한 장면 수정, 캐릭터 립싱크, 배경음악, 색 보정, 자막<span class="tool">VEED Fabric · Suno · 편집 앱</span></td></tr>
+        <tr><td>05</td><td>1/12</td><td class="st">영상 완성</td><td>학부모 질문으로 여는 첫 2초, 빠진 장면 추가, 뭉개진 글자·로고 복원, 문의 안내 화면, 가상인물 표시 안내, 게시 전 점검, 메인 광고 게시<span class="tool">Magnific · 편집 앱</span></td></tr>
+        <tr><td>06</td><td>1/19</td><td class="st">배포</td><td>한 편을 블로그·인스타·플레이스·당근·카카오톡 채널용으로 나누기, AI 표시, 승인 점검표, 예약 게시, 카카오톡 광고 메시지 규정<span class="tool">생성형 AI · 채널 예약 기능</span></td></tr>
+        <tr><td>07</td><td>1/26</td><td class="st">대시보드</td><td>채널 통계 모으기, 성과 대시보드(조회·저장·문의·상담 예약), AI 노출 비교<span class="tool">생성형 AI</span></td></tr>
+        <tr><td>08</td><td>2/2</td><td class="st">자동화</td><td>학원 정보·말투·규정을 저장한 지시문, 소재 하나로 다섯 채널 초안, 한 달 일정표, 1회·8회 영상 비교 발표<span class="tool">생성형 AI</span></td></tr>
+        <tr><td>+</td><td>2/3~2/16</td><td class="st">사후 코칭</td><td>2주 동안 모인 대시보드 기록과 다음 영상 콘티를 보내 주시면, 강사가 개별로 피드백을 드립니다</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
 <!-- 강사 -->
-<section class="dark">
-  <div class="wrap">
-    <div class="eyebrow">INSTRUCTOR</div>
-    <h2>강사 소개</h2>
+<section class="beige" id="instructor">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Instructor</div><h2>강사 소개</h2></div>
     <div class="teacher">
       <img src="img/oneday/teacher.jpg" alt="강사 장의웅" loading="lazy">
       <div>
@@ -362,63 +396,64 @@
   </div>
 </section>
 
-<!-- 결과물·대상 -->
+<!-- 수료 결과물 -->
 <section>
-  <div class="wrap">
-    <div class="eyebrow">OUTCOME</div>
-    <h2>8주 뒤 손에 남는 것</h2>
-    <div class="three">
-      <div><div class="n">만들기</div><h3>영상 8편</h3><p>30초 메인 광고를 포함한 회차별 영상, 6컷 스토리보드, 학원 캐릭터 시트</p></div>
-      <div><div class="n">올리기</div><h3>다섯 채널 게시물</h3><p>블로그 · 인스타그램 · 네이버 플레이스 · 당근 · 카카오톡 채널용 게시물 묶음</p></div>
-      <div><div class="n">이어 가기</div><h3>매달 돌아가는 틀</h3><p>성과 대시보드, 우리 학원 저장 지시문, 한 달 콘텐츠 일정표</p></div>
+  <div class="wrap split">
+    <div class="hd"><div class="en">Outcome</div><h2>수료 후 결과물</h2></div>
+    <div>
+      <div class="three">
+        <div><div class="n">MAKE</div><h3>영상 8편</h3><p>30초 메인 광고를 포함한 회차별 영상, 6컷 스토리보드, 학원 캐릭터 시트</p></div>
+        <div><div class="n">POST</div><h3>다섯 채널 게시물</h3><p>블로그 · 인스타그램 · 네이버 플레이스 · 당근 · 카카오톡 채널용 게시물 묶음</p></div>
+        <div><div class="n">KEEP</div><h3>매달 쓰는 틀</h3><p>성과 대시보드, 우리 학원 저장 지시문, 한 달 콘텐츠 일정표</p></div>
+      </div>
+      <ul class="notes" style="margin-top:44px">
+        <li>원데이 클래스에서 만든 장면을 바탕으로 완성된 광고를 만들고, 꾸준히 홍보 콘텐츠를 이어 가고 싶은 원장님</li>
+        <li>블로그·인스타·플레이스·당근에 게시물을 한 번에 올리고, 학부모 반응을 살펴 다음 홍보 계획을 세우고 싶은 원장님</li>
+        <li>원장님과 함께 학원 홍보를 담당하시는 강사님과 실장님</li>
+      </ul>
     </div>
-    <ul class="notes" style="margin-top:30px">
-      <li>원데이 클래스에서 만든 장면을 바탕으로 완성된 광고를 만들고, 꾸준히 홍보 콘텐츠를 이어 가고 싶은 원장님</li>
-      <li>블로그·인스타·플레이스·당근에 게시물을 한 번에 올리고, 학부모 반응을 살펴 다음 홍보 계획을 세우고 싶은 원장님</li>
-      <li>원장님과 함께 학원 홍보를 담당하시는 강사님과 실장님</li>
-    </ul>
   </div>
 </section>
 
 <!-- 수강료 -->
-<section class="paper" id="price">
-  <div class="wrap">
-    <div class="eyebrow">PRICE</div>
-    <h2>수강료</h2>
-    <p class="lead">신청서를 내신 날짜에 해당하는 수강료를 적용합니다. 해당 기간이 끝나는 날까지 입금해 주시면 됩니다. 안내해 드린 금액이 최종 결제 금액입니다.</p>
-    <div class="tiers">
-      <div data-t="0"><h4>얼리버드 할인 1차</h4><div class="d">~ 11월 30일(월) 24시</div><div class="p">590,000원</div><div class="r">정가 대비 21% 할인</div><span class="s" hidden>지금 적용</span></div>
-      <div data-t="1"><h4>얼리버드 할인 2차</h4><div class="d">12월 1일(화) ~ 12월 7일(월) 24시</div><div class="p">640,000원</div><div class="r">정가 대비 14% 할인</div><span class="s" hidden>지금 적용</span></div>
-      <div data-t="2"><h4>정가</h4><div class="d">12월 8일(화) ~ 12월 14일(월) 18시</div><div class="p">749,000원</div><div class="r">&nbsp;</div><span class="s" hidden>지금 적용</span></div>
+<section class="gray" id="price">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Tuition</div><h2>수강료</h2><p>신청서를 내신 날짜에 해당하는 수강료를 적용합니다. 해당 기간이 끝나는 날까지 입금해 주시면 됩니다. 안내해 드린 금액이 최종 결제 금액입니다.</p></div>
+    <div>
+      <div class="tiers">
+        <div data-t="0"><h4>얼리버드 할인 1차</h4><div class="d">~ 11월 30일(월) 24시</div><div class="p">590,000원</div><div class="r">정가 대비 21% 할인</div><span class="s" hidden>현재 적용</span></div>
+        <div data-t="1"><h4>얼리버드 할인 2차</h4><div class="d">12월 1일(화) ~ 12월 7일(월) 24시</div><div class="p">640,000원</div><div class="r">정가 대비 14% 할인</div><span class="s" hidden>현재 적용</span></div>
+        <div data-t="2"><h4>정가</h4><div class="d">12월 8일(화) ~ 12월 14일(월) 18시</div><div class="p">749,000원</div><div class="r">&nbsp;</div><span class="s" hidden>현재 적용</span></div>
+      </div>
+      <ul class="notes">
+        <li>정원은 15명 안팎이며 수강료 입금 순서대로 등록을 확정합니다. 신청 인원이 5명 미만이면 신청 마감(12월 14일 18시) 직후 폐강을 안내하고 결제하신 금액을 전액 돌려드립니다.</li>
+        <li>실습 도구 이용료는 원장님이 각 서비스에 직접 결제하셔야 합니다. Higgsfield Plus와 Midjourney만 사용하셔도 한 달에 약 69~89달러가 들며, 과정 기간에 맞춰 두 달 사용을 권합니다(2026. 11. 25. 공식 요금 기준 추산, 세금·환율·수수료 별도). Suno, Magnific, VEED Fabric 이용 요금은 수업 시작 전에 따로 안내해 드립니다. Seedance, Kling, MiniMax는 Higgsfield 구독 안에서 함께 사용합니다.</li>
+        <li>수강료는 계좌 이체로 받습니다. 입금하실 계좌번호는 신청서에서 확인하실 수 있습니다.</li>
+      </ul>
+      <p style="margin-top:36px"><a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청</a></p>
     </div>
-    <ul class="notes">
-      <li>정원은 15명 안팎이며 수강료 입금 순서대로 등록을 확정합니다. 신청 인원이 5명 미만이면 신청 마감(12월 14일 18시) 직후 폐강을 안내하고 결제하신 금액을 전액 돌려드립니다.</li>
-      <li>실습 도구 이용료는 원장님이 각 서비스에 직접 결제하셔야 합니다. Higgsfield Plus와 Midjourney만 사용하셔도 한 달에 약 69~89달러가 들며, 과정 기간에 맞춰 두 달 사용을 권합니다(2026. 11. 25. 공식 요금 기준 추산, 세금·환율·수수료 별도). Suno, Magnific, VEED Fabric 이용 요금은 수업 시작 전에 따로 안내해 드립니다. Seedance, Kling, MiniMax는 Higgsfield 구독 안에서 함께 사용합니다.</li>
-      <li>수강료는 계좌 이체로 받습니다. 입금하실 계좌번호는 신청서에서 확인하실 수 있습니다.</li>
-    </ul>
-    <p style="margin-top:28px"><a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청하기</a></p>
   </div>
 </section>
 
-<!-- FAQ -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">FAQ</div>
-    <h2>자주 묻는 질문</h2>
-    <details><summary>AI 도구가 처음인데 잘 따라갈 수 있을까요?</summary><p>걱정하지 않으셔도 됩니다. 1회 수업은 유료 도구 결제 없이 편집 앱만 사용해 쉬운 글자 영상부터 만듭니다. 수업마다 마지막 30분은 질문을 받는 시간으로 비워 두었고, 복습하실 수 있도록 당일에 녹화본도 올려 드립니다.</p></details>
-    <details><summary>도구 이용료는 얼마나 드나요?</summary><p>Higgsfield Plus와 Midjourney를 기준으로 한 달에 약 69~89달러가 듭니다. 2회 수업 직전부터 결제해 두 달 동안 사용하시기를 권합니다. Seedance, Kling, MiniMax는 Higgsfield를 구독하시면 그 안에서 함께 쓰실 수 있습니다. 1회 수업은 무료 도구만 사용합니다.</p></details>
-    <details><summary>수업에 참석하지 못하면 어떻게 하나요?</summary><p>수업을 마친 당일에 강사 화면을 담은 녹화본을 올려 드립니다. 참석하지 못한 회차는 녹화본을 보고 따라 만드시면 됩니다. 연말과 연초 수업은 과제 제출 기한을 다음 주 일요일까지로 넉넉하게 드립니다.</p></details>
-    <details><summary>우리 학원에 맞는 내용으로 영상을 만들 수 있나요?</summary><p>네, 가능합니다. 1회 수업에서 학부모가 원장님 학원을 찾게 되는 상황(CEP)을 하나 정하고, 8주 동안 그 주제에 맞춰 우리 학원만의 이미지와 영상을 만듭니다.</p></details>
-    <details><summary>실제 원생의 사진이나 얼굴을 사용해도 되나요?</summary><p>아니요, 실제 얼굴은 쓰지 않습니다. 학원 캐릭터나 가상 인물을 활용해 영상을 만듭니다. 가상 인물을 실제 원생이나 강사처럼 보이게 연출하거나, 성적·합격 후기를 지어내 말하게 하지 않습니다. 가상 인물을 영상에 표시하는 기준은 수업 중에 알려 드립니다.</p></details>
-    <details><summary>수강료 환불은 어떻게 받을 수 있나요?</summary><p>수업 시작 전에는 결제하신 전액을 돌려드립니다. 수업이 시작된 뒤에는 남은 회차에 따라 계산해 돌려드립니다. 자세한 내용은 아래 환불 규정을 확인해 주세요.</p></details>
+<!-- 자주 묻는 질문 -->
+<section id="faq">
+  <div class="wrap split">
+    <div class="hd"><div class="en">FAQ</div><h2>자주 묻는 질문</h2></div>
+    <div class="faq">
+      <details><summary>AI 도구가 처음인데 잘 따라갈 수 있을까요?</summary><p>1회 수업은 유료 도구 결제 없이 편집 앱만 사용해 쉬운 글자 영상부터 만듭니다. 수업마다 마지막 30분은 질문을 받는 시간으로 비워 두었고, 복습하실 수 있도록 당일에 녹화본도 올려 드립니다.</p></details>
+      <details><summary>도구 이용료는 얼마나 드나요?</summary><p>Higgsfield Plus와 Midjourney를 기준으로 한 달에 약 69~89달러가 듭니다. 2회 수업 직전부터 결제해 두 달 동안 사용하시기를 권합니다. Seedance, Kling, MiniMax는 Higgsfield를 구독하시면 그 안에서 함께 쓰실 수 있습니다. 1회 수업은 무료 도구만 사용합니다.</p></details>
+      <details><summary>수업에 참석하지 못하면 어떻게 하나요?</summary><p>수업을 마친 당일에 강사 화면을 담은 녹화본을 올려 드립니다. 참석하지 못한 회차는 녹화본을 보고 따라 만드시면 됩니다. 연말과 연초 수업은 과제 제출 기한을 다음 주 일요일까지로 넉넉하게 드립니다.</p></details>
+      <details><summary>우리 학원에 맞는 내용으로 영상을 만들 수 있나요?</summary><p>네, 가능합니다. 1회 수업에서 학부모가 원장님 학원을 찾게 되는 상황(CEP)을 하나 정하고, 8주 동안 그 주제에 맞춰 우리 학원만의 이미지와 영상을 만듭니다.</p></details>
+      <details><summary>실제 원생의 사진이나 얼굴을 사용해도 되나요?</summary><p>아니요, 실제 얼굴은 쓰지 않습니다. 학원 캐릭터나 가상 인물을 활용해 영상을 만듭니다. 가상 인물을 실제 원생이나 강사처럼 보이게 연출하거나, 성적·합격 후기를 지어내 말하게 하지 않습니다. 가상 인물을 영상에 표시하는 기준은 수업 중에 알려 드립니다.</p></details>
+      <details><summary>수강료 환불은 어떻게 받을 수 있나요?</summary><p>수업 시작 전에는 결제하신 전액을 돌려드립니다. 수업이 시작된 뒤에는 남은 회차에 따라 계산해 돌려드립니다. 자세한 내용은 아래 환불 규정을 확인해 주세요.</p></details>
+    </div>
   </div>
 </section>
 
 <!-- 환불 규정 -->
-<section class="paper policy">
-  <div class="wrap">
-    <div class="eyebrow">REFUND</div>
-    <h2>환불 규정</h2>
+<section class="gray policy">
+  <div class="wrap split">
+    <div class="hd"><div class="en">Refund</div><h2>환불 규정</h2></div>
     <ol>
       <li>수업 시작 전 취소: 첫 수업(12월 15일) 전날까지 취소하시면 전액을 돌려드립니다. 결제한 날부터 7일 안에 취소하셔도 그 사이에 진행된 수업이 없으면 전액을 돌려드립니다.</li>
       <li>수업 시작 후 취소: 낸 수강료 ÷ 8 × 남은 회차 수 금액을 돌려드립니다. 진행한 회차는 출석 여부와 관계없이 취소를 요청하신 날까지 이미 열린 수업 회차로 계산합니다.</li>
@@ -431,15 +466,14 @@
 
 <footer>
   <div class="wrap">
-    <p><b style="color:#fff">하우투경영컨설팅</b> · 대표 장의웅 · 사업자등록번호 474-12-02347 · 부산광역시 강서구 명지오션시티11로 22</p>
-    <p style="margin-top:6px"><a href="./">홈으로</a></p>
+    <p><b>하우투경영컨설팅</b> · 대표 장의웅 · 사업자등록번호 474-12-02347 · 부산광역시 강서구 명지오션시티11로 22</p>
   </div>
 </footer>
 
 <div class="bar">
   <div class="wrap">
     <div class="t">AI로 만드는 학원 광고 · 영상 제작부터 자동화까지<small data-bar>얼리버드 할인 1차 590,000원 · 11월 30일까지</small></div>
-    <a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청하기</a>
+    <a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청</a>
   </div>
 </div>
 
