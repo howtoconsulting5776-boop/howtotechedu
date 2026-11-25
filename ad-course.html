@@ -49,6 +49,10 @@
   .logo small { display:block; font-family:var(--serif); font-size:10px; letter-spacing:.3em; color:var(--mute); margin-top:5px; }
   .top nav { display:flex; gap:34px; font-size:14px; color:var(--ink); }
   .top nav a { text-decoration:none; }
+  .top nav a:hover { color:var(--tag); }
+  .top .right { display:flex; align-items:center; gap:34px; }
+  .top .btn { padding:10px 24px; font-size:13px; }
+  [id] { scroll-margin-top:84px; }
 
   /* 첫 화면 */
   .hero { position:relative; height:min(78vh,720px); min-height:480px; overflow:hidden; background:#1c1c1c; color:#fff; }
@@ -176,7 +180,12 @@
     .book .c { border-left:0; padding:10px 0; }
     .book .c.pr, .book .btn { grid-column:1 / -1; }
     .book .btn { text-align:center; }
-    .top nav { display:none; }
+    .top .wrap { flex-wrap:wrap; height:auto; padding-top:14px; }
+    .top .right { width:100%; }
+    .top .btn { display:none; }
+    .top nav { width:100%; gap:22px; overflow-x:auto; white-space:nowrap; padding:12px 0; scrollbar-width:none; }
+    .top nav::-webkit-scrollbar { display:none; }
+    [id] { scroll-margin-top:110px; }
   }
   @media (max-width:640px) {
     section { padding:72px 0; }
@@ -202,7 +211,7 @@
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#">HOWTO<small>하우투경영컨설팅</small></a>
-    <nav><a href="#works">작품</a><a href="#curriculum">커리큘럼</a><a href="#instructor">강사</a><a href="#price">수강료</a><a href="#faq">자주 묻는 질문</a></nav>
+    <div class="right"><nav aria-label="페이지 안 이동"><a href="#works">작품</a><a href="#reviews">후기</a><a href="#curriculum">커리큘럼</a><a href="#instructor">강사</a><a href="#price">수강료</a><a href="#faq">자주 묻는 질문</a></nav><a class="btn" data-apply href="https://docs.google.com/forms/d/1Qv90NqKsn5jHLc4kI_SHhM-Vpi7sxgpZGqVjcGzzb6o/viewform" target="_blank" rel="noopener">수강 신청</a></div>
   </div>
 </header>
 
@@ -276,7 +285,7 @@
 </section>
 
 <!-- 후기 -->
-<section>
+<section id="reviews">
   <div class="wrap split">
     <div class="hd"><div class="en">Reviews</div><h2>수강 후기</h2><p>수업 뒤 설문에 남겨 주신 후기 16건을 모두 실었습니다(16건 모두 공개에 동의). 이름과 학원 이름은 싣지 않았고, 맞춤법만 다듬었습니다.</p></div>
     <div class="reviews">
